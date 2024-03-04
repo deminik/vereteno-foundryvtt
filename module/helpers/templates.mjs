@@ -13,5 +13,6 @@ export const preloadHandlebarsTemplates = async function () {
     // Item partials
     'systems/vereteno/templates/item/parts/item-effects.hbs',
     "systems/vereteno/templates/sidebar/vereteno-roll.html",
+    "systems/vereteno/templates/sidebar/test.hbs",
   ]);
 };

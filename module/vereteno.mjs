@@ -7,6 +7,7 @@ import { VeretenoItemSheet } from './sheets/item-sheet.mjs';
 // Import helper/utility classes and constants.
 import { preloadHandlebarsTemplates } from './helpers/templates.mjs';
 import { VERETENO } from './helpers/config.mjs';
+import { VeretenoRoll } from './vereteno-roll.mjs';
 
 /* -------------------------------------------- */
 /*  Init Hook                                   */
@@ -23,6 +24,8 @@ Hooks.once('init', function () {
 
   // Add custom constants for configuration.
   CONFIG.VERETENO = VERETENO;
+  CONFIG.VERETENOROLL = VeretenoRoll;
+  CONFIG.Dice.rolls.push(VeretenoRoll);
 
   /**
    * Set an initiative formula for the system

@@ -3,7 +3,7 @@ import {
   prepareActiveEffectCategories,
 } from '../helpers/effects.mjs';
 
-import { veretenoRoll } from "../vereteno-roll.js";
+import { VeretenoRoll } from "../vereteno-roll.mjs";
 
 /**
  * Extend the basic ActorSheet with some very simple modifications
@@ -240,7 +240,7 @@ export class VeretenoActorSheet extends ActorSheet {
       points = attribute.value + skill.value;
     }
 
-    let roll = new Roll(`${points}d20`, this.actor.getRollData());
+    let roll = new VeretenoRoll(`${points}d20`, this.actor.getRollData());
     roll.toMessage({
       speaker: ChatMessage.getSpeaker({ actor: this.actor }),
       flavor: label,
