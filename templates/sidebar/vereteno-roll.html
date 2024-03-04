@@ -1,0 +1,29 @@
+<div class="dice-roll vereteno">
+    <header class="message-header flexrow">
+        <h4 class="message-sender">Gamemaster</h4> <span class="message-metadata"> <time
+                class="message-timestamp">Now</time> <a aria-label="Delete" class="message-delete"><i
+                    class="fas fa-trash"></i></a> </span>
+    </header>
+    <div class="message-content">
+        <div class="dice-roll">
+            <div class="dice-result">
+                <div class="dice-formula">
+                    {{this.formula}}</div>
+                <div class="dice-tooltip">
+                    <section class="tooltip-part">
+                        <div class="dice">
+                            <header class="part-header flexrow"> <span class="part-formula">8d20</span> <span
+                                    class="part-total">75</span> </header>
+                            <ol class="dice-rolls">
+                                {{#each this.rolls}}
+                                <li class="roll die d{{this.faces}}">{{this.result}}</li>
+                                {{/each}}
+                            </ol>
+                        </div>
+                    </section>
+                </div>
+                <h4 class="dice-total">{{this.total}}</h4>
+            </div>
+        </div>
+    </div>
+</div>
