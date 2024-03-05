@@ -1,9 +1,27 @@
 {
     "vereteno": {
+        "common": {
+            "weapon": "Weapon"
+        },
         "attack": {
             "none": "",
             "guns": "Guns",
             "melee": "Meelee"
+        },
+        "weapon": {
+            "modifier": "Modifier",
+            "damage": "Damage",
+            "initiative": "Initiative",
+            "crit": "Critical",
+            "attackWith": "Attack using",
+            "range": "Range"
+        },
+        "range": {
+            "pointBlank": "Point blank",
+            "close": "Close distance",
+            "medium": "Medium distance",
+            "long": "Long distance",
+            "utmost": "Utmost distance"
         }
     }
 }

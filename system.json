@@ -17,6 +17,9 @@
     "esmodules": [
         "module/vereteno.mjs"
     ],
+    "styles": [
+        "css/vereteno.scss"
+    ],
     "languages": [
         {
             "lang": "ru",

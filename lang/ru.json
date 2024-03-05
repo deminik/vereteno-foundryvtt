@@ -1,3 +1,27 @@
 {
-    "vereteno": {}
+    "vereteno": {
+        "common": {
+            "weapon": "Оружие"
+        },
+        "attack": {
+            "none": "",
+            "guns": "Огнестрельное",
+            "melee": "Ближнее"
+        },
+        "weapon": {
+            "modifier": "Модификатор",
+            "damage": "Урон",
+            "initiative": "Инициатива",
+            "crit": "Критический урон",
+            "attackWith": "Атака",
+            "range": "Дистанция"
+        },
+        "range":{
+            "pointBlank": "В упор",
+            "close": "Ближняя",
+            "medium": "Средняя",
+            "long": "Дальняя",
+            "utmost": "Предельная"
+        }
+    }
 }
