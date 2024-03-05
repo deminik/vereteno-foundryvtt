@@ -14,6 +14,21 @@
         "minimum": 11,
         "verified": "11.315"
     },
+    "esmodules": [
+        "module/vereteno.mjs"
+    ],
+    "languages": [
+        {
+            "lang": "ru",
+            "name": "Русский",
+            "path": "lang/ru.json"
+        },
+        {
+            "lang": "en",
+            "name": "English",
+            "path": "lang/en.json"
+        }
+    ],
     "socket": false,
     "gridDistance": 2,
     "gridUnits": "m"
