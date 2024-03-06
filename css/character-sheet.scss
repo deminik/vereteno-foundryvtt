@@ -1,0 +1,57 @@
+.character-sheet {
+    display: flex;
+    flex-direction: column;
+
+    .stats-container {
+        display: flex;
+        gap: 2em;
+
+        .stat {
+            display: flex;
+            flex-direction: column;
+
+            .stat-value {
+                width: 2em;
+            }
+
+            .stat-max {}
+        }
+    }
+
+    .skills-container {
+        display: flex;
+        flex-wrap: wrap;
+
+        .attribute-skills {
+            flex: 50%;
+            padding: 1em;
+
+            .attribute {
+                display: flex;
+
+                .attribute-label {}
+
+                .attribute-value {
+                    width: 2em;
+                }
+            }
+
+            .skills {
+                display: flex;
+                flex-direction: column;
+                gap: 0.4em;
+
+                .skill {
+                    display: flex;
+                    justify-content: space-between;
+
+                    .skill-label {}
+
+                    .skill-value {
+                        width: 2em;
+                    }
+                }
+            }
+        }
+    }
+}

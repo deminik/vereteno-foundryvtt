@@ -43,3 +43,44 @@
 .vereteno .weapon-sheet .sheet-content .stat .value input {
   width: 2rem;
 }
+.vereteno .character-sheet {
+  display: flex;
+  flex-direction: column;
+}
+.vereteno .character-sheet .stats-container {
+  display: flex;
+  gap: 2em;
+}
+.vereteno .character-sheet .stats-container .stat {
+  display: flex;
+  flex-direction: column;
+}
+.vereteno .character-sheet .stats-container .stat .stat-value {
+  width: 2em;
+}
+.vereteno .character-sheet .skills-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+.vereteno .character-sheet .skills-container .attribute-skills {
+  flex: 50%;
+  padding: 1em;
+}
+.vereteno .character-sheet .skills-container .attribute-skills .attribute {
+  display: flex;
+}
+.vereteno .character-sheet .skills-container .attribute-skills .attribute .attribute-value {
+  width: 2em;
+}
+.vereteno .character-sheet .skills-container .attribute-skills .skills {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4em;
+}
+.vereteno .character-sheet .skills-container .attribute-skills .skills .skill {
+  display: flex;
+  justify-content: space-between;
+}
+.vereteno .character-sheet .skills-container .attribute-skills .skills .skill .skill-value {
+  width: 2em;
+}

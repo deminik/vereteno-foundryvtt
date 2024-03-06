@@ -1,5 +1,15 @@
 import { vereteno } from './config.mjs';
 import { VeretenoItemSheet } from './sheets/VeretenoItemSheet.mjs';
+import { VeretenoCharacterSheet } from './sheets/VeretenoCharacterSheet.mjs';
+
+async function preloadHandlebarsTemplates() {
+    const templatesPaths = [
+        "systems/vereteno/templates/sheets/partials/actor/stats-block.hbs",
+        "systems/vereteno/templates/sheets/partials/actor/skills-block.hbs"
+    ];
+
+    return loadTemplates(templatesPaths);
+}
 
 Hooks.once('init', function () {
     console.log("Vereteno | System init begin.");
@@ -7,9 +17,12 @@ Hooks.once('init', function () {
     CONFIG.vereteno = vereteno;
 
     Actors.unregisterSheet('core', ActorSheet);
+    Actors.registerSheet('vereteno', VeretenoCharacterSheet, { makeDefault: true });
 
     Items.unregisterSheet('core', ItemSheet);
     Items.registerSheet('vereteno', VeretenoItemSheet, { makeDefault: true });
 
+    preloadHandlebarsTemplates();
+
     console.log("Vereteno | System init done.");
-});
+}); 

@@ -13,3 +13,11 @@ vereteno.rangeTypes = {
     long: "vereteno.range.long",
     utmost: "vereteno.range.utmost"
 }
+
+vereteno.attributes = {
+
+}
+
+vereteno.skills = {
+
+}

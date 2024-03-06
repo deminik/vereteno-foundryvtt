@@ -4,9 +4,10 @@
 @import 'utils/typography';
 
 .window-content {
-    background: url(../vereteno/resources/vereteno-parchment.jpg) repeat!important;
+    background: url(../vereteno/resources/vereteno-parchment.jpg) repeat !important;
 }
 
 .vereteno {
     @import "./item-sheet.scss";
+    @import "./character-sheet.scss";
 }

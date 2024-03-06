@@ -3,7 +3,117 @@
         "types": [
             "character",
             "npc"
-        ]
+        ],
+        "templates": {
+            "common": {
+                "hitPoints": {
+                    "value": 10,
+                    "min": 0,
+                    "max": 10
+                },
+                "willPoints": {
+                    "value": 10,
+                    "min": 0,
+                    "max": 10
+                },
+                "attributes": {
+                    "constitution": {
+                        "value": 1,
+                        "min": 0,
+                        "max": 5
+                    },
+                    "intellect": {
+                        "value": 1,
+                        "min": 0,
+                        "max": 5
+                    },
+                    "dexterity": {
+                        "value": 1,
+                        "min": 0,
+                        "max": 5
+                    },
+                    "empathy": {
+                        "value": 1,
+                        "min": 0,
+                        "max": 5
+                    }
+                },
+                "skills": {
+                    "melee": {
+                        "category": "general",
+                        "attribute": "constitution",
+                        "value": 0,
+                        "min": 0,
+                        "max": 10
+                    },
+                    "strength": {
+                        "category": "general",
+                        "attribute": "constitution",
+                        "value": 0,
+                        "min": 0,
+                        "max": 10
+                    },
+                    "agility": {
+                        "category": "general",
+                        "attribute": "dexterity",
+                        "value": 0,
+                        "min": 0,
+                        "max": 10
+                    },
+                    "stealth": {
+                        "category": "general",
+                        "attribute": "dexterity",
+                        "value": 0,
+                        "min": 0,
+                        "max": 10
+                    },
+                    "ranged": {
+                        "category": "general",
+                        "attribute": "dexterity",
+                        "value": 0,
+                        "min": 0,
+                        "max": 10
+                    },
+                    "survival": {
+                        "category": "general",
+                        "attribute": "intellect",
+                        "value": 0,
+                        "min": 0,
+                        "max": 10
+                    },
+                    "observation": {
+                        "category": "general",
+                        "attribute": "intellect",
+                        "value": 0,
+                        "min": 0,
+                        "max": 10
+                    },
+                    "manipulation": {
+                        "category": "general",
+                        "attribute": "empathy",
+                        "value": 0,
+                        "min": 0,
+                        "max": 10
+                    }
+                },
+                "biography": ""
+            }
+        },
+        "character": {
+            "templates": [
+                "common"
+            ],
+            "reputation": {
+                "value": 10,
+                "min": 0,
+                "max": 10
+            }
+        },
+        "npc": {
+            "templates": [
+                "common"
+            ]
+        }
     },
     "Item": {
         "types": [
