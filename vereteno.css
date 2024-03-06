@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
 .window-content {
   background: url(../vereteno/resources/vereteno-parchment.jpg) repeat !important;
 }
@@ -24,6 +25,7 @@
   display: flex;
   flex-wrap: wrap;
   color: #ae0000;
+  font-family: "Roboto", sans-serif;
 }
 .vereteno .weapon-sheet .sheet-content .stat {
   width: 100%;
