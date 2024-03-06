@@ -2,13 +2,15 @@
   "name": "vereteno",
   "version": "1.0.0",
   "description": "CSS compiler for the Vereteno system",
-  "browserslist": [
-    "last 3 versions"
-  ],
-  "author": "Asacolips",
   "license": "MIT",
   "private": true,
   "devDependencies": {
     "sass": "^1.53.0"
+  },
+  "dependencies": {
+    "gulp": "^4.0.2",
+    "gulp-cli": "^2.3.0",
+    "gulp-less": "^5.0.0",
+    "gulp-sass": "^5.1.0"
   }
 }

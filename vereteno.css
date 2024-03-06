@@ -1,0 +1,43 @@
+.window-content {
+  background: url(../vereteno/resources/vereteno-parchment.jpg) repeat !important;
+}
+
+.vereteno .weapon-sheet {
+  display: flex;
+  flex-direction: column;
+}
+.vereteno .weapon-sheet .sheet-header {
+  display: flex;
+  align-items: flex-start;
+  height: 5em;
+  margin-bottom: 1em;
+}
+.vereteno .weapon-sheet .sheet-header .item-image {
+  height: 100%;
+}
+.vereteno .weapon-sheet .sheet-header .item-info {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.vereteno .weapon-sheet .sheet-content {
+  display: flex;
+  flex-wrap: wrap;
+  color: #ae0000;
+}
+.vereteno .weapon-sheet .sheet-content .stat {
+  width: 100%;
+  flex: 50%;
+  margin-bottom: 10px;
+  display: flex;
+}
+.vereteno .weapon-sheet .sheet-content .stat .title {
+  width: 50%;
+  text-shadow: 0 0 #d47d7d;
+}
+.vereteno .weapon-sheet .sheet-content .stat .value {
+  width: 50%;
+}
+.vereteno .weapon-sheet .sheet-content .stat .value input {
+  width: 2rem;
+}

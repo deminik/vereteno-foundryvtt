@@ -1,36 +1,9 @@
-.vereteno-item-weapon-sheet {
-    .vereteno .weapon .sheet-header {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
+@import 'utils/colors';
 
-        .item-info {
-            display: flex;
-            flex-direction: column;
-        }
-    }
+.window-content {
+    background: url(../vereteno/resources/vereteno-parchment.jpg) repeat!important;
+}
 
-    .value {
-        color: red;
-    }
-
-    .vereteno .weapon .sheet-content {
-        display: flex;
-        flex-direction: column;
-
-        .vereteno .weapon .stat .stat-modifier {
-            display: flex;
-            width: 40%;
-            margin: 5%;
-
-            .stat .title {
-                width: 50%;
-            }
-
-            .stat .value {
-                width: 50%;
-            }
-        }
-    }
-
+.vereteno {
+    @import "./item-sheet.scss";
 }
