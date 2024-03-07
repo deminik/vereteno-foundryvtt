@@ -4,14 +4,26 @@
 
     .sheet-header {
         display: flex;
+        height: 10em;
         gap: 1em;
         align-items: flex-end;
+
+        .character-image {
+            height: 100%;
+        }
+
+        .character-info {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
     }
 
     .stats-container {
         display: flex;
         justify-content: space-evenly;
         padding-left: 0.5em;
+        font-family: $font-primary;
 
         .stat {
             display: flex;
@@ -21,6 +33,8 @@
 
             .title {
                 align-self: center;
+                color: $vereteno-red;
+                text-shadow: 0 0 $vereteno-red-shadow;
             }
 
             .value-container {
@@ -54,7 +68,10 @@
                 display: flex;
                 gap: 0.5em;
 
-                .attribute-label {}
+                .attribute-label {
+                    color: $vereteno-red;
+                    text-shadow: 0 0 $vereteno-red-shadow;
+                }
 
                 .attribute-value {
                     width: 2em;
@@ -70,7 +87,10 @@
                     display: flex;
                     justify-content: space-between;
 
-                    .skill-label {}
+                    .skill-label {
+                        color: $vereteno-red;
+                        text-shadow: 0 0 $vereteno-red-shadow;
+                    }
 
                     .skill-value {
                         width: 2em;
