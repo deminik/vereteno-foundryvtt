@@ -1,3 +1,5 @@
+import { VeretenoRollHandler } from '../utils/VeretenoRollHandler.mjs';
+
 export class VeretenoCharacterSheet extends ActorSheet {
     static get defaultOptions() {
         return mergeObject(super.defaultOptions, {
@@ -92,8 +94,9 @@ export class VeretenoCharacterSheet extends ActorSheet {
         let actorRollData = await this._prepareActorRollData(rollType, rollKey);
 
         let roll = new Roll(actorRollData.pool + actorRollData.dice);
-
-        roll.toMessage(messageData);
+        let veretenoRollHandler = new VeretenoRollHandler(roll);
+        await veretenoRollHandler.reevaluateTotal();
+        veretenoRollHandler.toMessage(messageData);
     }
 
     async _prepareActorRollData(type, key) {

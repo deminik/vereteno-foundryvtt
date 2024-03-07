@@ -1,0 +1,15 @@
+<div>
+    <div class="dice-formula">{{formula}}</div>
+    <div class="dice-tooltip">
+        <section class="tooltip-part">
+            <div class="dice">
+                <ol class="dice-rolls">
+                    {{#each rolls as |roll key|}}
+                    <li class="roll die {{roll.classes}}">{{{roll.result}}}</li>
+                    {{/each}}
+                </ol>
+            </div>
+        </section>
+    </div>
+    <div class="dice-total">{{total}}</div>
+</div>
