@@ -6,15 +6,22 @@
         ],
         "templates": {
             "common": {
-                "hitPoints": {
-                    "value": 10,
-                    "min": 0,
-                    "max": 10
-                },
-                "willPoints": {
-                    "value": 10,
-                    "min": 0,
-                    "max": 10
+                "stats": {
+                    "hitPoints": {
+                        "value": 10,
+                        "min": 0,
+                        "max": 10
+                    },
+                    "willPoints": {
+                        "value": 10,
+                        "min": 0,
+                        "max": 10
+                    },
+                    "reputation": {
+                        "value": 10,
+                        "min": 0,
+                        "max": 10
+                    }
                 },
                 "attributes": {
                     "constitution": {
@@ -22,7 +29,7 @@
                         "min": 0,
                         "max": 5
                     },
-                    "intellect": {
+                    "intelligence": {
                         "value": 1,
                         "min": 0,
                         "max": 5
@@ -44,56 +51,112 @@
                         "attribute": "constitution",
                         "value": 0,
                         "min": 0,
-                        "max": 10
+                        "max": 5
                     },
                     "strength": {
                         "category": "general",
                         "attribute": "constitution",
                         "value": 0,
                         "min": 0,
-                        "max": 10
+                        "max": 5
                     },
                     "agility": {
                         "category": "general",
                         "attribute": "dexterity",
                         "value": 0,
                         "min": 0,
-                        "max": 10
+                        "max": 5
+                    },
+                    "piloting": {
+                        "category": "professional",
+                        "attribute": "dexterity",
+                        "value": 0,
+                        "min": 0,
+                        "max": 5
                     },
                     "stealth": {
                         "category": "general",
                         "attribute": "dexterity",
                         "value": 0,
                         "min": 0,
-                        "max": 10
+                        "max": 5
                     },
                     "ranged": {
                         "category": "general",
                         "attribute": "dexterity",
                         "value": 0,
                         "min": 0,
-                        "max": 10
+                        "max": 5
+                    },
+                    "cybershamanism": {
+                        "category": "professional",
+                        "attribute": "intelligence",
+                        "value": 0,
+                        "min": 0,
+                        "max": 5
                     },
                     "survival": {
                         "category": "general",
-                        "attribute": "intellect",
+                        "attribute": "intelligence",
                         "value": 0,
                         "min": 0,
-                        "max": 10
+                        "max": 5
+                    },
+                    "medicine": {
+                        "category": "professional",
+                        "attribute": "intelligence",
+                        "value": 0,
+                        "min": 0,
+                        "max": 5
                     },
                     "observation": {
                         "category": "general",
-                        "attribute": "intellect",
+                        "attribute": "intelligence",
                         "value": 0,
                         "min": 0,
-                        "max": 10
+                        "max": 5
+                    },
+                    "science": {
+                        "category": "professional",
+                        "attribute": "intelligence",
+                        "value": 0,
+                        "min": 0,
+                        "max": 5
+                    },
+                    "mechanics": {
+                        "category": "professional",
+                        "attribute": "intelligence",
+                        "value": 0,
+                        "min": 0,
+                        "max": 5
                     },
                     "manipulation": {
                         "category": "general",
                         "attribute": "empathy",
                         "value": 0,
                         "min": 0,
-                        "max": 10
+                        "max": 5
+                    },
+                    "leadership": {
+                        "category": "professional",
+                        "attribute": "empathy",
+                        "value": 0,
+                        "min": 0,
+                        "max": 5
+                    },
+                    "witchcraft": {
+                        "category": "professional",
+                        "attribute": "empathy",
+                        "value": 0,
+                        "min": 0,
+                        "max": 5
+                    },
+                    "culture": {
+                        "category": "professional",
+                        "attribute": "empathy",
+                        "value": 0,
+                        "min": 0,
+                        "max": 5
                     }
                 },
                 "biography": ""
@@ -102,12 +165,7 @@
         "character": {
             "templates": [
                 "common"
-            ],
-            "reputation": {
-                "value": 10,
-                "min": 0,
-                "max": 10
-            }
+            ]
         },
         "npc": {
             "templates": [

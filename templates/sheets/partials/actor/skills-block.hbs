@@ -4,7 +4,7 @@
         <div class="attribute-skills">
             <div class="attribute">
                 <h2 for="system.attributes.{{key}}.value" class="attribute-label rollable align-left label"
-                    data-roll="{{attribute.value}}d20" data-label="{{key}}">{{key}}</h2>
+                    data-roll="{{attribute.value}}d20" data-label="{{key}}">{{attribute.label}}</h2>
                 <input type="text" name="system.attributes.{{key}}.value" value="{{attribute.value}}"
                     data-dtype="Number" class="attribute-value align-right value" />
             </div>
@@ -12,7 +12,7 @@
                 {{#each attribute.skills as |skill skey|}}
                 <div class="skill skill-{{skey}}">
                     <label for="system.skills.{{skey}}.value" class="skill-label rollable align-left label" data-roll="{{skey}}"
-                        data-label="{{skey}}">{{skey}}</label>
+                        data-label="{{skey}}">{{skill.label}}</label>
                     <input type="text" name="system.skills.{{skey}}.value" value="{{skill.value}}" data-dtype="Number"
                         class="skill-value align-right value" />
                 </div>

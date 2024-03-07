@@ -2,19 +2,39 @@
     display: flex;
     flex-direction: column;
 
+    .sheet-header {
+        display: flex;
+        gap: 1em;
+        align-items: flex-end;
+    }
+
     .stats-container {
         display: flex;
-        gap: 2em;
+        justify-content: space-evenly;
+        padding-left: 0.5em;
 
         .stat {
             display: flex;
             flex-direction: column;
+            width: 5em;
+            align-items: center;
 
-            .stat-value {
-                width: 2em;
+            .title {
+                align-self: center;
             }
 
-            .stat-max {}
+            .value-container {
+                display: flex;
+                justify-content: space-evenly;
+                width: 100%;
+                align-items: center;
+
+                .stat-value {
+                    width: 2em;
+                }
+
+                .stat-max {}
+            }
         }
     }
 
@@ -23,11 +43,16 @@
         flex-wrap: wrap;
 
         .attribute-skills {
-            flex: 50%;
-            padding: 1em;
+            flex: 40%;
+            padding: 0.5em;
+            background-color: $vereteno-red-tint;
+            background-blend-mode: multiply;
+            margin: 0.3em;
+            border-radius: 5%;
 
             .attribute {
                 display: flex;
+                gap: 0.5em;
 
                 .attribute-label {}
 

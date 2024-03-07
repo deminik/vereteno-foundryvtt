@@ -49,13 +49,25 @@
 }
 .vereteno .character-sheet .stats-container {
   display: flex;
-  gap: 2em;
+  justify-content: space-evenly;
+  padding-left: 0.5em;
 }
 .vereteno .character-sheet .stats-container .stat {
   display: flex;
   flex-direction: column;
+  width: 5em;
+  align-items: center;
 }
-.vereteno .character-sheet .stats-container .stat .stat-value {
+.vereteno .character-sheet .stats-container .stat .title {
+  align-self: center;
+}
+.vereteno .character-sheet .stats-container .stat .value-container {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+  align-items: center;
+}
+.vereteno .character-sheet .stats-container .stat .value-container .stat-value {
   width: 2em;
 }
 .vereteno .character-sheet .skills-container {
@@ -63,11 +75,16 @@
   flex-wrap: wrap;
 }
 .vereteno .character-sheet .skills-container .attribute-skills {
-  flex: 50%;
-  padding: 1em;
+  flex: 40%;
+  padding: 0.5em;
+  background-color: rgba(174, 0, 0, 0.01);
+  background-blend-mode: multiply;
+  margin: 0.3em;
+  border-radius: 5%;
 }
 .vereteno .character-sheet .skills-container .attribute-skills .attribute {
   display: flex;
+  gap: 0.5em;
 }
 .vereteno .character-sheet .skills-container .attribute-skills .attribute .attribute-value {
   width: 2em;

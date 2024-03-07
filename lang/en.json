@@ -22,6 +22,35 @@
             "medium": "Medium distance",
             "long": "Long distance",
             "utmost": "Utmost distance"
+        },
+        "stat": {
+            "hitPoint": "",
+            "willPoint": "",
+            "reputation": ""
+        },
+        "attribute": {
+            "constitution": "",
+            "intelligence": "",
+            "dexterity": "",
+            "empathy": ""
+        },
+        "skill": {
+            "melee": "",
+            "strength": "",
+            "agility": "",
+            "piloting": "",
+            "stealth": "",
+            "ranged": "",
+            "cybershamanism": "",
+            "survival": "",
+            "medicine": "",
+            "observation": "",
+            "science": "",
+            "mechanics": "",
+            "manipulation": "",
+            "leadership": "",
+            "witchcraft": "",
+            "culture": ""
         }
     }
 }

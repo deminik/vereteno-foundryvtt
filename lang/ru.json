@@ -16,12 +16,41 @@
             "attackWith": "Атака",
             "range": "Дистанция"
         },
-        "range":{
+        "range": {
             "pointBlank": "В упор",
             "close": "Ближняя",
             "medium": "Средняя",
             "long": "Дальняя",
             "utmost": "Предельная"
+        },
+        "stat": {
+            "hitPoint": "Здоровье",
+            "willPoint": "Воля",
+            "reputation": "Репутация"
+        },
+        "attribute": {
+            "constitution": "Телосложение",
+            "intelligence": "Интеллект",
+            "dexterity": "Ловкость",
+            "empathy": "Эмпатия"
+        },
+        "skill": {
+            "melee": "Ближний бой",
+            "strength": "Сила",
+            "agility": "Проворство",
+            "piloting": "Пилотирование",
+            "stealth": "Скрытность",
+            "ranged": "Стрельба",
+            "cybershamanism": "Кибершаманизм",
+            "survival": "Выживание",
+            "medicine": "Знахарство",
+            "observation": "Наблюдательность",
+            "science": "Наука",
+            "mechanics": "Механика",
+            "manipulation": "Влияние",
+            "leadership": "Лидерство",
+            "witchcraft": "Ведовство",
+            "culture": "Культура"
         }
     }
 }

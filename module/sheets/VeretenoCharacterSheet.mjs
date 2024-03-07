@@ -46,10 +46,24 @@ export class VeretenoCharacterSheet extends ActorSheet {
         }
 
         let hpMax = system.attributes.constitution.value + system.attributes.dexterity.value;
-        system.hitPoints.max = hpMax;
 
-        let wpMax = system.attributes.intellect.value + system.attributes.empathy.value;
-        system.willPoints.max = wpMax;
+        system.stats.hitPoints.max = hpMax;
+        if (system.stats.hitPoints.value > hpMax) {
+            system.stats.hitPoints.value = hpMax;
+        }
+
+        system.stats.hitPoints.label = game.i18n.localize(CONFIG.vereteno.stats.hitPoints);
+
+        let wpMax = system.attributes.intelligence.value + system.attributes.empathy.value;
+
+        system.stats.willPoints.max = wpMax;
+        if (system.stats.willPoints.value > wpMax) {
+            system.stats.willPoints.value = wpMax;
+        }
+
+        system.stats.willPoints.label = game.i18n.localize(CONFIG.vereteno.stats.willPoints);
+
+        system.stats.reputation.label = game.i18n.localize(CONFIG.vereteno.stats.reputation);
 
         return system;
     }
