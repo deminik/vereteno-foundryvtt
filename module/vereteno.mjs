@@ -9,7 +9,9 @@ async function preloadHandlebarsTemplates() {
         "systems/vereteno/templates/sheets/partials/actor/skills-block.hbs",
 
         "systems/vereteno/templates/sheets/partials/actor/equipment-tab.hbs",
-        "systems/vereteno/templates/sheets/partials/actor/item/weapon-plate.hbs"
+        "systems/vereteno/templates/sheets/partials/actor/item/weapon-plate.hbs",
+
+        "systems/vereteno/templates/sheets/partials/actor/fight-tab.hbs",        
     ];
 
     return loadTemplates(templatesPaths);

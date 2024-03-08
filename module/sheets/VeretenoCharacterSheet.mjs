@@ -27,6 +27,7 @@ export class VeretenoCharacterSheet extends ActorSheet {
 
         html.on('click', '.rollable', this._onRoll.bind(this));
         html.on('click', '.item-remove', this._onItemRemove.bind(this));
+        html.on('click', '.weapon-equip', this._onWeaponEquip.bind(this));
     }
 
     getData() {
@@ -52,7 +53,7 @@ export class VeretenoCharacterSheet extends ActorSheet {
     }
 
     _prepareItems(characterData, system) {
-        
+
         system.weapons = characterData.items.filter(x => x.type === 'weapon')
 
         return system;
@@ -195,8 +196,20 @@ export class VeretenoCharacterSheet extends ActorSheet {
 
         let { itemId } = dataset;
 
-        let item = this.actor.items.get(itemId);        
+        let item = this.actor.items.get(itemId);
 
-        this.actor.deleteEmbeddedDocuments("Item", [item]);
+        this.actor.deleteEmbeddedDocuments("Item", [item._id]);
+    }
+
+    async _onWeaponEquip(event) {
+        event.preventDefault();
+        const element = event.currentTarget;
+        const dataset = element.dataset;
+
+        let { itemId } = dataset;
+
+        let item = this.actor.items.get(itemId);
+
+        this.actor.equipedWeapon = item;
     }
 }
