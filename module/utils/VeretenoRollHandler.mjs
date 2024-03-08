@@ -11,7 +11,7 @@ export class VeretenoRollHandler {
         let rollDicesResults = this.roll.terms[0].results;
         let veretenoTotal = this.calculateDicesTotal(rollDicesResults);
 
-        this.roll._total = veretenoTotal;
+        this.roll._veretenoTotal = veretenoTotal;
     }
 
     getRoll() {
@@ -32,14 +32,17 @@ export class VeretenoRollHandler {
                 successes += 2;
                 rollResult.classes += ' max';
             }
+
             if (r.result >= 17 && r.result <= 19) {
                 successes += 1;
                 rollResult.classes += ' good';
             }
+
             if (r.result === 1) {
                 successes -= 1;
                 rollResult.classes += ' min';
             }
+
             this.rolls.push(rollResult);
         });
 
@@ -54,6 +57,7 @@ export class VeretenoRollHandler {
         let rollData = {
             formula: this.roll.formula,
             total: this.roll._total,
+            veretenoTotal: this.roll._veretenoTotal,
             rolls: this.rolls
         }
 
