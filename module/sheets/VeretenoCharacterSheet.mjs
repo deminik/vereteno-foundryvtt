@@ -5,7 +5,14 @@ export class VeretenoCharacterSheet extends ActorSheet {
         return mergeObject(super.defaultOptions, {
             height: 680,
             width: 550,
-            classes: ['vereteno', 'character', 'sheet']
+            classes: ['vereteno', 'character', 'sheet'],
+            tabs: [
+                {
+                    navSelector: ".sheet-tabs",
+                    contentSelector: ".sheet-body",
+                    initial: "main",
+                },
+            ],
         })
     }
 

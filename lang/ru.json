@@ -51,6 +51,10 @@
             "leadership": "Лидерство",
             "witchcraft": "Ведовство",
             "culture": "Культура"
+        },
+        "tab": {
+            "stat": "Навыки",
+            "equipment": "Снаряжение"
         }
     }
 }

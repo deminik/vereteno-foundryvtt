@@ -51,6 +51,10 @@
             "leadership": "",
             "witchcraft": "",
             "culture": ""
+        },
+        "tab": {
+            "stat": "Stats",
+            "equipment": "Equipment"
         }
     }
 }

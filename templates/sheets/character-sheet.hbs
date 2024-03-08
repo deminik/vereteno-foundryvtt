@@ -1,34 +1,41 @@
 <form class="{{cssClass}}" autocomplete="off">
     <div class="sheet-header">
-        <img class="vereteno character-image" src="{{actor.img}}" data-edit="img" title="{{actor.name}}"/>
+        <img class="vereteno character-image" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" />
         <h1 class="vereteno character-info"><input name="name" type="text" value="{{actor.name}}"
                 placeholder="{{ localize 'Name' }}" /></h1>
     </div>
 
     <div class="vereteno character sheet-content">
-        <div class="vereteno character stats">
-            {{> "systems/vereteno/templates/sheets/partials/actor/stats-block.hbs"}}
+        <div class="sheet-tabs tabs flex row" data-group="primary">
+            <b class="item" data-tab="main">{{localize "vereteno.tab.stat"}}</b>
+            <b class="item" data-tab="equipment">{{localize "vereteno.tab.equipment"}}</b>
+            {{!-- <b class="item" data-tab="talent">{{localize "TAB.TALENT"}}</b>
+            <b class="item" data-tab="gear">{{localize "TAB.GEAR"}}</b>
+            <b class="item" data-tab="note">{{localize "TAB.NOTE"}}</b>
+            <b class="item" data-tab="changelog">{{localize "TAB.LOG"}}</b> --}}
         </div>
-        <div class="vereteno character skills">
-            {{> "systems/vereteno/templates/sheets/partials/actor/skills-block.hbs"}}
+        <div class="sheet-body">
+            <div class="tab" data-group="primary" data-tab="main">
+                {{> "systems/vereteno/templates/sheets/partials/actor/stats-tab.hbs"}}
+            </div>
+            <div class="tab" data-group="primary" data-tab="equipment">
+                {{> "systems/vereteno/templates/sheets/partials/actor/equipment-tab.hbs"}}
+            </div>
+            {{!-- <div class="tab" data-group="primary" data-tab="talent">
+                {{> systems/vaesen/model/tab/player-talent.hbs}}
+            </div>
+            <div class="tab" data-group="primary" data-tab="gear">
+                {{> systems/vaesen/model/tab/player-gear.hbs}}
+            </div>
+            <div class="tab note" data-group="primary" data-tab="note">
+                {{> systems/vaesen/model/tab/player-note.hbs}}
+            </div>
+            <div class="vereteno character stats">
+                {{> "systems/vereteno/templates/sheets/partials/actor/stats-block.hbs"}}
+            </div>
+            <div class="vereteno character skills">
+                {{> "systems/vereteno/templates/sheets/partials/actor/skills-block.hbs"}}
+            </div> --}}
         </div>
     </div>
-
-    <section class="items">
-        <h3 class="noborder">Owned Items</h3>
-        <ol class="actor-items">
-            {{#each actor.items as |item id|}}
-            <li class="actor-item" data-item-id="{{id}}">
-                <div class="item-name">
-                    <img src="{{item.img}}" title="{{item.name}}" width="24" height="24" />
-                    <h4>{{item.name}}</h4>
-                </div>
-                <div class="item-controls">
-                    <a class="item-control item-edit" title="Edit Item"><i class="fas fa-edit"></i></a>
-                    <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash"></i></a>
-                </div>
-            </li>
-            {{/each}}
-        </ol>
-    </section>
 </form>

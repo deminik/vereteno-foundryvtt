@@ -4,8 +4,11 @@ import { VeretenoCharacterSheet } from './sheets/VeretenoCharacterSheet.mjs';
 
 async function preloadHandlebarsTemplates() {
     const templatesPaths = [
+        "systems/vereteno/templates/sheets/partials/actor/stats-tab.hbs",
         "systems/vereteno/templates/sheets/partials/actor/stats-block.hbs",
-        "systems/vereteno/templates/sheets/partials/actor/skills-block.hbs"
+        "systems/vereteno/templates/sheets/partials/actor/skills-block.hbs",
+
+        "systems/vereteno/templates/sheets/partials/actor/equipment-tab.hbs"
     ];
 
     return loadTemplates(templatesPaths);
