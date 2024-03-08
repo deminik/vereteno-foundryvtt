@@ -1,0 +1,49 @@
+.weapon-sheet {
+    display: flex;
+    flex-direction: column;
+
+    .sheet-header {
+        display: flex;
+        align-items: flex-start;
+        height: 5em;
+        margin-bottom: 1em;
+
+        .item-image {
+            height: 100%;
+        }
+
+        .item-info {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+    }
+
+    .sheet-content {
+        display: flex;
+        flex-wrap: wrap;
+        color: $vereteno-red;
+        font-family: $font-primary;
+
+        .stat {
+            width: 100%;
+            flex: 50%;
+            margin-bottom: 10px;
+
+            display: flex;
+
+            .title {
+                width: 50%;
+                text-shadow: 0 0 $vereteno-red-shadow;
+            }
+
+            .value {
+                width: 50%;
+
+                input {
+                    width: 2rem;
+                }
+            }
+        }
+    }
+}

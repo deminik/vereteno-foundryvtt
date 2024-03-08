@@ -1,50 +1,56 @@
 {
-    "VERETENO": {
-      "Attribute": {
-        "Constitution": { "long": "Телосложение", "abbr": "тело" },
-        "Dexterity": { "long": "Ловкость", "abbr": "ловки" },
-        "Intellect": { "long": "Интеллект", "abbr": "инт" },
-        "Empathy": { "long": "Эмпатия", "abbr": "эмп" }
-      },
-      "Skill": {
-        "Melee": { "long": "Ближний бой", "abbr": "блбой" },
-        "Strength": { "long": "Сила", "abbr": "сила" },
-        "Agility": { "long": "Проворство", "abbr": "пров" },
-        "Stealth": { "long": "Скрытность", "abbr": "скр" },
-        "Ranged": { "long": "Стрельба", "abbr": "стр" },
-        "Survival": { "long": "Выживание", "abbr": "выж" },
-        "Observation": { "long": "Наблюдательность", "abbr": "набл" },
-        "Manipulation": { "long": "Влияние", "abbr": "влн" }
-      },
-      "SheetLabels": {
-        "Actor": "Лист персонажа",
-        "Item": "Лист предмета"
-      },
-      "Item": {
-        "Spell": {
-          "SpellLVL": "Level {level} Spells",
-          "AddLVL": "Add LVL {level}"
+    "vereteno": {
+        "common": {
+            "weapon": "Оружие"
+        },
+        "attack": {
+            "none": "",
+            "guns": "Огнестрельное",
+            "melee": "Ближнее"
+        },
+        "weapon": {
+            "modifier": "Модификатор",
+            "damage": "Урон",
+            "initiative": "Инициатива",
+            "crit": "Критический урон",
+            "attackWith": "Атака",
+            "range": "Дистанция"
+        },
+        "range": {
+            "pointBlank": "В упор",
+            "close": "Ближняя",
+            "medium": "Средняя",
+            "long": "Дальняя",
+            "utmost": "Предельная"
+        },
+        "stat": {
+            "hitPoint": "Здоровье",
+            "willPoint": "Воля",
+            "reputation": "Репутация"
+        },
+        "attribute": {
+            "constitution": "Телосложение",
+            "intelligence": "Интеллект",
+            "dexterity": "Ловкость",
+            "empathy": "Эмпатия"
+        },
+        "skill": {
+            "melee": "Ближний бой",
+            "strength": "Сила",
+            "agility": "Проворство",
+            "piloting": "Пилотирование",
+            "stealth": "Скрытность",
+            "ranged": "Стрельба",
+            "cybershamanism": "Кибершаманизм",
+            "survival": "Выживание",
+            "medicine": "Знахарство",
+            "observation": "Наблюдательность",
+            "science": "Наука",
+            "mechanics": "Механика",
+            "manipulation": "Влияние",
+            "leadership": "Лидерство",
+            "witchcraft": "Ведовство",
+            "culture": "Культура"
         }
-      },
-      "Effect": {
-        "Source": "Source",
-        "Toggle": "Toggle Effect",
-        "Temporary": "Temporary Effects",
-        "Passive": "Passive Effects",
-        "Inactive": "Inactive Effects"
-      }
-    },
-  
-    "TYPES": {
-      "Actor": {
-        "character": "Персонаж",
-        "npc": "НИП"
-      },
-      "Item": {
-        "item": "Предмет",
-        "feature": "Черта",
-        "spell": "Spell"
-      }
     }
-  }
-  
+}

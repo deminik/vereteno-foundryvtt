@@ -1,0 +1,102 @@
+.character-sheet {
+    display: flex;
+    flex-direction: column;
+
+    .sheet-header {
+        display: flex;
+        height: 10em;
+        gap: 1em;
+        align-items: flex-end;
+
+        .character-image {
+            height: 100%;
+        }
+
+        .character-info {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+    }
+
+    .stats-container {
+        display: flex;
+        justify-content: space-evenly;
+        padding-left: 0.5em;
+        font-family: $font-primary;
+
+        .stat {
+            display: flex;
+            flex-direction: column;
+            width: 5em;
+            align-items: center;
+
+            .title {
+                align-self: center;
+                color: $vereteno-red;
+                text-shadow: 0 0 $vereteno-red-shadow;
+            }
+
+            .value-container {
+                display: flex;
+                justify-content: space-evenly;
+                width: 100%;
+                align-items: center;
+
+                .stat-value {
+                    width: 2em;
+                }
+
+                .stat-max {}
+            }
+        }
+    }
+
+    .skills-container {
+        display: flex;
+        flex-wrap: wrap;
+
+        .attribute-skills {
+            flex: 40%;
+            padding: 0.5em;
+            background-color: $vereteno-red-tint;
+            background-blend-mode: multiply;
+            margin: 0.3em;
+            border-radius: 5%;
+
+            .attribute {
+                display: flex;
+                gap: 0.5em;
+
+                .attribute-label {
+                    color: $vereteno-red;
+                    text-shadow: 0 0 $vereteno-red-shadow;
+                }
+
+                .attribute-value {
+                    width: 2em;
+                }
+            }
+
+            .skills {
+                display: flex;
+                flex-direction: column;
+                gap: 0.4em;
+
+                .skill {
+                    display: flex;
+                    justify-content: space-between;
+
+                    .skill-label {
+                        color: $vereteno-red;
+                        text-shadow: 0 0 $vereteno-red-shadow;
+                    }
+
+                    .skill-value {
+                        width: 2em;
+                    }
+                }
+            }
+        }
+    }
+}

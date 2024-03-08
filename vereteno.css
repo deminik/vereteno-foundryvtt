@@ -1,0 +1,133 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+.window-content {
+  background: url(../vereteno/resources/vereteno-parchment.jpg) repeat !important;
+}
+
+.vereteno .weapon-sheet {
+  display: flex;
+  flex-direction: column;
+}
+.vereteno .weapon-sheet .sheet-header {
+  display: flex;
+  align-items: flex-start;
+  height: 5em;
+  margin-bottom: 1em;
+}
+.vereteno .weapon-sheet .sheet-header .item-image {
+  height: 100%;
+}
+.vereteno .weapon-sheet .sheet-header .item-info {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.vereteno .weapon-sheet .sheet-content {
+  display: flex;
+  flex-wrap: wrap;
+  color: #ae0000;
+  font-family: "Roboto", sans-serif;
+}
+.vereteno .weapon-sheet .sheet-content .stat {
+  width: 100%;
+  flex: 50%;
+  margin-bottom: 10px;
+  display: flex;
+}
+.vereteno .weapon-sheet .sheet-content .stat .title {
+  width: 50%;
+  text-shadow: 0 0 #d47d7d;
+}
+.vereteno .weapon-sheet .sheet-content .stat .value {
+  width: 50%;
+}
+.vereteno .weapon-sheet .sheet-content .stat .value input {
+  width: 2rem;
+}
+.vereteno .character-sheet {
+  display: flex;
+  flex-direction: column;
+}
+.vereteno .character-sheet .sheet-header {
+  display: flex;
+  height: 10em;
+  gap: 1em;
+  align-items: flex-end;
+}
+.vereteno .character-sheet .sheet-header .character-image {
+  height: 100%;
+}
+.vereteno .character-sheet .sheet-header .character-info {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.vereteno .character-sheet .stats-container {
+  display: flex;
+  justify-content: space-evenly;
+  padding-left: 0.5em;
+  font-family: "Roboto", sans-serif;
+}
+.vereteno .character-sheet .stats-container .stat {
+  display: flex;
+  flex-direction: column;
+  width: 5em;
+  align-items: center;
+}
+.vereteno .character-sheet .stats-container .stat .title {
+  align-self: center;
+  color: #ae0000;
+  text-shadow: 0 0 #d47d7d;
+}
+.vereteno .character-sheet .stats-container .stat .value-container {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+  align-items: center;
+}
+.vereteno .character-sheet .stats-container .stat .value-container .stat-value {
+  width: 2em;
+}
+.vereteno .character-sheet .skills-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+.vereteno .character-sheet .skills-container .attribute-skills {
+  flex: 40%;
+  padding: 0.5em;
+  background-color: rgba(174, 0, 0, 0.01);
+  background-blend-mode: multiply;
+  margin: 0.3em;
+  border-radius: 5%;
+}
+.vereteno .character-sheet .skills-container .attribute-skills .attribute {
+  display: flex;
+  gap: 0.5em;
+}
+.vereteno .character-sheet .skills-container .attribute-skills .attribute .attribute-label {
+  color: #ae0000;
+  text-shadow: 0 0 #d47d7d;
+}
+.vereteno .character-sheet .skills-container .attribute-skills .attribute .attribute-value {
+  width: 2em;
+}
+.vereteno .character-sheet .skills-container .attribute-skills .skills {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4em;
+}
+.vereteno .character-sheet .skills-container .attribute-skills .skills .skill {
+  display: flex;
+  justify-content: space-between;
+}
+.vereteno .character-sheet .skills-container .attribute-skills .skills .skill .skill-label {
+  color: #ae0000;
+  text-shadow: 0 0 #d47d7d;
+}
+.vereteno .character-sheet .skills-container .attribute-skills .skills .skill .skill-value {
+  width: 2em;
+}
+
+.dice-tooltip .dice-rolls .roll.good {
+  color: #787816;
+  filter: sepia(0.5) hue-rotate(10deg);
+}
