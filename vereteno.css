@@ -126,6 +126,41 @@
 .vereteno .character-sheet .skills-container .attribute-skills .skills .skill .skill-value {
   width: 2em;
 }
+.vereteno .character-sheet .items-container {
+  display: flex;
+  flex-direction: column;
+}
+.vereteno .character-sheet .items-container .item-group {
+  display: flex;
+  flex-direction: column;
+}
+.vereteno .character-sheet .items-container .item-group .items-list .item-plate {
+  display: flex;
+  height: 3em;
+}
+.vereteno .character-sheet .items-container .item-group .items-list .item-plate .item-image img {
+  height: 100%;
+}
+.vereteno .character-sheet .items-container .item-group .items-list .item-plate .weapon-stats {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+.vereteno .character-sheet .items-container .item-group .items-list .item-plate .weapon-stats .stats {
+  flex-grow: 1;
+  display: flex;
+  justify-content: space-between;
+  gap: 1em;
+}
+.vereteno .character-sheet .items-container .item-group .items-list .item-plate .weapon-stats .stats .stat {
+  flex-grow: 1;
+  display: flex;
+  justify-content: space-evenly;
+}
+.vereteno .character-sheet .items-container .item-group .items-list .item-plate .weapon-actions {
+  height: 100%;
+  align-self: end;
+}
 
 .dice-tooltip .dice-rolls .roll.good {
   color: #787816;

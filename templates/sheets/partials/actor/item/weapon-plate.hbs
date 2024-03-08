@@ -1,0 +1,36 @@
+<section class="vereteno item-plate">
+    <div class="vereteno item-image"><img src="{{img}}"></div>
+    <div class="weapon-stats">
+        <div class="name">
+            {{name}}
+        </div>
+        {{#with system}}
+        <div class="stats">
+            <div class="stat">
+                <span>mod</span><label>{{modifier}}</label>
+            </div>
+            <div class="stat">
+                <span>dmg</span><label>{{damage}}</label>
+            </div>
+            <div class="stat">
+                <span>init</span><label>{{initiative}}</label>
+            </div>
+            <div class="stat">
+                <span>crit</span><label>{{crit}}</label>
+            </div>
+            <div class="stat">
+                <span>dist</span><label>{{range}}</label>
+            </div>
+            <div class="stat">
+                <span>atk</span><label>{{attackWith}}</label>
+            </div>
+        </div>
+        {{/with}}
+    </div>
+    <div class="eapon-actions">
+        <div class="action">
+            <a class="equip-action action item-action-clickable">Equip</a>
+            <a class="delete-action action item-remove" data-item-id="{{_id}}">Remove</a>
+        </div>
+    </div>
+</section>

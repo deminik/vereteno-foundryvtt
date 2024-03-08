@@ -1,4 +1,29 @@
-<section class="items">
+<section class="vereteno items-container">
+    <div class="vereteno item-group">
+        <h2>Оружие</h2>
+        <div class="items-list">
+            {{#each weapons as |weapon|}}
+            {{> "systems/vereteno/templates/sheets/partials/actor/item/weapon-plate.hbs" weapon}}
+            {{/each}}
+        </div>
+    </div>
+    <div class="vereteno item-group">
+        <h2>Броня</h2>
+        <div>список брони</div>
+    </div>
+    <div class="vereteno item-group">
+        <h2>Снаряжение</h2>
+        <div>список снаряжения</div>
+    </div>
+    <div class="vereteno item-group">
+        <h2>Расходники</h2>
+        <div>список расходников</div>
+    </div>
+    <div class="vereteno item-group">
+        <h2>Сокровища</h2>
+        <div>список сокровищ</div>
+    </div>
+    {{!--
     <h3 class="noborder">Owned Items</h3>
     <ol class="actor-items">
         {{#each actor.items as |item id|}}
@@ -13,5 +38,5 @@
             </div>
         </li>
         {{/each}}
-    </ol>
+    </ol> --}}
 </section>

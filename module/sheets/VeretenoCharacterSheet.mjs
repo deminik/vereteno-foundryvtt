@@ -26,6 +26,7 @@ export class VeretenoCharacterSheet extends ActorSheet {
         if (!this.isEditable) return;
 
         html.on('click', '.rollable', this._onRoll.bind(this));
+        html.on('click', '.item-remove', this._onItemRemove.bind(this));
     }
 
     getData() {
@@ -33,7 +34,7 @@ export class VeretenoCharacterSheet extends ActorSheet {
 
         const characterData = context.data;
 
-        context.system = this._prepareCharacterData(characterData.system);
+        context.system = this._prepareCharacterData(characterData);
 
         context.flags = characterData.flags;
         context.config = CONFIG.vereteno;
@@ -42,7 +43,22 @@ export class VeretenoCharacterSheet extends ActorSheet {
         return context;
     }
 
-    _prepareCharacterData(system) {
+    _prepareCharacterData(characterData) {
+        let system = this._prepareStatsAndSkills(characterData.system);
+
+        system = this._prepareItems(characterData, system);
+
+        return system;
+    }
+
+    _prepareItems(characterData, system) {
+        
+        system.weapons = characterData.items.filter(x => x.type === 'weapon')
+
+        return system;
+    }
+
+    _prepareStatsAndSkills(system) {
         // Handle ability scores.
         for (let [k, v] of Object.entries(system.attributes)) {
             if (v.value == null) {
@@ -117,11 +133,15 @@ export class VeretenoCharacterSheet extends ActorSheet {
     }
 
     async _getContext() {
-        return this.object.system;
+        return this.object;
+    }
+
+    async _getSystem() {
+        return (await this._getContext()).system;
     }
 
     async _prepareAttributeRollData(key) {
-        let context = await this._getContext();
+        let context = await this._getSystem();
 
         let attribute = context.attributes[key];
 
@@ -144,7 +164,7 @@ export class VeretenoCharacterSheet extends ActorSheet {
     }
 
     async _prepareSkillRollData(key) {
-        let context = await this._getContext();
+        let context = await this._getSystem();
 
         let skill = context.skills[key];
 
@@ -166,5 +186,17 @@ export class VeretenoCharacterSheet extends ActorSheet {
         rollData.pool = rollData.pool + skillPoolResult;
 
         return rollData;
+    }
+
+    async _onItemRemove(event) {
+        event.preventDefault();
+        const element = event.currentTarget;
+        const dataset = element.dataset;
+
+        let { itemId } = dataset;
+
+        let item = this.actor.items.get(itemId);        
+
+        this.actor.deleteEmbeddedDocuments("Item", [item]);
     }
 }
