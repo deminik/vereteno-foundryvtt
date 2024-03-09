@@ -114,7 +114,8 @@ export class VeretenoCharacterSheet extends ActorSheet {
         let messageData = {
             user: game.user._id,
             speaker: ChatMessage.getSpeaker(),
-            flavor: label
+            flavor: label,
+            sound: CONFIG.sounds.dice
         };
 
         let actorRollData = await this._prepareActorRollData(rollType, rollKey);
@@ -135,7 +136,8 @@ export class VeretenoCharacterSheet extends ActorSheet {
         let messageData = {
             user: game.user._id,
             speaker: ChatMessage.getSpeaker(),
-            flavor: "attack"
+            flavor: "attack",
+            sound: CONFIG.sounds.dice
         };
 
         let weaponData = {
