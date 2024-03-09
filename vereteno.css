@@ -166,13 +166,13 @@
 .vereteno .fight-container .item-group .items-list .item-plate .weapon-stats .stats {
   flex-grow: 1;
   display: flex;
-  justify-content: space-between;
-  gap: 0.1em;
+  justify-content: flex-start;
+  gap: 1em;
+  padding-left: 1em;
 }
 .vereteno .fight-container .item-group .items-list .item-plate .weapon-stats .stats .stat {
-  flex-grow: 1;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: start;
 }
 .vereteno .fight-container .item-group .items-list .item-plate .weapon-actions {
   height: 100%;

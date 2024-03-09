@@ -7,7 +7,7 @@
         {{#with system}}
         <div class="stats">
             <div class="stat">
-                <span><i title="Модификатор атаки" class=""></i></span><label>{{modifier}}</label>
+                <span><i title="Модификатор атаки" class="fa-regular fa-plus"></i></span><label>{{modifier}}</label>
             </div>
             <div class="stat">
                 <span><i title="Урон" class="fa-solid fa-droplet"></i></span><label>{{damage}}</label>
@@ -18,12 +18,6 @@
             <div class="stat">
                 <span><i title="Крит" class="fa-solid fa-bolt"></i></span><label>{{crit}}</label>
             </div>
-            <div class="stat">
-                <span><i title="Дальность" class="fa-solid fa-ruler"></i></span><label>{{range}}</label>
-            </div>
-            <div class="stat">
-                <span><i "Атака с" class="fa-solid fa-hand"></i></span><label>{{attackWith}}</label>
-            </div>
         </div>
         {{/with}}
     </div>
@@ -31,25 +25,25 @@
         <div class="action">
             <a class="equip-action action weapon-attack" data-roll-type="weapon" data-item-id="{{_id}}"
                 data-weapon-type="melee" data-attack-type="power"><i title="Мощная атака"
-                    class="fa-solid "></i></a>
+                    class="fa-solid fa-diamond"></i></a>
         </div>
         <div class="action">
             <a class="equip-action action weapon-attack" data-roll-type="weapon" data-item-id="{{_id}}"
                 data-weapon-type="melee" data-attack-type="regular"><i title="Обычная атака"
-                    class="fa-regular "></i></a>
+                    class="fa-regular fa-diamond"></i></a>
         </div>
         <div class="action">
             <a class="equip-action action weapon-attack" data-roll-type="weapon" data-item-id="{{_id}}"
                 data-weapon-type="melee" data-attack-type="light"><i title="Быстрая атака"
-                    class="fa-thin "></i></a>
+                    class="fa-thin fa-diamond"></i></a>
         </div>
         <div class="action">
             <a class="equip-action action weapon-unequip" data-item-id="{{_id}}"><i title="Определить инициативу"
-                    class="fa-regular "></i></a>
+                    class="fa-regular fa-hourglass-half"></i></a>
         </div>
         <div class="action">
             <a class="equip-action action weapon-unequip" data-item-id="{{_id}}"><i title="Убрать в рюкзак"
-                    class="fa-regular "></i></a>
+                    class="fa-regular fa-box-open"></i></a>
         </div>
     </div>
 </section>
