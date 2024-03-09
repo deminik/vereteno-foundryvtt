@@ -43,6 +43,106 @@
 .vereteno .weapon-sheet .sheet-content .stat .value input {
   width: 2rem;
 }
+.vereteno .stats-container {
+  display: flex;
+  justify-content: space-evenly;
+  padding-left: 0.5em;
+  font-family: "Roboto", sans-serif;
+}
+.vereteno .stats-container .stat {
+  display: flex;
+  flex-direction: column;
+  width: 5em;
+  align-items: center;
+}
+.vereteno .stats-container .stat .title {
+  align-self: center;
+  color: #ae0000;
+  text-shadow: 0 0 #d47d7d;
+}
+.vereteno .stats-container .stat .value-container {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+  align-items: center;
+}
+.vereteno .stats-container .stat .value-container .stat-value {
+  width: 2em;
+}
+.vereteno .skills-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+.vereteno .skills-container .attribute-skills {
+  flex: 40%;
+  padding: 0.5em;
+  background-color: rgba(174, 0, 0, 0.01);
+  background-blend-mode: multiply;
+  margin: 0.3em;
+  border-radius: 5%;
+}
+.vereteno .skills-container .attribute-skills .attribute {
+  display: flex;
+  gap: 0.5em;
+}
+.vereteno .skills-container .attribute-skills .attribute .attribute-label {
+  color: #ae0000;
+  text-shadow: 0 0 #d47d7d;
+}
+.vereteno .skills-container .attribute-skills .attribute .attribute-value {
+  width: 2em;
+}
+.vereteno .skills-container .attribute-skills .skills {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4em;
+}
+.vereteno .skills-container .attribute-skills .skills .skill {
+  display: flex;
+  justify-content: space-between;
+}
+.vereteno .skills-container .attribute-skills .skills .skill .skill-label {
+  color: #ae0000;
+  text-shadow: 0 0 #d47d7d;
+}
+.vereteno .skills-container .attribute-skills .skills .skill .skill-value {
+  width: 2em;
+}
+.vereteno .items-container {
+  display: flex;
+  flex-direction: column;
+}
+.vereteno .items-container .item-group {
+  display: flex;
+  flex-direction: column;
+}
+.vereteno .items-container .item-group .items-list .item-plate {
+  display: flex;
+  height: 3em;
+}
+.vereteno .items-container .item-group .items-list .item-plate .item-image img {
+  height: 100%;
+}
+.vereteno .items-container .item-group .items-list .item-plate .weapon-stats {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+.vereteno .items-container .item-group .items-list .item-plate .weapon-stats .stats {
+  flex-grow: 1;
+  display: flex;
+  justify-content: space-between;
+  gap: 1em;
+}
+.vereteno .items-container .item-group .items-list .item-plate .weapon-stats .stats .stat {
+  flex-grow: 1;
+  display: flex;
+  justify-content: space-evenly;
+}
+.vereteno .items-container .item-group .items-list .item-plate .weapon-actions {
+  height: 100%;
+  align-self: end;
+}
 .vereteno .character-sheet {
   display: flex;
   flex-direction: column;
@@ -60,106 +160,6 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-}
-.vereteno .character-sheet .stats-container {
-  display: flex;
-  justify-content: space-evenly;
-  padding-left: 0.5em;
-  font-family: "Roboto", sans-serif;
-}
-.vereteno .character-sheet .stats-container .stat {
-  display: flex;
-  flex-direction: column;
-  width: 5em;
-  align-items: center;
-}
-.vereteno .character-sheet .stats-container .stat .title {
-  align-self: center;
-  color: #ae0000;
-  text-shadow: 0 0 #d47d7d;
-}
-.vereteno .character-sheet .stats-container .stat .value-container {
-  display: flex;
-  justify-content: space-evenly;
-  width: 100%;
-  align-items: center;
-}
-.vereteno .character-sheet .stats-container .stat .value-container .stat-value {
-  width: 2em;
-}
-.vereteno .character-sheet .skills-container {
-  display: flex;
-  flex-wrap: wrap;
-}
-.vereteno .character-sheet .skills-container .attribute-skills {
-  flex: 40%;
-  padding: 0.5em;
-  background-color: rgba(174, 0, 0, 0.01);
-  background-blend-mode: multiply;
-  margin: 0.3em;
-  border-radius: 5%;
-}
-.vereteno .character-sheet .skills-container .attribute-skills .attribute {
-  display: flex;
-  gap: 0.5em;
-}
-.vereteno .character-sheet .skills-container .attribute-skills .attribute .attribute-label {
-  color: #ae0000;
-  text-shadow: 0 0 #d47d7d;
-}
-.vereteno .character-sheet .skills-container .attribute-skills .attribute .attribute-value {
-  width: 2em;
-}
-.vereteno .character-sheet .skills-container .attribute-skills .skills {
-  display: flex;
-  flex-direction: column;
-  gap: 0.4em;
-}
-.vereteno .character-sheet .skills-container .attribute-skills .skills .skill {
-  display: flex;
-  justify-content: space-between;
-}
-.vereteno .character-sheet .skills-container .attribute-skills .skills .skill .skill-label {
-  color: #ae0000;
-  text-shadow: 0 0 #d47d7d;
-}
-.vereteno .character-sheet .skills-container .attribute-skills .skills .skill .skill-value {
-  width: 2em;
-}
-.vereteno .character-sheet .items-container {
-  display: flex;
-  flex-direction: column;
-}
-.vereteno .character-sheet .items-container .item-group {
-  display: flex;
-  flex-direction: column;
-}
-.vereteno .character-sheet .items-container .item-group .items-list .item-plate {
-  display: flex;
-  height: 3em;
-}
-.vereteno .character-sheet .items-container .item-group .items-list .item-plate .item-image img {
-  height: 100%;
-}
-.vereteno .character-sheet .items-container .item-group .items-list .item-plate .weapon-stats {
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-}
-.vereteno .character-sheet .items-container .item-group .items-list .item-plate .weapon-stats .stats {
-  flex-grow: 1;
-  display: flex;
-  justify-content: space-between;
-  gap: 1em;
-}
-.vereteno .character-sheet .items-container .item-group .items-list .item-plate .weapon-stats .stats .stat {
-  flex-grow: 1;
-  display: flex;
-  justify-content: space-evenly;
-}
-.vereteno .character-sheet .items-container .item-group .items-list .item-plate .weapon-actions {
-  height: 100%;
-  align-self: end;
 }
 
 .dice-tooltip .dice-rolls .roll.good {
