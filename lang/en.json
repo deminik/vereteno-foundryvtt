@@ -54,7 +54,8 @@
         },
         "tab": {
             "stat": "Stats",
-            "equipment": "Equipment"
+            "equipment": "Equipment",
+            "fight": "Fight"
         }
     }
 }

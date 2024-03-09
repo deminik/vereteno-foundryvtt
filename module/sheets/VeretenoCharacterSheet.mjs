@@ -54,7 +54,8 @@ export class VeretenoCharacterSheet extends ActorSheet {
 
     _prepareItems(characterData, system) {
 
-        system.weapons = characterData.items.filter(x => x.type === 'weapon')
+        system.weapons = characterData.items.filter(x => x.type === 'weapon') || [];
+        system.equippedWeapons = system.weapons.filter(x => x.system.equipped);
 
         return system;
     }
@@ -198,6 +199,12 @@ export class VeretenoCharacterSheet extends ActorSheet {
 
         let item = this.actor.items.get(itemId);
 
+        if (item.type === 'weapon') {
+            if (this.actor.equipedWeapon && this.actor.equipedWeapon._id === item._id) {
+                this.actor.equipedWeapon = null;
+            }
+        }
+
         this.actor.deleteEmbeddedDocuments("Item", [item._id]);
     }
 
@@ -208,8 +215,10 @@ export class VeretenoCharacterSheet extends ActorSheet {
 
         let { itemId } = dataset;
 
-        let item = this.actor.items.get(itemId);
+        const item = this.actor.items.find(x => x._id === itemId);
 
-        this.actor.equipedWeapon = item;
+        await this.actor.updateEmbeddedDocuments("Item", [
+            { _id: item._id, "system.equipped": true },
+        ]);
     }
 }

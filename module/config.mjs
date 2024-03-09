@@ -2,7 +2,8 @@ export const vereteno = {};
 
 vereteno.tab = {
     stat: "vereteno.tab.stat",
-    equipment: "vereteno.equipment.equipment"
+    equipment: "vereteno.equipment.equipment",
+    fight: "vereteno.equipment.fight"
 }
 
 vereteno.attackTypes = {

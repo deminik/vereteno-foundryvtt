@@ -1,5 +1,7 @@
 <section class="fight-container">
+    {{#each equippedWeapons as |equipedWeapon|}}
     {{#with equipedWeapon}}
     <div>{{name}}</div>
     {{/with}}
+    {{/each}}
 </section>

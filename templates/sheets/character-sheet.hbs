@@ -9,7 +9,7 @@
         <div class="sheet-tabs tabs flex row" data-group="primary">
             <b class="item" data-tab="main">{{localize "vereteno.tab.stat"}}</b>
             <b class="item" data-tab="equipment">{{localize "vereteno.tab.equipment"}}</b>
-            <b class="item" data-tab="fight">fight</b>
+            <b class="item" data-tab="fight">{{localize "vereteno.tab.fight"}}</b>
             {{!-- <b class="item" data-tab="talent">{{localize "TAB.TALENT"}}</b>
             <b class="item" data-tab="gear">{{localize "TAB.GEAR"}}</b>
             <b class="item" data-tab="note">{{localize "TAB.NOTE"}}</b>
@@ -23,23 +23,8 @@
                 {{> "systems/vereteno/templates/sheets/partials/actor/equipment-tab.hbs" system}}
             </div>
             <div class="tab" data-group="primary" data-tab="fight">
-                {{> "systems/vereteno/templates/sheets/partials/actor/fight-tab.hbs" actor}}
+                {{> "systems/vereteno/templates/sheets/partials/actor/fight-tab.hbs" system}}
             </div>
-            {{!-- <div class="tab" data-group="primary" data-tab="talent">
-                {{> systems/vaesen/model/tab/player-talent.hbs}}
-            </div>
-            <div class="tab" data-group="primary" data-tab="gear">
-                {{> systems/vaesen/model/tab/player-gear.hbs}}
-            </div>
-            <div class="tab note" data-group="primary" data-tab="note">
-                {{> systems/vaesen/model/tab/player-note.hbs}}
-            </div>
-            <div class="vereteno character stats">
-                {{> "systems/vereteno/templates/sheets/partials/actor/stats-block.hbs"}}
-            </div>
-            <div class="vereteno character skills">
-                {{> "systems/vereteno/templates/sheets/partials/actor/skills-block.hbs"}}
-            </div> --}}
         </div>
     </div>
 </form>
