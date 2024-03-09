@@ -1,0 +1,55 @@
+<section class="vereteno item-plate">
+    <div class="vereteno item-image"><img src="{{img}}"></div>
+    <div class="weapon-stats">
+        <div class="name">
+            {{name}}
+        </div>
+        {{#with system}}
+        <div class="stats">
+            <div class="stat">
+                <span><i title="Модификатор атаки" class="fa-solid fa-sword"></i></span><label>{{modifier}}</label>
+            </div>
+            <div class="stat">
+                <span><i title="Урон" class="fa-solid fa-droplet"></i></span><label>{{damage}}</label>
+            </div>
+            <div class="stat">
+                <span><i title="Инициатива" class="fa-solid fa-timer"></i></span><label>{{initiative}}</label>
+            </div>
+            <div class="stat">
+                <span><i title="Крит" class="fa-solid fa-bolt"></i></span><label>{{crit}}</label>
+            </div>
+            <div class="stat">
+                <span><i title="Дальность" class="fa-solid fa-ruler"></i></span><label>{{range}}</label>
+            </div>
+            <div class="stat">
+                <span><i "Атака с" class="fa-solid fa-hand"></i></span><label>{{attackWith}}</label>
+            </div>
+        </div>
+        {{/with}}
+    </div>
+    <div class="weapon-actions">
+        <div class="action">
+            <a class="equip-action action weapon-attack" data-roll-type="weapon" data-item-id="{{_id}}"
+                data-weapon-type="melee" data-attack-type="power"><i title="Мощная атака"
+                    class="fa-solid fa-sword"></i></a>
+        </div>
+        <div class="action">
+            <a class="equip-action action weapon-attack" data-roll-type="weapon" data-item-id="{{_id}}"
+                data-weapon-type="melee" data-attack-type="regular"><i title="Обычная атака"
+                    class="fa-regular fa-sword"></i></a>
+        </div>
+        <div class="action">
+            <a class="equip-action action weapon-attack" data-roll-type="weapon" data-item-id="{{_id}}"
+                data-weapon-type="melee" data-attack-type="light"><i title="Быстрая атака"
+                    class="fa-thin fa-sword"></i></a>
+        </div>
+        <div class="action">
+            <a class="equip-action action weapon-unequip" data-item-id="{{_id}}"><i title="Определить инициативу"
+                    class="fa-regular fa-swords"></i></a>
+        </div>
+        <div class="action">
+            <a class="equip-action action weapon-unequip" data-item-id="{{_id}}"><i title="Убрать в рюкзак"
+                    class="fa-regular fa-backpack"></i></a>
+        </div>
+    </div>
+</section>

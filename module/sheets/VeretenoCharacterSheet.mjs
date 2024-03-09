@@ -26,6 +26,7 @@ export class VeretenoCharacterSheet extends ActorSheet {
         if (!this.isEditable) return;
 
         html.on('click', '.rollable', this._onRoll.bind(this));
+        html.on('click', '.weapon-attack', this._onWeaponRoll.bind(this));
         html.on('click', '.item-remove', this._onItemRemove.bind(this));
         html.on('click', '.weapon-equip', this._onWeaponEquip.bind(this));
     }
@@ -124,12 +125,42 @@ export class VeretenoCharacterSheet extends ActorSheet {
         veretenoRollHandler.toMessage(messageData);
     }
 
-    async _prepareActorRollData(type, key) {
+    async _onWeaponRoll(event) {
+        event.preventDefault();
+        const element = event.currentTarget;
+        const dataset = element.dataset;
+
+        let { rollType, itemId, weaponType, attackType } = dataset;
+
+        let messageData = {
+            user: game.user._id,
+            speaker: ChatMessage.getSpeaker(),
+            flavor: "attack"
+        };
+
+        let weaponData = {
+            itemId,
+            weaponType,
+            attackType
+        };
+
+        let actorRollData = await this._prepareActorRollData(rollType, "", weaponData);
+
+        let roll = new Roll(actorRollData.pool + actorRollData.dice);
+        let veretenoRollHandler = new VeretenoRollHandler(roll);
+        await veretenoRollHandler.reevaluateTotal();
+        veretenoRollHandler.toMessage(messageData);
+    }
+
+    async _prepareActorRollData(type, key, data) {
         switch (type) {
             case "attribute":
-                return await this._prepareAttributeRollData(key);
+                return await this._prepareAttributeRollData(key, data);
             case "skill":
-                return await this._prepareSkillRollData(key);
+                return await this._prepareSkillRollData(key, data);
+            case "weapon":
+                return await this._prepareWeaponRollData(data);
+            default:
                 break;
         }
     }
@@ -188,6 +219,48 @@ export class VeretenoCharacterSheet extends ActorSheet {
         rollData.pool = rollData.pool + skillPoolResult;
 
         return rollData;
+    }
+
+    async _prepareWeaponRollData(data) {
+        let actor = this.actor;
+
+        let item = this.actor.items.get(data.itemId);
+
+        let itemSkill = item.system.attackWith;
+        let skillRollData = await this._prepareSkillRollData(itemSkill);
+
+        let weaponAttackTypeModifier = this.getWeaponAttackTypeModifier(data.weaponType, data.attackType);
+
+        let weaponAttackModifier = item.system.modifier;
+
+        let weaponDamage = item.system.damage;
+
+        let rollData = mergeObject(skillRollData,
+            {
+                pool: skillRollData.pool + weaponAttackTypeModifier + weaponAttackModifier,
+                weaponDamage,
+                weaponAttackModifier
+            });
+
+        return rollData;
+    }
+
+    getWeaponAttackTypeModifier(weaponType, attackType) {
+        if (weaponType === 'melee') {
+            if (attackType === 'power') {
+                return 2;
+            }
+
+            if (attackType === 'light') {
+                return -2;
+            }
+
+            return 0;
+        }
+
+        if (weaponType === 'range') {
+
+        }
     }
 
     async _onItemRemove(event) {

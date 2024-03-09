@@ -44,7 +44,7 @@
             <div class="vereteno stat value">
                 <select name="system.attackWith">
                     {{#select system.attackWith}}
-                    {{#each config.attackTypes as |name type|}}
+                    {{#each config.skills as |name type|}}
                     <option value="{{type}}">{{localize name}}</option>
                     {{/each}}
                     {{/select}}

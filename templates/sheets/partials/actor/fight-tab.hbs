@@ -1,7 +1,12 @@
-<section class="fight-container">
-    {{#each equippedWeapons as |equipedWeapon|}}
-    {{#with equipedWeapon}}
-    <div>{{name}}</div>
-    {{/with}}
-    {{/each}}
+<section class="vereteno fight-container">
+    <div class="vereteno item-group">
+        <h2>Атака</h2>
+        <div class="items-list">
+            {{#each equippedWeapons as |equipedWeapon|}}
+            {{#with equipedWeapon}}
+            {{> "systems/vereteno/templates/sheets/partials/actor/fight/melee-weapon-plate.hbs" equipedWeapon}}
+            {{/with}}
+            {{/each}}
+        </div>
+    </div>
 </section>
