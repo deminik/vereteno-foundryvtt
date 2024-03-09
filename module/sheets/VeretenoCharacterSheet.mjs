@@ -104,23 +104,71 @@ export class VeretenoCharacterSheet extends ActorSheet {
         return system;
     }
 
+    async getTaskCheckOptions(taskType) {
+        const template = 'systems/vereteno/templates/chat/dialog/skill-check-dialog.hbs';
+        const html = await renderTemplate(template, {});
+
+        return new Promise(resolve => {
+            const data = {
+                title: "Модификаторы броска",
+                content: html,
+                buttons: {
+                    normal: {
+                        label: "Далее",
+                        callback: html => resolve(this._processTaskCheckOptions(html[0].querySelector("form")))
+                    },
+                    cancel: {
+                        label: "Отмена",
+                        callback: html => resolve({ cancelled: true })
+                    }
+                },
+                default: "normal",
+                close: () => resolve({ cancelled: true })
+            };
+
+            new Dialog(data, null).render(true);
+        });
+    }
+
+    _processTaskCheckOptions(form) {
+        return {
+            modifier: parseInt(form.modifier.value),
+            blindRoll: form.blindRoll.checked
+        };
+    }
+
     async _onRoll(event) {
         event.preventDefault();
         const element = event.currentTarget;
         const dataset = element.dataset;
 
+
         let { label, rollKey, rollType } = dataset;
+
+        let optionSettings = game.settings.get("vereteno", "showTaskCheckOptions");
+
+        let checkOptions = { modifier: 0, blindRoll: false };
+        if (event.shiftKey || optionSettings) {
+            checkOptions = await this.getTaskCheckOptions(rollType);
+
+            if (checkOptions.cancelled) {
+                return;
+            }
+        }
+
+        let { modifier, blindRoll } = checkOptions;
 
         let messageData = {
             user: game.user._id,
             speaker: ChatMessage.getSpeaker(),
             flavor: label,
-            sound: CONFIG.sounds.dice
+            sound: CONFIG.sounds.dice,
+            blind: blindRoll || event.ctrlKey
         };
 
         let actorRollData = await this._prepareActorRollData(rollType, rollKey);
 
-        let roll = new Roll(actorRollData.pool + actorRollData.dice);
+        let roll = new Roll((actorRollData.pool + modifier) + actorRollData.dice);
         let veretenoRollHandler = new VeretenoRollHandler(roll);
         await veretenoRollHandler.reevaluateTotal();
         veretenoRollHandler.toMessage(messageData);

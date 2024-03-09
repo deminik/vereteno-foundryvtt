@@ -18,6 +18,17 @@ async function preloadHandlebarsTemplates() {
     return loadTemplates(templatesPaths);
 }
 
+function registerSystemSettings() {
+    game.settings.register("vereteno", "showTaskCheckOptions", {
+        config: true,
+        scope: "client",
+        name: "SETTINGS.showTaskCheckOptions.name",
+        hint: "SETTING.showTaskCheckOptions.label",
+        type: Boolean,
+        default: true
+    });
+}
+
 Hooks.once('init', function () {
     console.log("Vereteno | System init begin.");
 
@@ -30,6 +41,8 @@ Hooks.once('init', function () {
     Items.registerSheet('vereteno', VeretenoItemSheet, { makeDefault: true });
 
     preloadHandlebarsTemplates();
+
+    registerSystemSettings();
 
     console.log("Vereteno | System init done.");
 }); 

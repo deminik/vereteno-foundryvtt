@@ -50,7 +50,7 @@ export class VeretenoRollHandler {
     }
 
     getTemplate() {
-        return "systems/vereteno/templates/vereteno-roll-chat-message.hbs";
+        return "systems/vereteno/templates/chat/vereteno-roll-chat-message.hbs";
     }
 
     getVeretenoRollData() {
