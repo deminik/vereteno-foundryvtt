@@ -1,6 +1,35 @@
 export class VeretenoRollHandler {
-    constructor(roll) {
+    constructor() {
+    }
+
+    /**
+    * 
+    * @param {object} rollOptions 
+    * @param {string} rollOptions.type Тип броска: Умение, оружие
+    * @param {object} rollOptions.messageData Данные сообщения
+    * @param {object} rollOptions.rollData Данные броска
+    * @param {number} rollOptions.rollData.pool Количество кубов
+    * @param {string} rollOptions.rollData.dice Тип куба: d2, d6, d20 и т.д.
+    * 
+    */
+    async roll(rollOptions = {
+        type: "none",
+        messageData: {
+            userId: null,
+            speaker: {},
+            flavor: '',
+            sound: CONFIG.sounds.dice,
+            blind: false
+        }, rollData: {
+            pool: 0,
+            dice: 'd20'
+        }
+    }) {
+        let roll = new Roll(rollOptions.rollData.pool + rollOptions.rollData.dice);
         this.roll = roll;
+
+        await this.reevaluateTotal();
+        this.toMessage(rollOptions.messageData);
     }
 
     async reevaluateTotal() {

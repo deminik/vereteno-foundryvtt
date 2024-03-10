@@ -25,7 +25,7 @@ export class VeretenoCharacterSheet extends ActorSheet {
 
         if (!this.isEditable) return;
 
-        html.on('click', '.rollable', this._onRoll.bind(this));
+        html.on('click', '.skill-check', this._onSkillCheckRoll.bind(this));
         html.on('click', '.weapon-attack', this._onWeaponRoll.bind(this));
         html.on('click', '.item-remove', this._onItemRemove.bind(this));
         html.on('click', '.weapon-equip', this._onWeaponEquip.bind(this));
@@ -137,11 +137,10 @@ export class VeretenoCharacterSheet extends ActorSheet {
         };
     }
 
-    async _onRoll(event) {
+    async _onSkillCheckRoll(event) {
         event.preventDefault();
         const element = event.currentTarget;
         const dataset = element.dataset;
-
 
         let { label, rollKey, rollType } = dataset;
 
@@ -168,10 +167,19 @@ export class VeretenoCharacterSheet extends ActorSheet {
 
         let actorRollData = await this._prepareActorRollData(rollType, rollKey);
 
-        let roll = new Roll((actorRollData.pool + modifier) + actorRollData.dice);
-        let veretenoRollHandler = new VeretenoRollHandler(roll);
-        await veretenoRollHandler.reevaluateTotal();
-        veretenoRollHandler.toMessage(messageData);
+        let rollData = {
+            pool: actorRollData.pool + modifier,
+            dice: actorRollData.dice
+        };
+
+        let rollOptions = {
+            type: "skill",
+            messageData,
+            rollData
+        };
+
+        let veretenoRollHandler = new VeretenoRollHandler();
+        await veretenoRollHandler.roll(rollOptions);
     }
 
     async _onWeaponRoll(event) {
@@ -184,8 +192,9 @@ export class VeretenoCharacterSheet extends ActorSheet {
         let messageData = {
             user: game.user._id,
             speaker: ChatMessage.getSpeaker(),
-            flavor: "attack",
-            sound: CONFIG.sounds.dice
+            flavor: weaponType,
+            sound: CONFIG.sounds.dice,
+            blind: false || event.ctrlKey
         };
 
         let weaponData = {
@@ -194,12 +203,16 @@ export class VeretenoCharacterSheet extends ActorSheet {
             attackType
         };
 
-        let actorRollData = await this._prepareActorRollData(rollType, "", weaponData);
+        let rollData = await this._prepareActorRollData(rollType, "", weaponData);
 
-        let roll = new Roll(actorRollData.pool + actorRollData.dice);
-        let veretenoRollHandler = new VeretenoRollHandler(roll);
-        await veretenoRollHandler.reevaluateTotal();
-        veretenoRollHandler.toMessage(messageData);
+        let rollOptions = {
+            type: "attack",
+            messageData,
+            rollData
+        }
+
+        let veretenoRollHandler = new VeretenoRollHandler();
+        await veretenoRollHandler.roll(rollOptions);
     }
 
     async _prepareActorRollData(type, key, data) {
@@ -272,8 +285,6 @@ export class VeretenoCharacterSheet extends ActorSheet {
     }
 
     async _prepareWeaponRollData(data) {
-        let actor = this.actor;
-
         let item = this.actor.items.get(data.itemId);
 
         let itemSkill = item.system.attackWith;
