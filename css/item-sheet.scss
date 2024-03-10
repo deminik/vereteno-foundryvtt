@@ -26,9 +26,10 @@
         font-family: $font-primary;
 
         .stat {
-            width: 100%;
             flex: 50%;
             margin-bottom: 10px;
+            
+            max-width: 50%;
 
             display: flex;
 
@@ -42,6 +43,10 @@
 
                 input {
                     width: 2rem;
+                }
+
+                select {
+                    width: 8rem;
                 }
             }
         }

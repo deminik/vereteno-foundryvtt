@@ -5,8 +5,9 @@
         },
         "attack": {
             "none": "",
-            "guns": "Guns",
-            "melee": "Meelee"
+            "brawling": "Brawling",
+            "melee": "Meelee",
+            "ranged": "Ranged"
         },
         "weapon": {
             "modifier": "Modifier",
@@ -14,7 +15,8 @@
             "initiative": "Initiative",
             "crit": "Critical",
             "attackWith": "Attack using",
-            "range": "Range"
+            "range": "Range",
+            "attackType": "Attack type"
         },
         "range": {
             "pointBlank": "Point blank",

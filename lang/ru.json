@@ -5,8 +5,9 @@
         },
         "attack": {
             "none": "",
-            "guns": "Огнестрельное",
-            "melee": "Ближнее"
+            "brawling": "Рукопашное",
+            "melee": "Ближнего боя",
+            "ranged": "Дальнего боя"
         },
         "weapon": {
             "modifier": "Модификатор",
@@ -14,7 +15,8 @@
             "initiative": "Инициатива",
             "crit": "Критический урон",
             "attackWith": "Атака",
-            "range": "Дистанция"
+            "range": "Дистанция",
+            "attackType": "Тип атаки"
         },
         "range": {
             "pointBlank": "В упор",

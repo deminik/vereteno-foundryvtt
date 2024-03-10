@@ -28,9 +28,9 @@
   font-family: "Roboto", sans-serif;
 }
 .vereteno .weapon-sheet .sheet-content .stat {
-  width: 100%;
   flex: 50%;
   margin-bottom: 10px;
+  max-width: 50%;
   display: flex;
 }
 .vereteno .weapon-sheet .sheet-content .stat .title {
@@ -42,6 +42,9 @@
 }
 .vereteno .weapon-sheet .sheet-content .stat .value input {
   width: 2rem;
+}
+.vereteno .weapon-sheet .sheet-content .stat .value select {
+  width: 8rem;
 }
 .vereteno .stats-container {
   display: flex;

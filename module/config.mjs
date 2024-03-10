@@ -8,8 +8,9 @@ vereteno.tab = {
 
 vereteno.attackTypes = {
     none: "vereteno.attack.none",
-    guns: "vereteno.attack.guns",
-    melee: "vereteno.attack.melee"
+    brawling: "vereteno.attack.brawling",
+    melee: "vereteno.attack.melee",
+    ranged: "vereteno.attack.ranged",
 }
 
 vereteno.rangeTypes = {

@@ -3,7 +3,7 @@
         <img class="vereteno item-image" src="{{item.img}}" data-edit="img" title="{{item.name}}" />
         <div class="vereteno item-info">
             <h3 class="vereteno type-header">{{localize "vereteno.common.weapon"}}</h1>
-            <h1><input name="name" type="text" value="{{item.name}}" placeholder="{{ localize 'Name' }}" /></h1>
+                <h1><input name="name" type="text" value="{{item.name}}" placeholder="{{ localize 'Name' }}" /></h1>
         </div>
     </div>
     <div class="vereteno weapon sheet-content">
@@ -26,6 +26,18 @@
             <div class="vereteno stat title">{{localize "vereteno.weapon.crit"}}</div>
             <div class="vereteno stat value"><input name="system.crit" type="text" value="{{system.crit}}"
                     data-dtype="Number"></div>
+        </div>
+        <div class="vereteno weapon stat stat-attack-type">
+            <div class="vereteno stat title">{{localize "vereteno.weapon.attackType"}}</div>
+            <div class="vereteno stat value">
+                <select name="system.attackType">
+                    {{#select system.attackType}}
+                    {{#each config.attackTypes as |name type|}}
+                    <option value="{{type}}">{{localize name}}</option>
+                    {{/each}}
+                    {{/select}}
+                </select>
+            </div>
         </div>
         <div class="vereteno weapon stat stat-range">
             <div class="vereteno stat title">{{localize "vereteno.weapon.range"}}</div>

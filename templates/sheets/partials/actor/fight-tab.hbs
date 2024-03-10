@@ -4,7 +4,15 @@
         <div class="items-list">
             {{#each equippedWeapons as |equipedWeapon|}}
             {{#with equipedWeapon}}
+            {{#if equipedWeapon.system.isBrawling}}
+            {{> "systems/vereteno/templates/sheets/partials/actor/fight/brawling-weapon-plate.hbs" equipedWeapon}}
+            {{/if}}
+            {{#if equipedWeapon.system.isMelee}}
             {{> "systems/vereteno/templates/sheets/partials/actor/fight/melee-weapon-plate.hbs" equipedWeapon}}
+            {{/if}}
+            {{#if equipedWeapon.system.isRanged}}
+            {{> "systems/vereteno/templates/sheets/partials/actor/fight/ranged-weapon-plate.hbs" equipedWeapon}}
+            {{/if}}
             {{/with}}
             {{/each}}
         </div>

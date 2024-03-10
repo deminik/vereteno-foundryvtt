@@ -56,6 +56,11 @@ export class VeretenoCharacterSheet extends ActorSheet {
     _prepareItems(characterData, system) {
 
         system.weapons = characterData.items.filter(x => x.type === 'weapon') || [];
+        for (let [k, v] of Object.entries(system.weapons)) {
+            v.system.isBrawling = v.system.attackType === 'brawling';
+            v.system.isMelee = v.system.attackType === 'melee';
+            v.system.isRanged = v.system.attackType === 'ranged';
+        };
         system.equippedWeapons = system.weapons.filter(x => x.system.equipped);
 
         return system;
@@ -319,8 +324,16 @@ export class VeretenoCharacterSheet extends ActorSheet {
             return 0;
         }
 
-        if (weaponType === 'range') {
+        if (weaponType === 'ranged') {
+            if (attackType === 'aimed') {
+                return 2;
+            }
 
+            if (attackType === 'hip') {
+                return -2;
+            }
+
+            return 0;
         }
     }
 

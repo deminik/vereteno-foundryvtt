@@ -176,6 +176,7 @@
     "Item": {
         "types": [
             "weapon",
+            "equipment",
             "feature"
         ],
         "templates": {
@@ -191,6 +192,7 @@
             "damage": 1,
             "initiative": 0,
             "crit": 3,
+            "attackType": "",
             "attackWith": "",
             "range": ""
         },

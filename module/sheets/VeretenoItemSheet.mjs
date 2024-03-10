@@ -1,14 +1,14 @@
 export class VeretenoItemSheet extends ItemSheet {
     static get defaultOptions() {
         return mergeObject(super.defaultOptions, {
-            height: 300,
+            height: 315,
             width: 560,
             classes: ['vereteno', 'item', 'sheet']
         })
     }
 
     get template() {
-        return `systems/vereteno/templates/sheets/${this.item.type}-sheet.hbs`;
+        return `systems/vereteno/templates/sheets/items/${this.item.type}-sheet.hbs`;
     }
 
     getData() {
