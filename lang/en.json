@@ -1,7 +1,8 @@
 {
     "vereteno": {
         "common": {
-            "weapon": "Weapon"
+            "weapon": "Weapon",
+            "armor": "Armor"
         },
         "attack": {
             "none": "",
@@ -17,6 +18,10 @@
             "attackWith": "Attack using",
             "range": "Range",
             "attackType": "Attack type"
+        },
+        "armor": {
+            "quality": "Quality",
+            "armorClass": "Armor class"
         },
         "range": {
             "pointBlank": "Point blank",

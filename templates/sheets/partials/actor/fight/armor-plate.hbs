@@ -1,0 +1,35 @@
+<section class="vereteno item-plate">
+    <div class="vereteno item-image"><img src="{{img}}"></div>
+    <div class="armor-stats">
+        <div class="name">
+            {{name}}
+        </div>
+        {{#with system}}
+        <div class="stats">
+            <div class="stat">
+                <span><i title="Состояние брони"
+                        class="fa-solid fa-shield-heart"></i></span><label>{{durability}}/{{maxDurability}}</label>
+            </div>
+        </div>
+        {{/with}}
+    </div>
+    <div class="armor-actions">
+        <div class="action">
+            <a class="equip-action action armor-action" data-item-type="armor" data-action-type="block"
+                data-item-id="{{_id}}"><i title="Защититься от урона" class="fa-solid fa-shield"></i></a>
+        </div>
+        <div class="action">
+            <a class="equip-action action armor-action" data-item-type="armor" data-action-type="ablate"
+                data-item-id="{{_id}}"><i title="Снизить показатель брони"
+                    class="fa-solid fa-square-caret-down"></i></a>
+        </div>
+        <div class="action">
+            <a class="equip-action action armor-action" data-item-type="armor" data-action-type="repair"
+                data-item-id="{{_id}}"><i title="Починить броню" class="fa-solid fa-wrench"></i></a>
+        </div>
+        <div class="action">
+            <a class="equip-action action weapon-action" data-item-type="armor" data-action-type="unequip"
+                data-item-id="{{_id}}"><i title="Убрать в рюкзак" class="fa-solid fa-box-open"></i></a>
+        </div>
+    </div>
+</section>

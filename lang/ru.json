@@ -1,7 +1,8 @@
 {
     "vereteno": {
         "common": {
-            "weapon": "Оружие"
+            "weapon": "Оружие",
+            "armor": "Броня"
         },
         "attack": {
             "none": "",
@@ -17,6 +18,10 @@
             "attackWith": "Атака",
             "range": "Дистанция",
             "attackType": "Тип атаки"
+        },
+        "armor": {
+            "quality": "Качество",
+            "armorClass": "Класс брони"
         },
         "range": {
             "pointBlank": "В упор",

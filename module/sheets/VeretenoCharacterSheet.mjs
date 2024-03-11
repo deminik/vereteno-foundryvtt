@@ -29,6 +29,7 @@ export class VeretenoCharacterSheet extends ActorSheet {
         html.on('click', '.weapon-attack', this._onWeaponRoll.bind(this));
         html.on('click', '.item-remove', this._onItemRemove.bind(this));
         html.on('click', '.weapon-equip', this._onWeaponEquip.bind(this));
+        html.on('click', '.armor-equip', this.onArmorEquip.bind(this));
     }
 
     getData() {
@@ -62,6 +63,15 @@ export class VeretenoCharacterSheet extends ActorSheet {
             v.system.isRanged = v.system.attackType === 'ranged';
         };
         system.equippedWeapons = system.weapons.filter(x => x.system.equipped);
+
+        system.armors = characterData.items.filter(x => x.type === 'armor') || [];
+        for (let [k, v] of Object.entries(system.armors)) {
+            v.system.maxDurability = v.system.armorClass + v.system.quality;
+            if (v.system.durability === undefined || v.system.durability === null) {
+                v.system.durability = v.system.maxDurability;
+            }
+        };
+        system.equippedArmors = system.armors.filter(x => x.system.equipped);
 
         return system;
     }
@@ -361,6 +371,25 @@ export class VeretenoCharacterSheet extends ActorSheet {
         const dataset = element.dataset;
 
         let { itemId } = dataset;
+
+        const item = this.actor.items.find(x => x._id === itemId);
+
+        await this.actor.updateEmbeddedDocuments("Item", [
+            { _id: item._id, "system.equipped": true },
+        ]);
+    }
+
+    async onArmorEquip(event) {
+        event.preventDefault();
+        const element = event.currentTarget;
+        const dataset = element.dataset;
+
+        let { itemId } = dataset;
+
+        const equippedArmor = this.actor.items.find(x => x.system.equipped);
+        if (equippedArmor) {
+            return;
+        }
 
         const item = this.actor.items.find(x => x._id === itemId);
 

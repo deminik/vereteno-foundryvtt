@@ -16,5 +16,11 @@
             {{/with}}
             {{/each}}
         </div>
+        <h2>Защита</h2>
+        <div class="items-list">
+            {{#each equippedArmors as |equippedArmor|}}
+            {{> "systems/vereteno/templates/sheets/partials/actor/fight/armor-plate.hbs" equippedArmor}}
+            {{/each}}
+        </div>
     </div>
 </section>

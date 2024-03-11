@@ -1,0 +1,31 @@
+<section class="vereteno item-plate">
+    <div class="vereteno item-image"><img src="{{img}}"></div>
+    <div class="armor-stats">
+        <div class="name">
+            {{name}}
+        </div>
+        {{#with system}}
+        <div class="stats">
+            <div class="stat">
+                <span><i title="Класс брони" class="fa-solid fa-plus"></i></span><label>{{armorClass}}</label>
+            </div>
+            <div class="stat">
+                <span><i title="Качество брони" class="fa-solid fa-droplet"></i></span><label>{{quality}}</label>
+            </div>
+            <div class="stat">
+                <span><i title="Текущее состояние" class="fa-solid fa-timer"></i></span><label>{{system.durability}}</label>
+            </div>
+        </div>
+        {{/with}}
+    </div>
+    <div class="armor-actions">
+        <div class="action">
+            <a class="equip-action action weapon-equip" data-item-id="{{_id}}">
+                <i class="fa-solid fa-hand"></i>
+            </a>
+            <a class="delete-action action item-remove" data-item-id="{{_id}}">
+                <i class="fa fa-trash" aria-hidden="true"></i>
+            </a>
+        </div>
+    </div>
+</section>

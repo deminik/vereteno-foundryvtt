@@ -9,7 +9,11 @@
     </div>
     <div class="vereteno item-group">
         <h2>Броня</h2>
-        <div>список брони</div>
+        <div class="items-list">
+            {{#each armors as |armor|}}
+            {{> "systems/vereteno/templates/sheets/partials/actor/item/armor-plate.hbs" armor}}
+            {{/each}}
+        </div>
     </div>
     <div class="vereteno item-group">
         <h2>Снаряжение</h2>

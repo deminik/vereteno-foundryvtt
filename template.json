@@ -176,12 +176,15 @@
     "Item": {
         "types": [
             "weapon",
+            "armor",
             "equipment",
             "feature"
         ],
         "templates": {
             "base": {
-                "description": ""
+                "description": "",
+                "weight": 1,
+                "price": 0
             }
         },
         "weapon": {
@@ -195,6 +198,13 @@
             "attackType": "",
             "attackWith": "",
             "range": ""
+        },
+        "armor": {
+            "templates": [
+                "base"
+            ],
+            "armorClass": 1,
+            "quality": 0
         },
         "feature": {}
     }
