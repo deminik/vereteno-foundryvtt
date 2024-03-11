@@ -7,8 +7,9 @@
         {{#with system}}
         <div class="stats">
             <div class="stat">
-                <span><i title="Состояние брони"
-                        class="fa-solid fa-shield-heart"></i></span><label>{{durability}}/{{maxDurability}}</label>
+                <span>
+                    <i title="Состояние брони"
+                        class="ra ra-gear-heart"></i></span><label>{{durability}}/{{maxDurability}}</label>
             </div>
         </div>
         {{/with}}
@@ -16,16 +17,15 @@
     <div class="armor-actions">
         <div class="action">
             <a class="equip-action action armor-action" data-item-type="armor" data-action-type="block"
-                data-item-id="{{_id}}"><i title="Защититься от урона" class="fa-solid fa-shield"></i></a>
+                data-item-id="{{_id}}"><i title="Защититься от урона" class="ra ra-shield"></i></a>
         </div>
         <div class="action">
             <a class="equip-action action armor-action" data-item-type="armor" data-action-type="ablate"
-                data-item-id="{{_id}}"><i title="Снизить показатель брони"
-                    class="fa-solid fa-square-caret-down"></i></a>
+                data-item-id="{{_id}}"><i title="Снизить показатель брони" class="ra ra-cracked-shield"></i></a>
         </div>
         <div class="action">
             <a class="equip-action action armor-action" data-item-type="armor" data-action-type="repair"
-                data-item-id="{{_id}}"><i title="Починить броню" class="fa-solid fa-wrench"></i></a>
+                data-item-id="{{_id}}"><i title="Починить броню" class="ra ra-gear-hammer"></i></a>
         </div>
         <div class="action">
             <a class="equip-action action weapon-action" data-item-type="armor" data-action-type="unequip"

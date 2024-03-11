@@ -31,13 +31,13 @@
                     .stats {
                         flex-grow: 1;
                         display: flex;
-                        justify-content: space-between;
+                        justify-content: flex-start;
                         gap: 1em;
+                        padding-left: 1em;
 
                         .stat {
-                            flex-grow: 1;
                             display: flex;
-                            justify-content: space-evenly;
+                            justify-content: start;
                         }
                     }
                 }
@@ -45,6 +45,15 @@
                 .weapon-actions, .armor-actions {
                     height: 100%;
                     align-self: end;
+                    display: flex;
+                    gap: 0.5em;
+
+                    .action {
+                        font-size: xx-large;
+                        i {
+                            font-size: 1em;
+                        }
+                    }
                 }
             }
         }

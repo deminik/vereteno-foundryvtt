@@ -2,7 +2,7 @@ var gulp = require('gulp');
 var sass = require('gulp-sass')(require('sass'));
 
 gulp.task('sass', function (cb) {
-    gulp.src('css/vereteno.scss').pipe(sass()).pipe(gulp.dest("./"));
+    gulp.src('css/vereteno.scss').pipe(sass()).pipe(gulp.dest("./css/"));
     cb();
 });
 

@@ -8,8 +8,8 @@
  * -------------------------- */
 @font-face {
   font-family: "RPGAwesome";
-  src: url("../vereteno/fonts/rpgawesome-webfont.eot?v=0.1.0");
-  src: url("../vereteno/fonts/rpgawesome-webfont.eot?#iefix&v=0.1.0") format("embedded-opentype"), url("../vereteno/fonts/rpgawesome-webfont.woff?v=0.1.0") format("woff"), url("../vereteno/fonts/rpgawesome-webfont.ttf?v=0.1.0") format("truetype"), url("../vereteno/fonts/rpgawesome-webfont.svg?v=0.1.0#rpg-awesome") format("svg");
+  src: url("../fonts/rpgawesome-webfont.eot?v=0.1.0");
+  src: url("../fonts/rpgawesome-webfont.eot?#iefix&v=0.1.0") format("embedded-opentype"), url("../fonts/rpgawesome-webfont.woff?v=0.1.0") format("woff"), url("../fonts/rpgawesome-webfont.ttf?v=0.1.0") format("truetype"), url("../fonts/rpgawesome-webfont.svg?v=0.1.0#rpg-awesome") format("svg");
   font-weight: normal;
   font-style: normal;
 }
@@ -2172,7 +2172,7 @@
 }
 
 .window-content {
-  background: url(../vereteno/resources/vereteno-parchment.jpg) repeat !important;
+  background: url(../resources/vereteno-parchment.jpg) repeat !important;
 }
 
 .vereteno .weapon-sheet, .vereteno .armor-sheet {
@@ -2306,17 +2306,25 @@
 .vereteno .items-container .item-group .items-list .item-plate .weapon-stats .stats, .vereteno .items-container .item-group .items-list .item-plate .armor-stats .stats {
   flex-grow: 1;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   gap: 1em;
+  padding-left: 1em;
 }
 .vereteno .items-container .item-group .items-list .item-plate .weapon-stats .stats .stat, .vereteno .items-container .item-group .items-list .item-plate .armor-stats .stats .stat {
-  flex-grow: 1;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: start;
 }
 .vereteno .items-container .item-group .items-list .item-plate .weapon-actions, .vereteno .items-container .item-group .items-list .item-plate .armor-actions {
   height: 100%;
   align-self: end;
+  display: flex;
+  gap: 0.5em;
+}
+.vereteno .items-container .item-group .items-list .item-plate .weapon-actions .action, .vereteno .items-container .item-group .items-list .item-plate .armor-actions .action {
+  font-size: xx-large;
+}
+.vereteno .items-container .item-group .items-list .item-plate .weapon-actions .action i, .vereteno .items-container .item-group .items-list .item-plate .armor-actions .action i {
+  font-size: 1em;
 }
 .vereteno .fight-container {
   display: flex;
@@ -2383,4 +2391,16 @@
 .dice-tooltip .dice-rolls .roll.good {
   color: #787816;
   filter: sepia(0.5) hue-rotate(10deg);
+}
+
+.double-shadow {
+  text-shadow: 5px 1px black;
+}
+
+.red {
+  color: red;
+}
+
+.gray {
+  color: gray;
 }

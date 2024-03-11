@@ -18,7 +18,7 @@
         "module/vereteno.mjs"
     ],
     "styles": [
-        "./vereteno.css"
+        "./css/vereteno.css"
     ],
     "languages": [
         {
