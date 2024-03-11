@@ -186,6 +186,9 @@
 .vereteno .fight-container .item-group .items-list .item-plate .weapon-actions .action, .vereteno .fight-container .item-group .items-list .item-plate .armor-actions .action {
   font-size: xx-large;
 }
+.vereteno .fight-container .item-group .items-list .item-plate .weapon-actions .action i, .vereteno .fight-container .item-group .items-list .item-plate .armor-actions .action i {
+  font-size: 1em;
+}
 .vereteno .character-sheet {
   display: flex;
   flex-direction: column;
