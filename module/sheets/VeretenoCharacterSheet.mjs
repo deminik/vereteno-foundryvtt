@@ -26,10 +26,10 @@ export class VeretenoCharacterSheet extends ActorSheet {
         if (!this.isEditable) return;
 
         html.on('click', '.skill-check', this._onSkillCheckRoll.bind(this));
+
         html.on('click', '.weapon-attack', this._onWeaponRoll.bind(this));
-        html.on('click', '.item-remove', this._onItemRemove.bind(this));
-        html.on('click', '.weapon-equip', this._onWeaponEquip.bind(this));
-        html.on('click', '.armor-equip', this.onArmorEquip.bind(this));
+
+        html.on('click', '.item-action', this.onItemAction.bind(this));
     }
 
     getData() {
@@ -349,30 +349,71 @@ export class VeretenoCharacterSheet extends ActorSheet {
         }
     }
 
-    async _onItemRemove(event) {
+
+    async onItemAction(event) {
         event.preventDefault();
         const element = event.currentTarget;
         const dataset = element.dataset;
 
-        let { itemId } = dataset;
+        const { itemType, actionType, itemId } = dataset;
+        const itemInfo = { type: itemType, id: itemId };
 
-        let item = this.actor.items.get(itemId);
+        switch (actionType) {
+            case 'remove':
+                return await this.removeItem(itemInfo);
+                break;
 
-        if (item.type === 'weapon') {
-            if (this.actor.equipedWeapon && this.actor.equipedWeapon._id === item._id) {
-                this.actor.equipedWeapon = null;
-            }
+            case 'equip':
+                return await this.equipItem(itemInfo);
+                break;
+
+            case 'unequip':
+                return await this.unequipItem(itemInfo);
+                break;
+
+            default:
+                return;
         }
+    }
+
+    async removeItem(itemInfo) {
+        let item = this.actor.items.get(itemInfo.id);
 
         this.actor.deleteEmbeddedDocuments("Item", [item._id]);
     }
 
-    async _onWeaponEquip(event) {
-        event.preventDefault();
-        const element = event.currentTarget;
-        const dataset = element.dataset;
+    async equipItem(itemInfo) {
+        switch (itemInfo.type) {
+            case 'weapon':
+                return await this.equipWeapon(itemInfo.id);
+                break;
 
-        let { itemId } = dataset;
+            case 'armor':
+                return await this.equipArmor(itemInfo.id);
+                break;
+
+            default:
+                return;
+        }
+    }
+
+    async equipWeapon(itemId) {
+        const item = this.actor.items.find(x => x._id === itemId);
+
+        // предупреждение, если экипировано больше 2 элементов оружия.
+
+        await this.actor.updateEmbeddedDocuments("Item", [
+            { _id: item._id, "system.equipped": true },
+        ]);
+    }
+
+    async equipArmor(itemId) {
+        const equippedArmor = this.actor.items.find(x => x.system.equipped && x.system.type === 'armor');
+        if (equippedArmor) {
+            // предупреждение, если броня уже экипирована.
+
+            return;
+        }
 
         const item = this.actor.items.find(x => x._id === itemId);
 
@@ -381,22 +422,15 @@ export class VeretenoCharacterSheet extends ActorSheet {
         ]);
     }
 
-    async onArmorEquip(event) {
-        event.preventDefault();
-        const element = event.currentTarget;
-        const dataset = element.dataset;
+    async unequipItem(itemInfo) {
+        const item = this.actor.items.find(x => x._id === itemInfo.id && x.system && x.system.equipped);
 
-        let { itemId } = dataset;
-
-        const equippedArmor = this.actor.items.find(x => x.system.equipped);
-        if (equippedArmor) {
+        if (!item) {
             return;
         }
 
-        const item = this.actor.items.find(x => x._id === itemId);
-
         await this.actor.updateEmbeddedDocuments("Item", [
-            { _id: item._id, "system.equipped": true },
+            { _id: item._id, "system.equipped": false },
         ]);
     }
 }

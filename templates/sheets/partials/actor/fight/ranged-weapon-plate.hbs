@@ -23,31 +23,32 @@
     </div>
     <div class="weapon-actions">
         <div class="action">
-            <a class="equip-action action weapon-attack" data-roll-type="weapon" data-item-id="{{_id}}"
-                data-weapon-type="ranged" data-attack-type="aimed"><i title="Прицельная атака"
+            <a class="equip-action action weapon-action" data-item-type="weapon" data-action-type="attack"
+                data-item-id="{{_id}}" data-weapon-type="ranged" data-attack-type="aimed"><i title="Прицельная атака"
                     class="ra ra-targeted red"></i></a>
         </div>
         <div class="action">
-            <a class="equip-action action weapon-attack" data-roll-type="weapon" data-item-id="{{_id}}"
-                data-weapon-type="ranged" data-attack-type="regular"><i title="Выстрел" class="ra ra-targeted"></i></a>
+            <a class="equip-action action weapon-action" data-item-type="weapon" data-action-type="attack"
+                data-item-id="{{_id}}" data-weapon-type="ranged" data-attack-type="regular"><i title="Выстрел"
+                    class="ra ra-targeted"></i></a>
         </div>
         <div class="action">
-            <a class="equip-action action weapon-attack" data-roll-type="weapon" data-item-id="{{_id}}"
-                data-weapon-type="ranged" data-attack-type="hip"><i title="Выстрел от бедра"
+            <a class="equip-action action weapon-action" data-item-type="weapon" data-action-type="attack"
+                data-item-id="{{_id}}" data-weapon-type="ranged" data-attack-type="hip"><i title="Выстрел от бедра"
                     class="ra ra-targeted gray"></i></a>
         </div>
         <div class="action">
-            <a class="equip-action action weapon-attack" data-roll-type="weapon" data-item-id="{{_id}}"
-                data-weapon-type="ranged" data-attack-type="burst"><i title="Стрельба очередью"
+            <a class="equip-action action weapon-action" data-item-type="weapon" data-action-type="attack"
+                data-item-id="{{_id}}" data-weapon-type="ranged" data-attack-type="burst"><i title="Стрельба очередью"
                     class="ra ra-bullets"></i></a>
         </div>
         <div class="action">
-            <a class="equip-action action weapon-initiative" data-item-id="{{_id}}"><i title="Определить инициативу"
-                    class="ra ra-hourglass"></i></a>
+            <a class="equip-action action weapon-action" data-item-type="weapon" data-action-type="initiative"
+                data-item-id="{{_id}}"><i title="Определить инициативу" class="ra ra-hourglass"></i></a>
         </div>
         <div class="action">
-            <a class="equip-action action weapon-unequip" data-item-id="{{_id}}"><i title="Убрать в рюкзак"
-                    class="fa-solid fa-box-open"></i></a>
+            <a class="equip-action action item-action" data-item-type="weapon" data-action-type="unequip"
+                data-item-id="{{_id}}"><i title="Убрать в рюкзак" class="fa-solid fa-box-open"></i></a>
         </div>
     </div>
 </section>
