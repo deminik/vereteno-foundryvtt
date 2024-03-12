@@ -205,7 +205,8 @@
                 "base"
             ],
             "armorClass": 1,
-            "quality": 0
+            "quality": 0,
+            "durability": null
         },
         "feature": {}
     }

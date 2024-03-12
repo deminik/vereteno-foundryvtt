@@ -29,14 +29,15 @@ export class VeretenoCharacterSheet extends ActorSheet {
 
         html.on('click', '.item-action', this.onItemAction.bind(this));
         html.on('click', '.weapon-action', this.onWeaponAction.bind(this));
+        html.on('click', '.armor-action', this.onArmorAction.bind(this));
     }
 
-    getData() {
+    async getData() {
         const context = super.getData();
 
         const characterData = context.data;
 
-        context.system = this._prepareCharacterData(characterData);
+        context.system = await this._prepareCharacterData(characterData);
 
         context.flags = characterData.flags;
         context.config = CONFIG.vereteno;
@@ -45,15 +46,15 @@ export class VeretenoCharacterSheet extends ActorSheet {
         return context;
     }
 
-    _prepareCharacterData(characterData) {
+    async _prepareCharacterData(characterData) {
         let system = this._prepareStatsAndSkills(characterData.system);
 
-        system = this._prepareItems(characterData, system);
+        system = await this._prepareItems(characterData, system);
 
         return system;
     }
 
-    _prepareItems(characterData, system) {
+    async _prepareItems(characterData, system) {
 
         system.weapons = characterData.items.filter(x => x.type === 'weapon') || [];
         for (let [k, v] of Object.entries(system.weapons)) {
@@ -70,6 +71,9 @@ export class VeretenoCharacterSheet extends ActorSheet {
             v.system.maxDurability = v.system.armorClass + v.system.quality;
             if (v.system.durability === undefined || v.system.durability === null) {
                 v.system.durability = v.system.maxDurability;
+                await this.actor.updateEmbeddedDocuments("Item", [
+                    { _id: v._id, "system.durability": v.system.durability },
+                ]);
             }
         };
         system.equippedArmors = system.armors.filter(x => x.system.equipped);
@@ -454,5 +458,76 @@ export class VeretenoCharacterSheet extends ActorSheet {
 
         const veretenoRollHandler = new VeretenoRollHandler();
         await veretenoRollHandler.roll(rollOptions);
+    }
+
+
+    async onArmorAction(event) {
+        event.preventDefault();
+        const element = event.currentTarget;
+        const dataset = element.dataset;
+
+        const { itemType, actionType, itemId } = dataset;
+
+        const rollData = {
+            isBlind: false || event.ctrlKey,
+            showDialog: false
+        }
+
+        switch (actionType) {
+            case 'block':
+                return await this.rollArmorBlock(itemId, rollData);
+                break;
+            case 'ablate':
+                return await this.ablateArmor(itemId);
+                break;
+            case 'repair':
+                return await this.repairArmor(itemId);
+                break;
+            default:
+                return;
+        }
+    }
+
+    async rollArmorBlock(armorId, rollData) {
+
+    }
+
+    async ablateArmor(armorId) {
+        const armor = this.actor.items.find(x => x._id === armorId);
+        if(!armor){
+            // сообщение об остутствующем предмете.
+            return;
+        }
+
+        if (armor.system.durability === 0) {
+            // предупреждение о разбитой броне.
+            return;
+        }
+
+        armor.system.durability--;
+
+        if (armor.system.durability === 0) {
+            // предупреждение о разбитой броне.
+        }
+
+        await this.actor.updateEmbeddedDocuments("Item", [
+            { _id: armor._id, "system.durability": armor.system.durability },
+        ]);
+    }
+
+    async repairArmor(armorId) {
+        const armor = this.actor.items.find(x => x._id === armorId);
+        if(!armor){
+            // сообщение об остутствующем предмете
+        }
+
+        const maxDurability = armor.system.armorClass + armor.system.quality
+        if (armor.system.durability === maxDurability) {
+            // предупреждение о целой броне.
+        }
+
+        await this.actor.updateEmbeddedDocuments("Item", [
+            { _id: armor._id, "system.durability": maxDurability },
+        ]);
     }
 }
