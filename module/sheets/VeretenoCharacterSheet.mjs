@@ -61,6 +61,8 @@ export class VeretenoCharacterSheet extends ActorSheet {
             v.system.isBrawling = v.system.attackType === 'brawling';
             v.system.isMelee = v.system.attackType === 'melee';
             v.system.isRanged = v.system.attackType === 'ranged';
+            v.system.range.label = game.i18n.localize(CONFIG.vereteno.rangeTypes[v.system.range.value]) ?? v.system.range.value;
+            v.system.attackWith.label = game.i18n.localize(CONFIG.vereteno.skills[v.system.attackWith.value]) ?? v.system.attackWith.value;
         };
         system.equippedWeapons = system.weapons.filter(x => x.system.equipped);
 
