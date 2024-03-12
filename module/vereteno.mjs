@@ -16,7 +16,9 @@ async function preloadHandlebarsTemplates() {
         "systems/vereteno/templates/sheets/partials/actor/fight/brawling-weapon-plate.hbs",
         "systems/vereteno/templates/sheets/partials/actor/fight/melee-weapon-plate.hbs",
         "systems/vereteno/templates/sheets/partials/actor/fight/ranged-weapon-plate.hbs",
-        "systems/vereteno/templates/sheets/partials/actor/fight/armor-plate.hbs"
+        "systems/vereteno/templates/sheets/partials/actor/fight/armor-plate.hbs",
+
+        "systems/vereteno/templates/sheets/partials/actor/bio-tab.hbs"
     ];
 
     return loadTemplates(templatesPaths);

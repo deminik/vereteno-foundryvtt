@@ -13,6 +13,7 @@
             <b class="item" data-tab="main">{{localize "vereteno.tab.stat"}}</b>
             <b class="item" data-tab="equipment">{{localize "vereteno.tab.equipment"}}</b>
             <b class="item" data-tab="fight">{{localize "vereteno.tab.fight"}}</b>
+            <b class="item" data-tab="bio">{{localize "vereteno.tab.bio"}}</b>
         </div>
         <div class="sheet-body">
             <div class="tab" data-group="primary" data-tab="main">
@@ -23,6 +24,9 @@
             </div>
             <div class="tab" data-group="primary" data-tab="fight">
                 {{> "systems/vereteno/templates/sheets/partials/actor/fight-tab.hbs" system}}
+            </div>
+            <div class="tab" data-group="primary" data-tab="bio">
+                {{> "systems/vereteno/templates/sheets/partials/actor/bio-tab.hbs"}}
             </div>
         </div>
     </div>

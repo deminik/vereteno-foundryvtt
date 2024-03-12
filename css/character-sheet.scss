@@ -1,6 +1,7 @@
 @import './character-sheet/stats-tab.scss';
 @import './character-sheet/equipment-tab.scss';
 @import './character-sheet/fight-tab.scss';
+@import './character-sheet/bio-tab.scss';
 
 .character-sheet {
     display: flex;
@@ -20,6 +21,24 @@
             display: flex;
             flex-direction: column;
             width: 100%;
+        }
+    }
+
+    .sheet-content {
+        .sheet-tabs {
+            height: 2em;
+            margin-top: 0.5em;
+
+            .item {
+                text-align: center;
+                border: 1px solid black;
+                border-bottom: none;
+                border-radius: 5px 5px 0 0;
+
+                &.active {
+                    background-color: pink;
+                }
+            }
         }
     }
 }

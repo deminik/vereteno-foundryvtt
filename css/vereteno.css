@@ -2258,6 +2258,9 @@
 .vereteno .stats-container .stat .value-container .stat-value {
   width: 2em;
 }
+.vereteno .stats-container .stat .value-container .stat-value.double {
+  width: 4em;
+}
 .vereteno .skills-container {
   display: flex;
   flex-wrap: wrap;
@@ -2383,6 +2386,10 @@
 .vereteno .fight-container .item-group .items-list .item-plate .weapon-actions .action i, .vereteno .fight-container .item-group .items-list .item-plate .armor-actions .action i {
   font-size: 1em;
 }
+.vereteno .bio-container {
+  display: flex;
+  flex-direction: column;
+}
 .vereteno .character-sheet {
   display: flex;
   flex-direction: column;
@@ -2400,6 +2407,19 @@
   display: flex;
   flex-direction: column;
   width: 100%;
+}
+.vereteno .character-sheet .sheet-content .sheet-tabs {
+  height: 2em;
+  margin-top: 0.5em;
+}
+.vereteno .character-sheet .sheet-content .sheet-tabs .item {
+  text-align: center;
+  border: 1px solid black;
+  border-bottom: none;
+  border-radius: 5px 5px 0 0;
+}
+.vereteno .character-sheet .sheet-content .sheet-tabs .item.active {
+  background-color: pink;
 }
 
 .dice-tooltip .dice-rolls .roll.good {

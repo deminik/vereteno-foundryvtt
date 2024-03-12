@@ -24,6 +24,10 @@
 
             .stat-value {
                 width: 2em;
+
+                &.double {
+                    width: 4em;
+                }
             }
 
             .stat-max {}

@@ -3,7 +3,10 @@
         "common": {
             "weapon": "Оружие",
             "armor": "Броня",
-            "description": "Описание"
+            "description": "Описание",
+            "biography": "Биография",
+            "money": "Сверкредиты",
+            "experience": "Опыт"
         },
         "attack": {
             "none": "",
@@ -63,7 +66,8 @@
         "tab": {
             "stat": "Навыки",
             "equipment": "Снаряжение",
-            "fight": "Бой"
+            "fight": "Бой",
+            "bio": "Биография"
         }
     }
 }

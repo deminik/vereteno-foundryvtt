@@ -3,7 +3,10 @@
         "common": {
             "weapon": "Weapon",
             "armor": "Armor",
-            "description": "Description"
+            "description": "Description",
+            "biography": "Biography",
+            "money": "Money",
+            "experience": "Experience"
         },
         "attack": {
             "none": "",
@@ -63,7 +66,8 @@
         "tab": {
             "stat": "Stats",
             "equipment": "Equipment",
-            "fight": "Fight"
+            "fight": "Fight",
+            "bio": "Bio"
         }
     }
 }
