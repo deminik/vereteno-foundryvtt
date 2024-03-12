@@ -7,19 +7,27 @@
         flex-direction: column;
 
         .items-list {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
             .item-plate {
                 display: flex;
                 height: 3em;
+                border: 1px solid rgba(0, 0, 0, 0.3);
+                background-color: $vereteno-red-light;
+
+                width: 98%;
 
                 .item-image {
 
                     img {
                         height: 100%;
-                        ;
                     }
                 }
 
-                .weapon-stats, .armor-stats {
+                .weapon-stats,
+                .armor-stats {
                     flex-grow: 1;
 
                     display: flex;
@@ -41,7 +49,8 @@
                     }
                 }
 
-                .weapon-actions, .armor-actions {
+                .weapon-actions,
+                .armor-actions {
                     height: 100%;
                     align-self: end;
                     display: flex;
@@ -49,6 +58,7 @@
 
                     .action {
                         font-size: xx-large;
+
                         i {
                             font-size: 1em;
                         }

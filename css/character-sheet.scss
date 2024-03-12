@@ -7,6 +7,10 @@
     display: flex;
     flex-direction: column;
 
+    input {
+        background-color: $vereteno-white;
+    }
+
     .sheet-header {
         display: flex;
         height: 10em;
@@ -17,28 +21,58 @@
             height: 100%;
         }
 
-        .character-info {
+        .character-stats {
             display: flex;
             flex-direction: column;
-            width: 100%;
+            height: 100%;
+
+            .character-name {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .stats-container {
+                display: flex;
+                flex-direction: column;
+
+                .being-stats {
+                    display: flex;
+                    justify-content: space-evenly;
+                }
+
+                .wealth-stats {
+                    display: flex;
+                    justify-content: space-between;
+                }
+            }
         }
     }
 
     .sheet-content {
+        height: 100%;
+
         .sheet-tabs {
             height: 2em;
             margin-top: 0.5em;
 
             .item {
                 text-align: center;
-                border: 1px solid black;
+                border: 1px solid rgba(0, 0, 0, 0.3);
                 border-bottom: none;
                 border-radius: 5px 5px 0 0;
 
                 &.active {
-                    background-color: pink;
+                    background-color: $vereteno-gray-light;
                 }
             }
+        }
+
+        .sheet-body {
+            height: 90%;
+
+            background-color: $vereteno-gray-light;
+            border-radius: 5px;
         }
     }
 }

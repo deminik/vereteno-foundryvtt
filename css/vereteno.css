@@ -2308,39 +2308,53 @@
   display: flex;
   flex-direction: column;
 }
+.vereteno .items-container .item-group .items-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .vereteno .items-container .item-group .items-list .item-plate {
   display: flex;
   height: 3em;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  background-color: rgba(174, 0, 0, 0.2);
+  width: 98%;
 }
 .vereteno .items-container .item-group .items-list .item-plate .item-image img {
   height: 100%;
 }
-.vereteno .items-container .item-group .items-list .item-plate .weapon-stats, .vereteno .items-container .item-group .items-list .item-plate .armor-stats {
+.vereteno .items-container .item-group .items-list .item-plate .weapon-stats,
+.vereteno .items-container .item-group .items-list .item-plate .armor-stats {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
 }
-.vereteno .items-container .item-group .items-list .item-plate .weapon-stats .stats, .vereteno .items-container .item-group .items-list .item-plate .armor-stats .stats {
+.vereteno .items-container .item-group .items-list .item-plate .weapon-stats .stats,
+.vereteno .items-container .item-group .items-list .item-plate .armor-stats .stats {
   flex-grow: 1;
   display: flex;
   justify-content: flex-start;
   gap: 1em;
   padding-left: 1em;
 }
-.vereteno .items-container .item-group .items-list .item-plate .weapon-stats .stats .stat, .vereteno .items-container .item-group .items-list .item-plate .armor-stats .stats .stat {
+.vereteno .items-container .item-group .items-list .item-plate .weapon-stats .stats .stat,
+.vereteno .items-container .item-group .items-list .item-plate .armor-stats .stats .stat {
   display: flex;
   justify-content: start;
 }
-.vereteno .items-container .item-group .items-list .item-plate .weapon-actions, .vereteno .items-container .item-group .items-list .item-plate .armor-actions {
+.vereteno .items-container .item-group .items-list .item-plate .weapon-actions,
+.vereteno .items-container .item-group .items-list .item-plate .armor-actions {
   height: 100%;
   align-self: end;
   display: flex;
   gap: 0.5em;
 }
-.vereteno .items-container .item-group .items-list .item-plate .weapon-actions .action, .vereteno .items-container .item-group .items-list .item-plate .armor-actions .action {
+.vereteno .items-container .item-group .items-list .item-plate .weapon-actions .action,
+.vereteno .items-container .item-group .items-list .item-plate .armor-actions .action {
   font-size: xx-large;
 }
-.vereteno .items-container .item-group .items-list .item-plate .weapon-actions .action i, .vereteno .items-container .item-group .items-list .item-plate .armor-actions .action i {
+.vereteno .items-container .item-group .items-list .item-plate .weapon-actions .action i,
+.vereteno .items-container .item-group .items-list .item-plate .armor-actions .action i {
   font-size: 1em;
 }
 .vereteno .fight-container {
@@ -2351,48 +2365,71 @@
   display: flex;
   flex-direction: column;
 }
+.vereteno .fight-container .item-group .items-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .vereteno .fight-container .item-group .items-list .item-plate {
   display: flex;
   height: 3em;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  background-color: rgba(174, 0, 0, 0.2);
+  width: 98%;
 }
 .vereteno .fight-container .item-group .items-list .item-plate .item-image img {
   height: 100%;
 }
-.vereteno .fight-container .item-group .items-list .item-plate .weapon-stats, .vereteno .fight-container .item-group .items-list .item-plate .armor-stats {
+.vereteno .fight-container .item-group .items-list .item-plate .weapon-stats,
+.vereteno .fight-container .item-group .items-list .item-plate .armor-stats {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
 }
-.vereteno .fight-container .item-group .items-list .item-plate .weapon-stats .stats, .vereteno .fight-container .item-group .items-list .item-plate .armor-stats .stats {
+.vereteno .fight-container .item-group .items-list .item-plate .weapon-stats .stats,
+.vereteno .fight-container .item-group .items-list .item-plate .armor-stats .stats {
   flex-grow: 1;
   display: flex;
   justify-content: flex-start;
   gap: 1em;
   padding-left: 1em;
 }
-.vereteno .fight-container .item-group .items-list .item-plate .weapon-stats .stats .stat, .vereteno .fight-container .item-group .items-list .item-plate .armor-stats .stats .stat {
+.vereteno .fight-container .item-group .items-list .item-plate .weapon-stats .stats .stat,
+.vereteno .fight-container .item-group .items-list .item-plate .armor-stats .stats .stat {
   display: flex;
   justify-content: start;
 }
-.vereteno .fight-container .item-group .items-list .item-plate .weapon-actions, .vereteno .fight-container .item-group .items-list .item-plate .armor-actions {
+.vereteno .fight-container .item-group .items-list .item-plate .weapon-actions,
+.vereteno .fight-container .item-group .items-list .item-plate .armor-actions {
   height: 100%;
   align-self: end;
   display: flex;
   gap: 0.5em;
 }
-.vereteno .fight-container .item-group .items-list .item-plate .weapon-actions .action, .vereteno .fight-container .item-group .items-list .item-plate .armor-actions .action {
+.vereteno .fight-container .item-group .items-list .item-plate .weapon-actions .action,
+.vereteno .fight-container .item-group .items-list .item-plate .armor-actions .action {
   font-size: xx-large;
 }
-.vereteno .fight-container .item-group .items-list .item-plate .weapon-actions .action i, .vereteno .fight-container .item-group .items-list .item-plate .armor-actions .action i {
+.vereteno .fight-container .item-group .items-list .item-plate .weapon-actions .action i,
+.vereteno .fight-container .item-group .items-list .item-plate .armor-actions .action i {
   font-size: 1em;
 }
 .vereteno .bio-container {
   display: flex;
   flex-direction: column;
 }
+.vereteno .bio-container .bio {
+  padding: 1em;
+}
+.vereteno .bio-container .bio .bio-editor {
+  background-color: white;
+}
 .vereteno .character-sheet {
   display: flex;
   flex-direction: column;
+}
+.vereteno .character-sheet input {
+  background-color: #fcfcfc;
 }
 .vereteno .character-sheet .sheet-header {
   display: flex;
@@ -2403,10 +2440,30 @@
 .vereteno .character-sheet .sheet-header .character-image {
   height: 100%;
 }
-.vereteno .character-sheet .sheet-header .character-info {
+.vereteno .character-sheet .sheet-header .character-stats {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.vereteno .character-sheet .sheet-header .character-stats .character-name {
   display: flex;
   flex-direction: column;
   width: 100%;
+}
+.vereteno .character-sheet .sheet-header .character-stats .stats-container {
+  display: flex;
+  flex-direction: column;
+}
+.vereteno .character-sheet .sheet-header .character-stats .stats-container .being-stats {
+  display: flex;
+  justify-content: space-evenly;
+}
+.vereteno .character-sheet .sheet-header .character-stats .stats-container .wealth-stats {
+  display: flex;
+  justify-content: space-between;
+}
+.vereteno .character-sheet .sheet-content {
+  height: 100%;
 }
 .vereteno .character-sheet .sheet-content .sheet-tabs {
   height: 2em;
@@ -2414,12 +2471,17 @@
 }
 .vereteno .character-sheet .sheet-content .sheet-tabs .item {
   text-align: center;
-  border: 1px solid black;
+  border: 1px solid rgba(0, 0, 0, 0.3);
   border-bottom: none;
   border-radius: 5px 5px 0 0;
 }
 .vereteno .character-sheet .sheet-content .sheet-tabs .item.active {
-  background-color: pink;
+  background-color: rgba(88, 88, 88, 0.2);
+}
+.vereteno .character-sheet .sheet-content .sheet-body {
+  height: 90%;
+  background-color: rgba(88, 88, 88, 0.2);
+  border-radius: 5px;
 }
 
 .dice-tooltip .dice-rolls .roll.good {

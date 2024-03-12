@@ -4,8 +4,13 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined">
 
         <img class="vereteno character-image" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" />
-        <h1 class="vereteno character-info"><input name="name" type="text" value="{{actor.name}}"
-                placeholder="{{ localize 'Name' }}" /></h1>
+        <div class="character-stats">
+            <h1 class="vereteno character-name"><input name="name" type="text" value="{{actor.name}}"
+                    placeholder="{{ localize 'Name' }}" /></h1>
+            <div class="vereteno character stats">
+                {{> "systems/vereteno/templates/sheets/partials/actor/stats-block.hbs"}}
+            </div>
+        </div>
     </div>
 
     <div class="vereteno character sheet-content">

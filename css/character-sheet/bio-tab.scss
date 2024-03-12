@@ -1,4 +1,13 @@
 .bio-container {
     display: flex;
-    flex-direction: column
+
+    flex-direction: column;
+
+    .bio {
+        padding: 1em;
+
+        .bio-editor {
+            background-color: white;
+        }
+    }
 }
