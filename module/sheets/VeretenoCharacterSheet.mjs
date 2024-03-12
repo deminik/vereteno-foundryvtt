@@ -27,9 +27,8 @@ export class VeretenoCharacterSheet extends ActorSheet {
 
         html.on('click', '.skill-check', this._onSkillCheckRoll.bind(this));
 
-        html.on('click', '.weapon-attack', this._onWeaponRoll.bind(this));
-
         html.on('click', '.item-action', this.onItemAction.bind(this));
+        html.on('click', '.weapon-action', this.onWeaponAction.bind(this));
     }
 
     getData() {
@@ -199,39 +198,6 @@ export class VeretenoCharacterSheet extends ActorSheet {
         await veretenoRollHandler.roll(rollOptions);
     }
 
-    async _onWeaponRoll(event) {
-        event.preventDefault();
-        const element = event.currentTarget;
-        const dataset = element.dataset;
-
-        let { rollType, itemId, weaponType, attackType } = dataset;
-
-        let messageData = {
-            user: game.user._id,
-            speaker: ChatMessage.getSpeaker(),
-            flavor: weaponType,
-            sound: CONFIG.sounds.dice,
-            blind: false || event.ctrlKey
-        };
-
-        let weaponData = {
-            itemId,
-            weaponType,
-            attackType
-        };
-
-        let rollData = await this._prepareActorRollData(rollType, "", weaponData);
-
-        let rollOptions = {
-            type: "attack",
-            messageData,
-            rollData
-        }
-
-        let veretenoRollHandler = new VeretenoRollHandler();
-        await veretenoRollHandler.roll(rollOptions);
-    }
-
     async _prepareActorRollData(type, key, data) {
         switch (type) {
             case "attribute":
@@ -304,7 +270,7 @@ export class VeretenoCharacterSheet extends ActorSheet {
     async _prepareWeaponRollData(data) {
         let item = this.actor.items.get(data.itemId);
 
-        let itemSkill = item.system.attackWith;
+        let itemSkill = item.system.attackWith.value;
         let skillRollData = await this._prepareSkillRollData(itemSkill);
 
         let weaponAttackTypeModifier = this.getWeaponAttackTypeModifier(data.weaponType, data.attackType);
@@ -432,5 +398,61 @@ export class VeretenoCharacterSheet extends ActorSheet {
         await this.actor.updateEmbeddedDocuments("Item", [
             { _id: item._id, "system.equipped": false },
         ]);
+    }
+
+
+    async onWeaponAction(event) {
+        event.preventDefault();
+        const element = event.currentTarget;
+        const dataset = element.dataset;
+
+        const { itemType, actionType, itemId, weaponType, attackType } = dataset;
+
+        const rollData = {
+            isBlind: false || event.ctrlKey,
+            showDialog: false
+        }
+
+        if (actionType === 'initiative') {
+            return await this.rollWeaponInitiative(itemId);
+        }
+        else if (actionType === 'attack') {
+            let weaponData = {
+                itemId,
+                weaponType,
+                attackType
+            };
+
+            return await this.rollWeaponAttack(weaponData, rollData);
+        }
+    }
+
+    async rollWeaponInitiative(id) {
+
+    }
+
+    async rollWeaponAttack(weaponData, rollData) {
+        const messageData = {
+            user: game.user._id,
+            speaker: ChatMessage.getSpeaker(),
+            flavor: weaponData.weaponType,
+            sound: CONFIG.sounds.dice,
+            blind: rollData.isBlind
+        };
+
+        if (rollData.showDialog) {
+
+        }
+
+        let weaponRollData = await this._prepareActorRollData("weapon", "", weaponData);
+
+        const rollOptions = {
+            type: "attack",
+            messageData,
+            rollData: weaponRollData
+        }
+
+        const veretenoRollHandler = new VeretenoRollHandler();
+        await veretenoRollHandler.roll(rollOptions);
     }
 }
