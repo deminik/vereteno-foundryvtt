@@ -19,6 +19,9 @@
             <div class="vereteno stat value"><input name="system.quality" type="text" value="{{system.quality}}"
                     data-dtype="Number"></div>
         </div>
-        <div class="vereteno weapon description">{{system.description}}</div>
+        <div class="vereteno weapon description">
+            <div class="vereteno title">{{localize "vereteno.common.description"}}</div>
+            <textarea name="system.description">{{system.description}}</textarea>
+        </div>
     </div>
 </form>

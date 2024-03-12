@@ -2,7 +2,8 @@
     "vereteno": {
         "common": {
             "weapon": "Weapon",
-            "armor": "Armor"
+            "armor": "Armor",
+            "description": "Description"
         },
         "attack": {
             "none": "",

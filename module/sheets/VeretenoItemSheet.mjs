@@ -1,7 +1,6 @@
 export class VeretenoItemSheet extends ItemSheet {
     static get defaultOptions() {
         return mergeObject(super.defaultOptions, {
-            height: 315,
             width: 560,
             classes: ['vereteno', 'item', 'sheet']
         })
