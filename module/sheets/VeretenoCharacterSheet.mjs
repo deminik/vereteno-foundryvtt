@@ -211,6 +211,8 @@ export class VeretenoCharacterSheet extends ActorSheet {
                 return await this._prepareWeaponRollData(data);
             case "armor":
                 return await this._prepareArmorRollData(data);
+            case "initiative":
+                return await this._prepareInitiativeRollData(data);
             default:
                 break;
         }
@@ -339,6 +341,24 @@ export class VeretenoCharacterSheet extends ActorSheet {
         return rollData;
     }
 
+    async _prepareInitiativeRollData(data) {
+        let item = this.actor.items.get(data.itemId);
+
+        let context = await this._getSystem();
+
+        let skill = context.skills.agility;
+
+        let bonuses = 0;
+
+        let rollData = {
+            "dice": "d20",
+            "pool": 1,
+            "bonus": skill.value + item.system.modifier + bonuses
+        };
+
+        return rollData;
+    }
+
 
     async onItemAction(event) {
         event.preventDefault();
@@ -438,7 +458,11 @@ export class VeretenoCharacterSheet extends ActorSheet {
         }
 
         if (actionType === 'initiative') {
-            return await this.rollWeaponInitiative(itemId);
+            let weaponData = {
+                itemId
+            };
+
+            return await this.rollWeaponInitiative(weaponData, rollData);
         }
         else if (actionType === 'attack') {
             let weaponData = {
@@ -451,8 +475,29 @@ export class VeretenoCharacterSheet extends ActorSheet {
         }
     }
 
-    async rollWeaponInitiative(id) {
+    async rollWeaponInitiative(weaponData, rollData) {
+        const messageData = {
+            user: game.user._id,
+            speaker: ChatMessage.getSpeaker(),
+            flavor: 'Инициатива',
+            sound: CONFIG.sounds.dice,
+            blind: rollData.isBlind
+        };
 
+        if (rollData.showDialog) {
+
+        }
+
+        let initiativeRollData = await this._prepareActorRollData("initiative", "", weaponData);
+
+        const rollOptions = {
+            type: "initiative",
+            messageData,
+            rollData: initiativeRollData
+        }
+
+        const veretenoRollHandler = new VeretenoRollHandler();
+        await veretenoRollHandler.rollInitiative(rollOptions);
     }
 
     async rollWeaponAttack(weaponData, rollData) {
@@ -514,8 +559,7 @@ export class VeretenoCharacterSheet extends ActorSheet {
             speaker: ChatMessage.getSpeaker(),
             flavor: 'Защита',
             sound: CONFIG.sounds.dice,
-            blind: rollData.isBlind,
-            messageType: 'armor-block'
+            blind: rollData.isBlind
         };
 
         if (rollData.showDialog) {
@@ -529,7 +573,7 @@ export class VeretenoCharacterSheet extends ActorSheet {
         let armorRollData = await this._prepareActorRollData("armor", "", armorData);
 
         const rollOptions = {
-            type: "attack",
+            type: "armor-block",
             messageData,
             rollData: armorRollData
         }

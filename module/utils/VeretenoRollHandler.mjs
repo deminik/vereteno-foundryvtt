@@ -1,5 +1,6 @@
 export class VeretenoRollHandler {
     constructor() {
+        this.rolls = [];
     }
 
     /**
@@ -27,12 +28,57 @@ export class VeretenoRollHandler {
             rollType: 'regular'
         }
     }) {
-        let roll = new Roll(rollOptions.rollData.pool + rollOptions.rollData.dice);
+        let rollFormula = `${rollOptions.rollData.pool}${rollOptions.rollData.dice}`;
+
+        let roll = new Roll(rollFormula);
         this.roll = roll;
-        this.roll.veretenoRollType = rollOptions.rollData.rollType
+        this.roll.veretenoRollType = rollOptions.rollData.rollType;
 
         await this.reevaluateTotal();
-        this.toMessage(rollOptions.messageData);
+        this.toMessage(rollOptions);
+    }
+
+    async rollInitiative(rollOptions = {
+        type: "initiative",
+        messageData: {
+            userId: null,
+            speaker: {},
+            flavor: '',
+            sound: CONFIG.sounds.dice,
+            blind: false
+        }, rollData: {
+            pool: 0,
+            dice: 'd20',
+            bonus: 0,
+            rollType: 'initiative'
+        }
+    }) {
+        let rollFormula = `${rollOptions.rollData.pool}${rollOptions.rollData.dice}`;
+
+        const bonus = rollOptions.rollData.bonus;
+        if (bonus !== undefined && bonus !== 0) {
+            if (bonus > 0) {
+                rollFormula = rollFormula + `+${bonus}`
+            } else {
+                rollFormula = rollFormula + `${bonus}`
+            }
+        }
+
+        let roll = new Roll(rollFormula);
+        this.roll = roll;
+        this.roll.veretenoRollType = rollOptions.rollData.rollType;
+
+        if (!this.roll._evaluated) {
+            await this.roll.evaluate();
+        }
+
+        const initiativeRollResult = this.roll.terms[0].results[0];
+        this.rolls.push({
+            result: initiativeRollResult.result,
+            classes: 'd20'
+        })
+
+        this.toMessage(rollOptions);
     }
 
     async reevaluateTotal() {
@@ -107,11 +153,13 @@ export class VeretenoRollHandler {
     getTemplate(type = 'regular') {
         switch (type) {
             case 'regular':
-                return "systems/vereteno/templates/chat/vereteno-roll-chat-message.hbs";
+                return "systems/vereteno/templates/chat/roll/vereteno-roll-chat-message.hbs";
             case 'armor-block':
-                return "systems/vereteno/templates/chat/vereteno-armor-roll-chat-message.hbs";
+                return "systems/vereteno/templates/chat/roll/vereteno-armor-roll-chat-message.hbs";
+            case 'initiative':
+                return "systems/vereteno/templates/chat/roll/vereteno-initiative-roll-chat-message.hbs";
             default:
-                return "systems/vereteno/templates/chat/vereteno-roll-chat-message.hbs";
+                return "systems/vereteno/templates/chat/roll/vereteno-roll-chat-message.hbs";
         }
     }
 
@@ -128,8 +176,24 @@ export class VeretenoRollHandler {
         return rollData;
     }
 
-    async toMessage(chatData) {
-        let template = this.getTemplate(chatData.messageType);
+    async toMessage(rollOptions = {
+        type: "regular",
+        messageData: {
+            userId: null,
+            speaker: {},
+            flavor: '',
+            sound: CONFIG.sounds.dice,
+            blind: false
+        }, rollData: {
+            pool: 0,
+            dice: 'd20',
+            bonus: 0,
+            rollType: 'initiative'
+        }
+    }) {
+        const chatData = rollOptions.messageData;
+
+        let template = this.getTemplate(rollOptions.type);
 
         let veretenoRollData = this.getVeretenoRollData();
 
