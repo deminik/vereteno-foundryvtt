@@ -14,6 +14,7 @@ export class VeretenoRollHandler {
     */
     async roll(rollOptions = {
         type: "none",
+        attackType: null,
         messageData: {
             userId: null,
             speaker: {},
@@ -22,11 +23,13 @@ export class VeretenoRollHandler {
             blind: false
         }, rollData: {
             pool: 0,
-            dice: 'd20'
+            dice: 'd20',
+            rollType: 'regular'
         }
     }) {
         let roll = new Roll(rollOptions.rollData.pool + rollOptions.rollData.dice);
         this.roll = roll;
+        this.roll.veretenoRollType = rollOptions.rollData.rollType
 
         await this.reevaluateTotal();
         this.toMessage(rollOptions.messageData);
@@ -35,6 +38,20 @@ export class VeretenoRollHandler {
     async reevaluateTotal() {
         if (!this.roll._evaluated) {
             await this.roll.evaluate();
+        }
+
+        if (this.roll.veretenoRollType === 'serial') {
+            this.roll._formula += '+'
+            let isInterrupted = false;
+            while (!isInterrupted) {
+                let additionalRoll = new Roll('1d20');
+                await additionalRoll.evaluate();
+                const additionalRollResult = additionalRoll.terms[0].results[0];
+                this.roll.terms[0].results.push(additionalRollResult);
+                if (additionalRollResult.result <= 4) {
+                    isInterrupted = true;
+                }
+            }
         }
 
         let rollDicesResults = this.roll.terms[0].results;
@@ -66,7 +83,7 @@ export class VeretenoRollHandler {
             if (r.result === 20) {
                 result.result += 2;
                 rollResult.classes += ' max';
-                result.successes+=2;
+                result.successes += 2;
             }
 
             if (r.result >= 17 && r.result <= 19) {
@@ -100,7 +117,7 @@ export class VeretenoRollHandler {
 
     getVeretenoRollData() {
         let rollData = {
-            formula: this.roll.formula,
+            formula: this.roll._formula,
             total: this.roll._total,
             veretenoTotal: this.roll.veretenoTotal,
             veretenoSuccesses: this.roll.veretenoSuccesses,

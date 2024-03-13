@@ -291,6 +291,10 @@ export class VeretenoCharacterSheet extends ActorSheet {
                 weaponAttackModifier
             });
 
+        if (data.attackType === 'burst') {
+            rollData.rollType = 'serial';
+        }
+
         return rollData;
     }
 
@@ -313,6 +317,10 @@ export class VeretenoCharacterSheet extends ActorSheet {
             }
 
             if (attackType === 'hip') {
+                return -2;
+            }
+
+            if (attackType === 'burst') {
                 return -2;
             }
 
@@ -544,8 +552,7 @@ export class VeretenoCharacterSheet extends ActorSheet {
 
         armor.system.durability -= value;
 
-        if(armor.system.durability < 0)
-        {
+        if (armor.system.durability < 0) {
             armor.system.durability = 0;
         }
 
