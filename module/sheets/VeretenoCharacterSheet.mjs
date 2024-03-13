@@ -530,7 +530,7 @@ export class VeretenoCharacterSheet extends ActorSheet {
         await veretenoRollHandler.roll(rollOptions);
     }
 
-    async ablateArmor(armorId) {
+    async ablateArmor(armorId, value = 1) {
         const armor = this.actor.items.find(x => x._id === armorId);
         if (!armor) {
             // сообщение об остутствующем предмете.
@@ -542,7 +542,12 @@ export class VeretenoCharacterSheet extends ActorSheet {
             return;
         }
 
-        armor.system.durability--;
+        armor.system.durability -= value;
+
+        if(armor.system.durability < 0)
+        {
+            armor.system.durability = 0;
+        }
 
         if (armor.system.durability === 0) {
             // предупреждение о разбитой броне.
