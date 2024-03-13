@@ -11,6 +11,10 @@
 .vereteno {
     @import "./item-sheet.scss";
     @import "./character-sheet.scss";
+
+    .window-content {
+        font-family: 'Vezitsa';
+    }
 }
 
 @import "./chat/vereteno-armor-roll.scss";
@@ -20,14 +24,14 @@
     filter: sepia(0.5) hue-rotate(10deg);
 }
 
-.double-shadow{
+.double-shadow {
     text-shadow: 5px 1px black;
 }
 
-.red{
+.red {
     color: red;
 }
 
-.gray{
+.gray {
     color: gray;
 }

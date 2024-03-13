@@ -1,4 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+@font-face {
+  font-family: "Vezitsa";
+  src: url("../fonts/ofont.ru_Vezitsa.ttf");
+  font-weight: normal;
+  font-style: normal;
+}
 /*!
  * RPG Awesome 0.0.2 by Daniela Howe, Ivan Montiel
  * License - https://github.com/nagoshiashumari/Rpg-Awesome/blob/master/LICENSE.md
@@ -2236,7 +2242,6 @@
   display: flex;
   justify-content: space-evenly;
   padding-left: 0.5em;
-  font-family: "Roboto", sans-serif;
 }
 .vereteno .stats-container .stat {
   display: flex;
@@ -2482,6 +2487,9 @@
   height: 90%;
   background-color: rgba(88, 88, 88, 0.2);
   border-radius: 5px;
+}
+.vereteno .window-content {
+  font-family: "Vezitsa";
 }
 
 .armor-roll .dice-total {
