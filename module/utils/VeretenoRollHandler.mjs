@@ -38,9 +38,11 @@ export class VeretenoRollHandler {
         }
 
         let rollDicesResults = this.roll.terms[0].results;
-        let veretenoTotal = this.calculateDicesTotal(rollDicesResults);
+        let rollResult = this.calculateDicesTotal(rollDicesResults);
 
-        this.roll._veretenoTotal = veretenoTotal;
+        this.roll.veretenoTotal = rollResult.result;
+        this.roll.veretenoSuccesses = rollResult.successes;
+        this.roll.veretenoCritFails = rollResult.fails;
     }
 
     getRoll() {
@@ -48,7 +50,11 @@ export class VeretenoRollHandler {
     }
 
     calculateDicesTotal(dices = []) {
-        let successes = 0;
+        const result = {
+            result: 0,
+            successes: 0,
+            fails: 0
+        }
 
         this.rolls = [];
         dices.forEach(r => {
@@ -58,35 +64,47 @@ export class VeretenoRollHandler {
             };
 
             if (r.result === 20) {
-                successes += 2;
+                result.result += 2;
                 rollResult.classes += ' max';
+                result.successes+=2;
             }
 
             if (r.result >= 17 && r.result <= 19) {
-                successes += 1;
+                result.result++;
                 rollResult.classes += ' good';
+                result.successes++;
             }
 
             if (r.result === 1) {
-                successes -= 1;
+                result.result--;
                 rollResult.classes += ' min';
+                result.fails++;
             }
 
             this.rolls.push(rollResult);
         });
 
-        return successes;
+        return result;
     }
 
-    getTemplate() {
-        return "systems/vereteno/templates/chat/vereteno-roll-chat-message.hbs";
+    getTemplate(type = 'regular') {
+        switch (type) {
+            case 'regular':
+                return "systems/vereteno/templates/chat/vereteno-roll-chat-message.hbs";
+            case 'armor-block':
+                return "systems/vereteno/templates/chat/vereteno-armor-roll-chat-message.hbs";
+            default:
+                return "systems/vereteno/templates/chat/vereteno-roll-chat-message.hbs";
+        }
     }
 
     getVeretenoRollData() {
         let rollData = {
             formula: this.roll.formula,
             total: this.roll._total,
-            veretenoTotal: this.roll._veretenoTotal,
+            veretenoTotal: this.roll.veretenoTotal,
+            veretenoSuccesses: this.roll.veretenoSuccesses,
+            veretenoCritFails: this.roll.veretenoCritFails,
             rolls: this.rolls
         }
 
@@ -94,7 +112,7 @@ export class VeretenoRollHandler {
     }
 
     async toMessage(chatData) {
-        let template = this.getTemplate();
+        let template = this.getTemplate(chatData.messageType);
 
         let veretenoRollData = this.getVeretenoRollData();
 

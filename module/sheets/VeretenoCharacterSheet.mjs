@@ -55,7 +55,6 @@ export class VeretenoCharacterSheet extends ActorSheet {
     }
 
     async _prepareItems(characterData, system) {
-
         system.weapons = characterData.items.filter(x => x.type === 'weapon') || [];
         for (let [k, v] of Object.entries(system.weapons)) {
             v.system.isBrawling = v.system.attackType === 'brawling';
@@ -210,6 +209,8 @@ export class VeretenoCharacterSheet extends ActorSheet {
                 return await this._prepareSkillRollData(key, data);
             case "weapon":
                 return await this._prepareWeaponRollData(data);
+            case "armor":
+                return await this._prepareArmorRollData(data);
             default:
                 break;
         }
@@ -317,6 +318,17 @@ export class VeretenoCharacterSheet extends ActorSheet {
 
             return 0;
         }
+    }
+
+    async _prepareArmorRollData(data) {
+        let item = this.actor.items.get(data.itemId);
+
+        let rollData = {
+            "dice": "d20",
+            "pool": item.system.durability
+        };
+
+        return rollData;
     }
 
 
@@ -489,12 +501,38 @@ export class VeretenoCharacterSheet extends ActorSheet {
     }
 
     async rollArmorBlock(armorId, rollData) {
+        const messageData = {
+            user: game.user._id,
+            speaker: ChatMessage.getSpeaker(),
+            flavor: 'Защита',
+            sound: CONFIG.sounds.dice,
+            blind: rollData.isBlind,
+            messageType: 'armor-block'
+        };
 
+        if (rollData.showDialog) {
+
+        }
+
+        let armorData = {
+            itemId: armorId
+        };
+
+        let armorRollData = await this._prepareActorRollData("armor", "", armorData);
+
+        const rollOptions = {
+            type: "attack",
+            messageData,
+            rollData: armorRollData
+        }
+
+        const veretenoRollHandler = new VeretenoRollHandler();
+        await veretenoRollHandler.roll(rollOptions);
     }
 
     async ablateArmor(armorId) {
         const armor = this.actor.items.find(x => x._id === armorId);
-        if(!armor){
+        if (!armor) {
             // сообщение об остутствующем предмете.
             return;
         }
@@ -517,7 +555,7 @@ export class VeretenoCharacterSheet extends ActorSheet {
 
     async repairArmor(armorId) {
         const armor = this.actor.items.find(x => x._id === armorId);
-        if(!armor){
+        if (!armor) {
             // сообщение об остутствующем предмете
         }
 

@@ -13,6 +13,8 @@
     @import "./character-sheet.scss";
 }
 
+@import "./chat/vereteno-armor-roll.scss";
+
 .dice-tooltip .dice-rolls .roll.good {
     color: #787816;
     filter: sepia(0.5) hue-rotate(10deg);
