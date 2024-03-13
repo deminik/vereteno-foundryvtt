@@ -28,6 +28,10 @@ export class VeretenoRollHandler {
             rollType: 'regular'
         }
     }) {
+        if (rollOptions.rollData.pool <= 0 && rollOptions.type !== "armor-block") {
+            return await this.rollDesperation(rollOptions);
+        }
+
         let rollFormula = `${rollOptions.rollData.pool}${rollOptions.rollData.dice}`;
 
         let roll = new Roll(rollFormula);
@@ -81,6 +85,36 @@ export class VeretenoRollHandler {
         this.toMessage(rollOptions);
     }
 
+    async rollDesperation(rollOptions = {
+        type: "none",
+        attackType: null,
+        messageData: {
+            userId: null,
+            speaker: {},
+            flavor: '',
+            sound: CONFIG.sounds.dice,
+            blind: false
+        }, rollData: {
+            pool: 0,
+            dice: 'd20',
+            rollType: 'regular'
+        }
+    }) {
+        let rollFormula = '0d20';
+        if (rollOptions.rollData.pool == 0) {
+            rollFormula = '1d20';
+        } else {
+            rollFormula = '2d20'
+        }
+
+        let roll = new Roll(rollFormula);
+        this.roll = roll;
+        this.roll.veretenoRollType = "desperation";
+
+        await this.reevaluateDesperationTotal();
+        this.toMessage(rollOptions);
+    }
+
     async reevaluateTotal() {
         if (!this.roll._evaluated) {
             await this.roll.evaluate();
@@ -108,6 +142,58 @@ export class VeretenoRollHandler {
         this.roll.veretenoCritFails = rollResult.fails;
     }
 
+    async reevaluateDesperationTotal() {
+        if (!this.roll._evaluated) {
+            await this.roll.evaluate();
+        }
+
+        let rollDicesResults = this.roll.terms[0].results;
+        let rollResult = this.calculateDesperationDicesTotal(rollDicesResults);
+
+        this.roll.veretenoTotal = rollResult.result;
+        this.roll.veretenoSuccesses = rollResult.successes;
+        this.roll.veretenoCritFails = rollResult.fails;
+    }
+
+    calculateDesperationDicesTotal(dices = []) {
+        const result = {
+            result: 0,
+            successes: 0,
+            fails: 0
+        }
+
+        dices.forEach(r => {
+            let rollResult = {
+                result: r.result,
+                classes: 'd20'
+            };
+
+            if (r.result === 20) {
+                result.result++;
+                rollResult.classes += ' max';
+            }
+
+            if (r.result === 1) {
+                result.result--;
+                rollResult.classes += ' min';
+                result.fails++;
+            }
+
+            this.rolls.push(rollResult);
+        });
+
+        const dicesCount = dices.length;
+        if (result.result == dicesCount) {
+            result.result = 1;
+            result.successes = 1;
+        } else {
+            result.result = 0;
+            result.fails = 1;
+        }
+
+        return result;
+    }
+
     getRoll() {
         return this.roll;
     }
@@ -119,7 +205,6 @@ export class VeretenoRollHandler {
             fails: 0
         }
 
-        this.rolls = [];
         dices.forEach(r => {
             let rollResult = {
                 result: r.result,
