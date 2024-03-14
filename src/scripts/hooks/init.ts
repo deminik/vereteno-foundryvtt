@@ -1,9 +1,11 @@
+import { VeretenoConfig } from '../../veretenoConfig'
+
 export const Init = {
     listen(): void {
         Hooks.once('init', async function () {
             console.log("Vereteno | System init begin.");
 
-            // CONFIG.vereteno = vereteno;
+            CONFIG.VERETENO = VeretenoConfig;
 
             Actors.unregisterSheet('core', ActorSheet);
             // Actors.registerSheet('vereteno', VeretenoCharacterSheet, { makeDefault: true });
