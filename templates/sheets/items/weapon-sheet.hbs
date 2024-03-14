@@ -1,0 +1,73 @@
+<form class="{{cssClass}}" autocomplete="off">
+    <div class="vereteno weapon sheet-header">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+        <img class="vereteno item-image" src="{{item.img}}" data-edit="img" title="{{item.name}}" />
+        <div class="vereteno item-info">
+            <h3 class="vereteno type-header">{{localize "vereteno.common.weapon"}}</h1>
+                <h1><input name="name" type="text" value="{{item.name}}" placeholder="{{ localize 'Name' }}" /></h1>
+        </div>
+    </div>
+    <div class="vereteno weapon sheet-content">
+        <div class="vereteno weapon stat stat-modifier">
+            <div class="vereteno stat title">{{localize "vereteno.weapon.modifier"}}</div>
+            <div class="vereteno stat value"><input name="system.modifier" type="text" value="{{system.modifier}}"
+                    data-dtype="Number"></div>
+        </div>
+        <div class="vereteno weapon stat stat-damage">
+            <div class="vereteno stat title">{{localize "vereteno.weapon.damage"}}</div>
+            <div class="vereteno stat value"><input name="system.damage" type="text" value="{{system.damage}}"
+                    data-dtype="Number"></div>
+        </div>
+        <div class="vereteno weapon stat stat-initiative">
+            <div class="vereteno stat title">{{localize "vereteno.weapon.initiative"}}</div>
+            <div class="vereteno stat value"><input name="system.initiative" type="text" value="{{system.initiative}}"
+                    data-dtype="Number"></div>
+        </div>
+        <div class="vereteno weapon stat stat-crit">
+            <div class="vereteno stat title">{{localize "vereteno.weapon.crit"}}</div>
+            <div class="vereteno stat value"><input name="system.crit" type="text" value="{{system.crit}}"
+                    data-dtype="Number"></div>
+        </div>
+        <div class="vereteno weapon stat stat-attack-type">
+            <div class="vereteno stat title">{{localize "vereteno.weapon.attackType"}}</div>
+            <div class="vereteno stat value">
+                <select name="system.attackType">
+                    {{#select system.attackType}}
+                    {{#each config.attackTypes as |name type|}}
+                    <option value="{{type}}">{{localize name}}</option>
+                    {{/each}}
+                    {{/select}}
+                </select>
+            </div>
+        </div>
+        <div class="vereteno weapon stat stat-range">
+            <div class="vereteno stat title">{{localize "vereteno.weapon.range"}}</div>
+            <div class="vereteno stat value">
+                <select name="system.range.value">
+                    {{#select system.range.value}}
+                    {{#each config.rangeTypes as |name type|}}
+                    <option value="{{type}}">{{localize name}}</option>
+                    {{/each}}
+                    {{/select}}
+                </select>
+            </div>
+        </div>
+        <div class="vereteno weapon stat stat-attack-with">
+            <div class="vereteno stat title">{{localize "vereteno.weapon.attackWith"}}</div>
+            <div class="vereteno stat value">
+                <select name="system.attackWith.value">
+                    {{#select system.attackWith.value}}
+                    {{#each config.skills as |name type|}}
+                    <option value="{{type}}">{{localize name}}</option>
+                    {{/each}}
+                    {{/select}}
+                </select>
+            </div>
+        </div>
+        <div class="vereteno weapon description">
+            <div class="vereteno title">{{localize "vereteno.common.description"}}</div>
+            <textarea name="system.description">{{system.description}}</textarea>
+        </div>
+    </div>
+</form>

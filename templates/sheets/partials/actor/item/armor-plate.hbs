@@ -1,0 +1,34 @@
+<section class="vereteno item-plate">
+    <div class="vereteno item-image"><img src="{{img}}"></div>
+    <div class="armor-stats">
+        <div class="name">
+            {{name}}
+        </div>
+        {{#with system}}
+        <div class="stats">
+            <div class="stat">
+                <span><i title="ra ra-vest" class="fa-solid fa-plus"></i></span><label>{{armorClass}}</label>
+            </div>
+            <div class="stat">
+                <span><i title="Качество брони" class="ra ra-gold-bar "></i></span><label>{{quality}}</label>
+            </div>
+            <div class="stat">
+                <span><i title="Текущее состояние"
+                        class="ra ra-gear-heart"></i></span><label>{{durability}}/{{maxDurability}}</label>
+            </div>
+        </div>
+        {{/with}}
+    </div>
+    <div class="armor-actions">
+        <div class="action">
+            <a class="equip-action action item-action" data-item-type="armor" data-action-type="equip"
+                data-item-id="{{_id}}">
+                <i class="fa-solid fa-hand"></i>
+            </a>
+            <a class="delete-action action item-action" data-item-type="armor" data-action-type="remove"
+                data-item-id="{{_id}}">
+                <i class="fa fa-trash" aria-hidden="true"></i>
+            </a>
+        </div>
+    </div>
+</section>

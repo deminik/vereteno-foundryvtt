@@ -1,0 +1,52 @@
+<section class="vereteno item-plate">
+    <div class="vereteno item-image"><img src="{{img}}"></div>
+    <div class="weapon-stats">
+        <div class="name">
+            {{name}}
+        </div>
+        {{#with system}}
+        <div class="stats">
+            <div class="stat">
+                <span><i title="Модификатор атаки" class="ra ra-lightning-sword"></i></span><label>{{modifier}}</label>
+            </div>
+            <div class="stat">
+                <span><i title="Урон" class="ra ra-droplet"></i></span><label>{{damage}}</label>
+            </div>
+            <div class="stat">
+                <span><i title="Инициатива" class="ra ra-hourglass"></i></span><label>{{initiative}}</label>
+            </div>
+            <div class="stat">
+                <span><i title="Крит" class="ra ra-lightning-bolt"></i></span><label>{{crit}}</label>
+            </div>
+        </div>
+        {{/with}}
+    </div>
+    <div class="weapon-actions">
+        <div class="action">
+            <a class="equip-action action weapon-action" data-item-type="weapon" data-action-type="attack"
+                data-item-id="{{_id}}" data-weapon-type="melee" data-attack-type="power">
+                <i title="Мощная атака" class="ra ra-broadsword red"></i>
+            </a>
+        </div>
+        <div class="action">
+            <a class="equip-action action weapon-action" data-item-type="weapon" data-action-type="attack"
+                data-item-id="{{_id}}" data-weapon-type="melee" data-attack-type="regular">
+                <i title="Обычная атака" class="ra ra-broadsword"></i>
+            </a>
+        </div>
+        <div class="action">
+            <a class="equip-action action weapon-action" data-item-type="weapon" data-action-type="attack"
+                data-item-id="{{_id}}" data-weapon-type="melee" data-attack-type="light">
+                <i title="Быстрая атака" class="ra ra-sword gray"></i>
+            </a>
+        </div>
+        <div class="action">
+            <a class="equip-action action weapon-action" data-item-type="weapon" data-action-type="initiative"
+                data-item-id="{{_id}}"><i title="Определить инициативу" class="ra ra-hourglass"></i></a>
+        </div>
+        <div class="action">
+            <a class="equip-action action item-action" data-item-type="weapon" data-action-type="unequip"
+                data-item-id="{{_id}}"><i title="Убрать в рюкзак" class="fa-solid fa-box-open"></i></a>
+        </div>
+    </div>
+</section>

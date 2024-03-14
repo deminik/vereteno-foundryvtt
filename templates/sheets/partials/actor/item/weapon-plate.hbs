@@ -1,0 +1,43 @@
+<section class="vereteno item-plate">
+    <div class="vereteno item-image"><img src="{{img}}"></div>
+    <div class="weapon-stats">
+        <div class="name">
+            {{name}}
+        </div>
+        {{#with system}}
+        <div class="stats">
+            <div class="stat">
+                <span><i title="Модификатор атаки" class="ra ra-lightning-sword"></i></span><label>{{modifier}}</label>
+            </div>
+            <div class="stat">
+                <span><i title="Урон" class="ra ra-droplet"></i></span><label>{{damage}}</label>
+            </div>
+            <div class="stat">
+                <span><i title="Инициатива" class="ra ra-hourglass"></i></span><label>{{initiative}}</label>
+            </div>
+            <div class="stat">
+                <span><i title="Крит" class="ra ra-lightning-bolt"></i></span><label>{{crit}}</label>
+            </div>
+            <div class="stat">
+                <span><i title="Дистанция" class="fa-solid fa-ruler-horizontal"></i></span>
+                <label>{{range.label}}</label>
+            </div>
+            <div class="stat">
+                <span><i title="Навык" class="ra ra-hand"></i></span><label>{{attackWith.label}}</label>
+            </div>
+        </div>
+        {{/with}}
+    </div>
+    <div class="weapon-actions">
+        <div class="action">
+            <a class="equip-action action item-action" data-item-type="weapon" data-action-type="equip"
+                data-item-id="{{_id}}">
+                <i class="fa-solid fa-hand"></i>
+            </a>
+            <a class="delete-action action item-action" data-item-type="weapon" data-action-type="remove"
+                data-item-id="{{_id}}">
+                <i class="fa-solid fa-trash" aria-hidden="true"></i>
+            </a>
+        </div>
+    </div>
+</section>

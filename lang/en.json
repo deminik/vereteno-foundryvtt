@@ -1,49 +1,73 @@
 {
-  "VERETENO": {
-    "Attribute": {
-      "Constitution": { "long": "Constitution", "abbr": "con" },
-      "Dexterity": { "long": "Dexterity", "abbr": "dex" },
-      "Intellect": { "long": "Intelligence", "abbr": "int" },
-      "Empathy": { "long": "Empathy", "abbr": "emp" }
-    },
-    "Skill": {
-      "Melee": { "long": "Meelee", "abbr": "mlw" },
-      "Strength": { "long": "Strength", "abbr": "str" },
-      "Agility": { "long": "Agility", "abbr": "agl" },
-      "Stealth": { "long": "Stealth", "abbr": "sth" },
-      "Ranged": { "long": "Ranged", "abbr": "rng" },
-      "Survival": { "long": "Survival", "abbr": "srv" },
-      "Observation": { "long": "Observation", "abbr": "obs" },
-      "Manipulation": { "long": "Manipulation", "abbr": "mnp" }
-    },
-    "SheetLabels": {
-      "Actor": "VeretenoDemo Actor Sheet",
-      "Item": "VeretenoDemo Item Sheet"
-    },
-    "Item": {
-      "Spell": {
-        "SpellLVL": "Level {level} Spells",
-        "AddLVL": "Add LVL {level}"
-      }
-    },
-    "Effect": {
-      "Source": "Source",
-      "Toggle": "Toggle Effect",
-      "Temporary": "Temporary Effects",
-      "Passive": "Passive Effects",
-      "Inactive": "Inactive Effects"
+    "vereteno": {
+        "common": {
+            "weapon": "Weapon",
+            "armor": "Armor",
+            "description": "Description",
+            "biography": "Biography",
+            "money": "Money",
+            "experience": "Experience"
+        },
+        "attack": {
+            "none": "",
+            "brawling": "Brawling",
+            "melee": "Meelee",
+            "ranged": "Ranged"
+        },
+        "weapon": {
+            "modifier": "Modifier",
+            "damage": "Damage",
+            "initiative": "Initiative",
+            "crit": "Critical",
+            "attackWith": "Attack using",
+            "range": "Range",
+            "attackType": "Attack type"
+        },
+        "armor": {
+            "quality": "Quality",
+            "armorClass": "Armor class"
+        },
+        "range": {
+            "pointBlank": "Point blank",
+            "close": "Close distance",
+            "medium": "Medium distance",
+            "long": "Long distance",
+            "utmost": "Utmost distance"
+        },
+        "stat": {
+            "hitPoint": "",
+            "willPoint": "",
+            "reputation": ""
+        },
+        "attribute": {
+            "constitution": "",
+            "intelligence": "",
+            "dexterity": "",
+            "empathy": ""
+        },
+        "skill": {
+            "melee": "",
+            "strength": "",
+            "agility": "",
+            "piloting": "",
+            "stealth": "",
+            "ranged": "",
+            "cybershamanism": "",
+            "survival": "",
+            "medicine": "",
+            "observation": "",
+            "science": "",
+            "mechanics": "",
+            "manipulation": "",
+            "leadership": "",
+            "witchcraft": "",
+            "culture": ""
+        },
+        "tab": {
+            "stat": "Stats",
+            "equipment": "Equipment",
+            "fight": "Fight",
+            "bio": "Bio"
+        }
     }
-  },
-
-  "TYPES": {
-    "Actor": {
-      "character": "Character",
-      "npc": "NPC"
-    },
-    "Item": {
-      "item": "Item",
-      "feature": "Feature",
-      "spell": "Spell"
-    }
-  }
 }

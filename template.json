@@ -1,149 +1,213 @@
 {
-  "Actor": {
-    "types": [
-      "character",
-      "npc"
-    ],
-    "templates": {
-      "base": {
-        "hitPoints": {
-          "value": 10,
-          "min": 0,
-          "max": 10
+    "Actor": {
+        "types": [
+            "character",
+            "npc"
+        ],
+        "templates": {
+            "common": {
+                "stats": {
+                    "hitPoints": {
+                        "value": 10,
+                        "min": 0,
+                        "max": 10
+                    },
+                    "willPoints": {
+                        "value": 10,
+                        "min": 0,
+                        "max": 10
+                    },
+                    "reputation": {
+                        "value": 10,
+                        "min": 0,
+                        "max": 10
+                    }
+                },
+                "attributes": {
+                    "constitution": {
+                        "value": 1,
+                        "min": 0,
+                        "max": 5
+                    },
+                    "intelligence": {
+                        "value": 1,
+                        "min": 0,
+                        "max": 5
+                    },
+                    "dexterity": {
+                        "value": 1,
+                        "min": 0,
+                        "max": 5
+                    },
+                    "empathy": {
+                        "value": 1,
+                        "min": 0,
+                        "max": 5
+                    }
+                },
+                "skills": {
+                    "melee": {
+                        "category": "general",
+                        "attribute": "constitution",
+                        "value": 0,
+                        "min": 0,
+                        "max": 5
+                    },
+                    "strength": {
+                        "category": "general",
+                        "attribute": "constitution",
+                        "value": 0,
+                        "min": 0,
+                        "max": 5
+                    },
+                    "agility": {
+                        "category": "general",
+                        "attribute": "dexterity",
+                        "value": 0,
+                        "min": 0,
+                        "max": 5
+                    },
+                    "piloting": {
+                        "category": "professional",
+                        "attribute": "dexterity",
+                        "value": 0,
+                        "min": 0,
+                        "max": 5
+                    },
+                    "stealth": {
+                        "category": "general",
+                        "attribute": "dexterity",
+                        "value": 0,
+                        "min": 0,
+                        "max": 5
+                    },
+                    "ranged": {
+                        "category": "general",
+                        "attribute": "dexterity",
+                        "value": 0,
+                        "min": 0,
+                        "max": 5
+                    },
+                    "cybershamanism": {
+                        "category": "professional",
+                        "attribute": "intelligence",
+                        "value": 0,
+                        "min": 0,
+                        "max": 5
+                    },
+                    "survival": {
+                        "category": "general",
+                        "attribute": "intelligence",
+                        "value": 0,
+                        "min": 0,
+                        "max": 5
+                    },
+                    "medicine": {
+                        "category": "professional",
+                        "attribute": "intelligence",
+                        "value": 0,
+                        "min": 0,
+                        "max": 5
+                    },
+                    "observation": {
+                        "category": "general",
+                        "attribute": "intelligence",
+                        "value": 0,
+                        "min": 0,
+                        "max": 5
+                    },
+                    "science": {
+                        "category": "professional",
+                        "attribute": "intelligence",
+                        "value": 0,
+                        "min": 0,
+                        "max": 5
+                    },
+                    "mechanics": {
+                        "category": "professional",
+                        "attribute": "intelligence",
+                        "value": 0,
+                        "min": 0,
+                        "max": 5
+                    },
+                    "manipulation": {
+                        "category": "general",
+                        "attribute": "empathy",
+                        "value": 0,
+                        "min": 0,
+                        "max": 5
+                    },
+                    "leadership": {
+                        "category": "professional",
+                        "attribute": "empathy",
+                        "value": 0,
+                        "min": 0,
+                        "max": 5
+                    },
+                    "witchcraft": {
+                        "category": "professional",
+                        "attribute": "empathy",
+                        "value": 0,
+                        "min": 0,
+                        "max": 5
+                    },
+                    "culture": {
+                        "category": "professional",
+                        "attribute": "empathy",
+                        "value": 0,
+                        "min": 0,
+                        "max": 5
+                    }
+                },
+                "biography": "",
+                "money": 0
+            }
         },
-        "willPoints": {
-          "value": 10,
-          "min": 0,
-          "max": 10
+        "character": {
+            "templates": [
+                "common"
+            ]
         },
-        "reputation": {
-          "value": 10,
-          "min": 0,
-          "max": 10
-        },
-        "attributes": {
-          "constitution": {
-            "value": 1,
-            "min": 0,
-            "max": 5
-          },
-          "dexterity": {
-            "value": 1,
-            "min": 0,
-            "max": 5
-          },
-          "intellect": {
-            "value": 1,
-            "min": 0,
-            "max": 5
-          },
-          "empathy": {
-            "value": 1,
-            "min": 0,
-            "max": 5
-          }
-        },
-        "skills": {
-          "melee": {
-            "category": "general",
-            "attribute": "constitution",
-            "value": 0,
-            "min": 0,
-            "max": 10
-          },
-          "strength": {
-            "category": "general",
-            "attribute": "constitution",
-            "value": 0,
-            "min": 0,
-            "max": 10
-          },
-          "agility": {
-            "category": "general",
-            "attribute": "dexterity",
-            "value": 0,
-            "min": 0,
-            "max": 10
-          },
-          "stealth": {
-            "category": "general",
-            "attribute": "dexterity",
-            "value": 0,
-            "min": 0,
-            "max": 10
-          },
-          "ranged": {
-            "category": "general",
-            "attribute": "dexterity",
-            "value": 0,
-            "min": 0,
-            "max": 10
-          },
-          "survival": {
-            "category": "general",
-            "attribute": "intellect",
-            "value": 0,
-            "min": 0,
-            "max": 10
-          },
-          "observation": {
-            "category": "general",
-            "attribute": "intellect",
-            "value": 0,
-            "min": 0,
-            "max": 10
-          },
-          "manipulation": {
-            "category": "general",
-            "attribute": "empathy",
-            "value": 0,
-            "min": 0,
-            "max": 10
-          }
-        },
-        "biography": ""
-      }
+        "npc": {
+            "templates": [
+                "common"
+            ]
+        }
     },
-    "character": {
-      "templates": [
-        "base"
-      ]
-    },
-    "npc": {
-      "templates": [
-        "base"
-      ]
+    "Item": {
+        "types": [
+            "weapon",
+            "armor",
+            "equipment",
+            "feature"
+        ],
+        "templates": {
+            "base": {
+                "description": "",
+                "weight": 1,
+                "price": 0
+            }
+        },
+        "weapon": {
+            "templates": [
+                "base"
+            ],
+            "modifier": 0,
+            "damage": 1,
+            "initiative": 0,
+            "crit": 3,
+            "attackType": "",
+            "attackWith": "",
+            "range": ""
+        },
+        "armor": {
+            "templates": [
+                "base"
+            ],
+            "armorClass": 1,
+            "quality": 0,
+            "durability": null
+        },
+        "feature": {}
     }
-  },
-  "Item": {
-    "types": [
-      "item",
-      "feature",
-      "spell"
-    ],
-    "templates": {
-      "base": {
-        "description": ""
-      }
-    },
-    "item": {
-      "templates": [
-        "base"
-      ],
-      "quantity": 1,
-      "weight": 0,
-      "formula": "d20 + @str.mod + ceil(@lvl / 2)"
-    },
-    "feature": {
-      "templates": [
-        "base"
-      ]
-    },
-    "spell": {
-      "templates": [
-        "base"
-      ],
-      "spellLevel": 1
-    }
-  }
 }

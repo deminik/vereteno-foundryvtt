@@ -1,0 +1,27 @@
+<form class="{{cssClass}}" autocomplete="off">
+    <div class="vereteno armor sheet-header">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+        <img class="vereteno item-image" src="{{item.img}}" data-edit="img" title="{{item.name}}" />
+        <div class="vereteno item-info">
+            <h3 class="vereteno type-header">{{localize "vereteno.common.armor"}}</h1>
+                <h1><input name="name" type="text" value="{{item.name}}" placeholder="{{ localize 'Name' }}" /></h1>
+        </div>
+    </div>
+    <div class="vereteno armor sheet-content">
+        <div class="vereteno weapon stat stat-modifier">
+            <div class="vereteno stat title">{{localize "vereteno.armor.armorClass"}}</div>
+            <div class="vereteno stat value"><input name="system.armorClass" type="text" value="{{system.armorClass}}"
+                    data-dtype="Number"></div>
+        </div>
+        <div class="vereteno weapon stat stat-modifier">
+            <div class="vereteno stat title">{{localize "vereteno.armor.quality"}}</div>
+            <div class="vereteno stat value"><input name="system.quality" type="text" value="{{system.quality}}"
+                    data-dtype="Number"></div>
+        </div>
+        <div class="vereteno weapon description">
+            <div class="vereteno title">{{localize "vereteno.common.description"}}</div>
+            <textarea name="system.description">{{system.description}}</textarea>
+        </div>
+    </div>
+</form>
