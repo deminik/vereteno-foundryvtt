@@ -18,7 +18,7 @@
 		"paths": {
 			"@utils/*": [
 				"src/utils/*"
-			],
+			]
 		}
 	},
     "tsc-alias": {

@@ -1,10 +1,12 @@
 import { context } from "esbuild";
+import { sassPlugin } from "esbuild-sass-plugin";
+
 import { existsSync } from "node:fs";
 import { rm } from "node:fs/promises";
 
 const ctx = await context({
 	bundle: true,
-	entryPoints: ["./src/vereteno.ts"],
+	entryPoints: ["./src/vereteno.ts", "./src/vereteno.scss"],
 	outdir: "./dist",
 	format: "iife",
 	logLevel: "info",
@@ -12,18 +14,22 @@ const ctx = await context({
 	minifyWhitespace: false,
 	minifySyntax: false,
 	drop: [],
-	plugins: [
-		{
-			name: "external-files",
-			setup(inBuild) {
-				inBuild.onResolve(
-					{ filter: /(\.\/assets|\.\/fonts|\/systems)/ },
-					() => {
-						return { external: true };
-					},
-				);
-			},
+	plugins: [sassPlugin({
+		logger: {
+			warn: () => "",
 		},
+	}),
+	{
+		name: "external-files",
+		setup(inBuild) {
+			inBuild.onResolve(
+				{ filter: /(\.\/assets|\.\/fonts|\/systems)/ },
+				() => {
+					return { external: true };
+				},
+			);
+		},
+	},
 	],
 });
 

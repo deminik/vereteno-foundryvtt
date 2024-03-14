@@ -18,7 +18,7 @@
         "./dist/vereteno.js"
     ],
     "styles": [
-        "./css/vereteno.css"
+        "./dist/vereteno.css"
     ],
     "languages": [
         {
