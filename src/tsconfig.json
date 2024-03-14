@@ -1,0 +1,45 @@
+{
+    "extends": "../tsconfig.json",
+    "compilerOptions": {
+        "lib": [
+            "ESNext",
+            "DOM"
+        ],
+        "typeRoots": [
+            "./types/foundry"
+        ],
+        "types": [
+            "jquery",
+            "showdown"
+        ],
+        "baseUrl": ".",
+        "paths": {
+            "$*": [
+                "./*"
+            ],
+            "@utils/*": [
+                "./utils/*"
+            ],
+            "@actor/*": [
+                "./actor/*"
+            ],
+            "@item/*": [
+                "./item/*"
+            ],
+            "@journal/*": [
+                "./journal/*"
+            ],
+            "@components/*": [
+                "./components/*"
+            ],
+            "@system/*": [
+                "./system/*"
+            ]
+        }
+    },
+    "include": [
+        "./",
+        "../types"
+    ],
+    "exclude": []
+}

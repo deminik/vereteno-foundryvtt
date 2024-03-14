@@ -1,22 +1,26 @@
 {
-    "compilerOptions": {
-        "target": "es6",
-        "lib": [
-            "dom",
-            "es5",
-            "es6"
-        ],
-        "sourceMap": true,
-        "experimentalDecorators": true,
-        "allowSyntheticDefaultImports": true,
-        "removeComments": true,
-        "skipLibCheck": true,
-        "allowJs": true,
-        "outDir": "./dist",
-        "types": [
-            "foundry-pc-types"
-        ]
-    },
+	"compilerOptions": {
+		"noEmit": true,
+		"strict": true,
+		"target": "ESNext",
+		"module": "ESNext",
+		"moduleResolution": "Bundler",
+		"skipLibCheck": true,
+		"resolveJsonModule": true,
+		"allowJs": true,
+		"lib": [
+			"ESNext"
+		],
+		"types": [
+			"bun-types"
+		],
+		"baseUrl": "./",
+		"paths": {
+			"@utils/*": [
+				"src/utils/*"
+			],
+		}
+	},
     "tsc-alias": {
         "resolveFullPaths": true,
         "verbose": false

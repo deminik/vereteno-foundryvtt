@@ -1,0 +1,3 @@
+interface VeretenoItemSystemData {
+    price: number;
+}
