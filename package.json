@@ -4,14 +4,20 @@
   "description": "CSS compiler for the Vereteno system",
   "license": "MIT",
   "private": true,
+  "scripts": {
+    "build": "tsc && tsc-alias"
+  },
   "devDependencies": {
-    "sass": "^1.53.0"
+    "sass": "^1.53.0",
+    "foundry-pc-types": "git+https://gitlab.com/foundry-projects/foundry-pc/foundry-pc-types.git#master"
   },
   "dependencies": {
     "gulp": "^4.0.2",
     "gulp-cli": "^2.3.0",
     "gulp-less": "^5.0.0",
     "gulp-sass": "^5.1.0",
-    "rpg-awesome": "^0.2.0"
+    "rpg-awesome": "^0.2.0",
+    "ts": "^0.2.2",
+    "tsc-alias": "^1.8.8"
   }
 }

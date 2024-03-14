@@ -15,7 +15,7 @@
         "verified": "11.315"
     },
     "esmodules": [
-        "module/vereteno.mjs"
+        "./dist/vereteno.js"
     ],
     "styles": [
         "./css/vereteno.css"
