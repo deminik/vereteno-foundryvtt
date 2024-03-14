@@ -1,12 +1,12 @@
 import { VeretenoItemSheet } from '$module/item/item-sheet';
-import { VeretenoConfig } from '../../veretenoConfig'
+import { VERETENOCONFIG } from '../../veretenoConfig'
 
 export const Init = {
     listen(): void {
         Hooks.once('init', async function () {
             console.log("Vereteno | System init begin.");
 
-            // CONFIG.VERETENO = VeretenoConfig;
+            CONFIG.VERETENO = VERETENOCONFIG;
 
             Actors.unregisterSheet('core', ActorSheet);
             // Actors.registerSheet('vereteno', VeretenoCharacterSheet, { makeDefault: true });

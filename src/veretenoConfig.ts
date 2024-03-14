@@ -1,4 +1,4 @@
-export const VeretenoConfig = {
+export const VERETENOCONFIG = {
     tabs: {
         stat: "vereteno.tab.stat",
         equipment: "vereteno.tab.equipment",
