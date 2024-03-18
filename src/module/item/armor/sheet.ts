@@ -7,7 +7,7 @@ class VeretenoArmorSheet extends PhysicalVeretnoItemSheet<VeretenoArmor> {
 
         const { item } = this;
 
-        const result = {
+        const result: VeretenoArmorSheetData = {
             ...sheetData,
             armorClass: item.system.armorClass || 0,
             quality: item.system.quality || 0,

@@ -9,8 +9,8 @@ class PhysicalVeretnoItemSheet<TItem extends PhysicalVeretenoItem> extends Veret
         return {
             ...sheetData,
             isPhysical: true,
-            weight: item.weight,
-            price: item.price
+            weight: item.system.weight,
+            price: item.system.price
         }
     }
 }

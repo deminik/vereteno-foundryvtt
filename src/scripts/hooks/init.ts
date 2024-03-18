@@ -2,6 +2,7 @@ import { VeretenoArmorSheet } from '$module/item/armor/sheet';
 import { VeretenoItemSheet } from '$module/item/base/sheet';
 import { VERETENOCONFIG } from '../../veretenoConfig';
 import { VERETENO_PARTIALS } from '../../partials';
+import { VeretenoWeaponSheet } from '$module/item/weapon/sheet';
 
 function preloadHandlebarsTemplates() {
     return loadTemplates(VERETENO_PARTIALS);
@@ -21,6 +22,10 @@ export const Init = {
             Items.registerSheet('vereteno', VeretenoItemSheet, { makeDefault: true });
             Items.registerSheet('vereteno', VeretenoArmorSheet, {
                 types: ['armor'],
+                makeDefault: true
+            }); 
+            Items.registerSheet('vereteno', VeretenoWeaponSheet, {
+                types: ['weapon'],
                 makeDefault: true
             });
 
