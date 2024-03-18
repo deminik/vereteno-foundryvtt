@@ -35,7 +35,7 @@ class VeretenoItemSheet<TItem extends VeretenoItem> extends ItemSheet<TItem> {
             item: item,
             data: item.system,
             isPhysical: false,
-            description: item.system.description,
+            description: item.description,
             cssClass: this.isEditable ? "editable" : "locked",
             editable: this.isEditable,
             document: item,
@@ -44,6 +44,10 @@ class VeretenoItemSheet<TItem extends VeretenoItem> extends ItemSheet<TItem> {
             owner: this.item.isOwner,
             title: this.title,
         };
+    }
+
+    protected override async _updateObject(event: Event, formData: Record<string, unknown>): Promise<void> {
+        return super._updateObject(event, formData);
     }
 }
 

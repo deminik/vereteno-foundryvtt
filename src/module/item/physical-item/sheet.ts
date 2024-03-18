@@ -1,5 +1,5 @@
 import { PhysicalVeretenoItem } from "../index";
-import { VeretenoItemSheet, VeretenoItemSheetData } from "../base/item-sheet";
+import { VeretenoItemSheet, VeretenoItemSheetData } from "../base/sheet";
 
 class PhysicalVeretnoItemSheet<TItem extends PhysicalVeretenoItem> extends VeretenoItemSheet<TItem> {
     override async getData(options?: Partial<DocumentSheetOptions>): Promise<PhysicalVeretnoItemSheetData<TItem>> {
@@ -9,8 +9,8 @@ class PhysicalVeretnoItemSheet<TItem extends PhysicalVeretenoItem> extends Veret
         return {
             ...sheetData,
             isPhysical: true,
-            weight: 1,
-            price: 0
+            weight: item.weight,
+            price: item.price
         }
     }
 }

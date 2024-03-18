@@ -1,6 +1,11 @@
 import { VeretenoArmorSheet } from '$module/item/armor/sheet';
-import { VeretenoItemSheet } from '$module/item/base/item-sheet';
-import { VERETENOCONFIG } from '../../veretenoConfig'
+import { VeretenoItemSheet } from '$module/item/base/sheet';
+import { VERETENOCONFIG } from '../../veretenoConfig';
+import { VERETENO_PARTIALS } from '../../partials';
+
+function preloadHandlebarsTemplates() {
+    return loadTemplates(VERETENO_PARTIALS);
+}
 
 export const Init = {
     listen(): void {
@@ -19,7 +24,7 @@ export const Init = {
                 makeDefault: true
             });
 
-            // preloadHandlebarsTemplates();
+            preloadHandlebarsTemplates();
 
             // registerSystemSettings();
 

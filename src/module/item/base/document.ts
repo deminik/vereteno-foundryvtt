@@ -1,12 +1,12 @@
-import { VeretenoItemSheet } from "./item-sheet";
+import { VeretenoItemSheet } from "./sheet";
 
 class VeretenoItem<TParent extends VeretenoActor | null = VeretenoActor | null> extends Item<TParent>{
     get data() {
         return this.prepareData();
     }
 
-    get itemProperties() {
-        return this.system;
+    get description(){
+        return this.system.description.trim();
     }
 }
 

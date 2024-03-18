@@ -1,4 +1,7 @@
 export const VERETENOCONFIG = {
+    common: {
+        price: "vereteno.common.price",
+    },
     tabs: {
         stat: "vereteno.tab.stat",
         equipment: "vereteno.tab.equipment",

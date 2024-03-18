@@ -6,7 +6,9 @@
             "description": "Описание",
             "biography": "Биография",
             "money": "Сверкредиты",
-            "experience": "Опыт"
+            "experience": "Опыт",
+            "price": "Стоимость",
+            "weight": "Вес"
         },
         "attack": {
             "none": "",

@@ -6,7 +6,9 @@
             "description": "Description",
             "biography": "Biography",
             "money": "Money",
-            "experience": "Experience"
+            "experience": "Experience",
+            "price": "Price",
+            "weight": "Weight"
         },
         "attack": {
             "none": "",

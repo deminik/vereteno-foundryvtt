@@ -9,9 +9,9 @@ class VeretenoArmorSheet extends PhysicalVeretnoItemSheet<VeretenoArmor> {
 
         const result = {
             ...sheetData,
-            armorClass: 0,
-            quality: 0,
-            durability: 0
+            armorClass: item.system.armorClass || 0,
+            quality: item.system.quality || 0,
+            durability: item.system.durability || 0
         };
 
         return result;
