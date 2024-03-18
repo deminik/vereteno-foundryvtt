@@ -16,6 +16,10 @@ class VeretenoArmorSheet extends PhysicalVeretnoItemSheet<VeretenoArmor> {
 
         return result;
     }
+
+    get template() {
+        return `systems/vereteno/templates/sheets/items/armor-sheet.hbs`;
+    }
 }
 
 interface VeretenoArmorSheetData extends PhysicalVeretnoItemSheetData<VeretenoArmor> {
