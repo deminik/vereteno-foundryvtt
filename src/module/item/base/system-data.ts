@@ -1,3 +1,3 @@
 interface VeretenoItemSystemData {
-    price: number;
+    description: string;
 }

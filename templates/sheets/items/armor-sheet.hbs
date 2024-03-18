@@ -11,17 +11,17 @@
     <div class="vereteno armor sheet-content">
         <div class="vereteno weapon stat stat-modifier">
             <div class="vereteno stat title">{{localize "vereteno.armor.armorClass"}}</div>
-            <div class="vereteno stat value"><input name="system.armorClass" type="text" value="{{system.armorClass}}"
+            <div class="vereteno stat value"><input name="item.system.armorClass" type="number" value="{{armorClass}}"
                     data-dtype="Number"></div>
         </div>
         <div class="vereteno weapon stat stat-modifier">
             <div class="vereteno stat title">{{localize "vereteno.armor.quality"}}</div>
-            <div class="vereteno stat value"><input name="system.quality" type="text" value="{{system.quality}}"
+            <div class="vereteno stat value"><input name="system.quality" type="number" value="{{quality}}"
                     data-dtype="Number"></div>
         </div>
         <div class="vereteno weapon description">
             <div class="vereteno title">{{localize "vereteno.common.description"}}</div>
-            <textarea name="system.description">{{system.description}}</textarea>
+            <textarea name="item.system.description">{{item.system.description}}</textarea>
         </div>
     </div>
 </form>

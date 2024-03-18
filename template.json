@@ -183,14 +183,16 @@
         ],
         "templates": {
             "base": {
-                "description": "",
+                "description": ""
+            },
+            "physical": {
                 "weight": 1,
                 "price": 0
             }
         },
         "weapon": {
             "templates": [
-                "base"
+                "physical"
             ],
             "modifier": 0,
             "damage": 1,
@@ -202,12 +204,16 @@
         },
         "armor": {
             "templates": [
-                "base"
+                "physical"
             ],
             "armorClass": 1,
             "quality": 0,
             "durability": null
         },
-        "feature": {}
+        "feature": {
+            "templates": [
+                "base"
+            ]
+        }
     }
 }

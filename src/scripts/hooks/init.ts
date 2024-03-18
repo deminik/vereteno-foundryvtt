@@ -1,4 +1,5 @@
-import { VeretenoItemSheet } from '$module/item/item-sheet';
+import { VeretenoArmorSheet } from '$module/item/armor/sheet';
+import { VeretenoItemSheet } from '$module/item/base/item-sheet';
 import { VERETENOCONFIG } from '../../veretenoConfig'
 
 export const Init = {
@@ -13,6 +14,10 @@ export const Init = {
 
             Items.unregisterSheet('core', ItemSheet);
             Items.registerSheet('vereteno', VeretenoItemSheet, { makeDefault: true });
+            Items.registerSheet('vereteno', VeretenoArmorSheet, {
+                types: ['armor'],
+                makeDefault: true
+            });
 
             // preloadHandlebarsTemplates();
 
