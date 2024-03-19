@@ -9,7 +9,8 @@
             "money": "Money",
             "experience": "Experience",
             "price": "Price",
-            "weight": "Weight"
+            "weight": "Weight",
+            "reputation": ""
         },
         "attack": {
             "none": "None",
@@ -44,9 +45,8 @@
         },
         "stat": {
             "none": "None",
-            "hitPoint": "",
-            "willPoint": "",
-            "reputation": ""
+            "hitPoints": "",
+            "willPoints": ""
         },
         "attribute": {
             "none": "None",

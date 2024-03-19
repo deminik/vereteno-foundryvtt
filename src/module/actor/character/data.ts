@@ -10,9 +10,9 @@ interface VeretenoCharacterSystemSource extends VeretenoCreatureSystemSource {
 }
 
 interface VeretenoCharacterSystemData extends VeretenoCreatureSystemData {
-    Reputation: number;
-    Money: number;
-    Exp: number;
+    reputation: number;
+    money: number;
+    exp: number;
 }
 
-export type { CharacterSource, VeretenoCharacterSystemSource }
+export type { CharacterSource, VeretenoCharacterSystemSource, VeretenoCharacterSystemData }

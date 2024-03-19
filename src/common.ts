@@ -18,4 +18,9 @@ enum SkillType {
     Culture = "culture",
 };
 
+interface IDicionary<T> {
+    [index: string]: T
+}
+
 export { SkillType }
+export type { IDicionary }

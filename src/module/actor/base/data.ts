@@ -9,7 +9,7 @@ type BaseVeretenoActorSource<
 };
 
 type VeretenoActorSystemSource = {
-    biography: string;
+    description: string;
 };
 
 interface VeretenoActorSystemData {

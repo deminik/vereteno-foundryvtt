@@ -160,18 +160,25 @@
                         "max": 5
                     }
                 },
-                "biography": "",
+                "description": "",
+                "money": 0
+            },
+            "person": {
+                "reputation": 0,
                 "money": 0
             }
         },
         "character": {
             "templates": [
-                "creature"
-            ]
+                "creature",
+                "person"
+            ],
+            "exp": 0
         },
         "npc": {
             "templates": [
-                "creature"
+                "creature",
+                "person"
             ]
         },
         "monster": {

@@ -9,7 +9,8 @@
             "money": "Сверкредиты",
             "experience": "Опыт",
             "price": "Стоимость",
-            "weight": "Вес"
+            "weight": "Вес",
+            "reputation": "Репутация"
         },
         "attack": {
             "none": "Отсутствует",
@@ -44,9 +45,8 @@
         },
         "stat": {
             "none": "Отсутствует",
-            "hitPoint": "Здоровье",
-            "willPoint": "Воля",
-            "reputation": "Репутация"
+            "hitPoints": "Здоровье",
+            "willPoints": "Воля"
         },
         "attribute": {
             "none": "Отсутствует",

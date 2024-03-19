@@ -1,3 +1,4 @@
+import { IDicionary } from "$common";
 import { BaseVeretenoActorSource, VeretenoActorSource, VeretenoActorSystemData, VeretenoActorSystemSource } from "../base/data";
 import { CharacterSource } from "../character/data";
 import { MonsterSource } from "../monster/data";
@@ -9,40 +10,53 @@ type BaseCreatureSource<
 > = BaseVeretenoActorSource<TType, TSystemSource>;
 
 interface VeretenoCreatureSystemSource extends VeretenoActorSystemSource {
-    stats: {
-        hitPoints: Stat,
-        willPoints: Stat,
-    };
-
-    attributes: {
-        constitution: Attribute,
-        intelligence: Attribute,
-        dexterity: Attribute,
-        empathy: Attribute,
-    };
-
-    skills: {
-        melee: Skill,
-        strength: Skill,
-        agility: Skill,
-        piloting: Skill,
-        stealth: Skill,
-        ranged: Skill,
-        cybershamanism: Skill,
-        survival: Skill,
-        medicine: Skill,
-        observation: Skill,
-        science: Skill,
-        mechanics: Skill,
-        manipulation: Skill,
-        leadership: Skill,
-        witchcraft: Skill,
-        culture: Skill,
-    };
+    stats: StatsBlock;
+    attributes: AttributesBlock;
+    skills: SkillsBlock;
 }
 
 interface VeretenoCreatureSystemData extends VeretenoActorSystemData {
+    stats: StatsBlock;
+    attributes: AttributesBlock;
+    skills: SkillsBlock;
+}
 
+interface StatsBlock {
+    hitPoints: Stat;
+    willPoints: Stat;
+}
+
+interface AttributesBlock {
+    constitution: Attribute;
+    intelligence: Attribute;
+    dexterity: Attribute;
+    empathy: Attribute;
+}
+
+interface AttributesWithSkillsBlock {
+    constitution: AttributeWithSkills;
+    intelligence: AttributeWithSkills;
+    dexterity: AttributeWithSkills;
+    empathy: AttributeWithSkills;
+}
+
+interface SkillsBlock {
+    melee: Skill;
+    strength: Skill;
+    agility: Skill;
+    piloting: Skill;
+    stealth: Skill;
+    ranged: Skill;
+    cybershamanism: Skill;
+    survival: Skill;
+    medicine: Skill;
+    observation: Skill;
+    science: Skill;
+    mechanics: Skill;
+    manipulation: Skill;
+    leadership: Skill;
+    witchcraft: Skill;
+    culture: Skill;
 }
 
 type CreatureSource = CharacterSource | MonsterSource | NpcSource;
@@ -53,6 +67,7 @@ interface Stat {
     value: number;
     min: number;
     max: number;
+    label: string;
 }
 
 enum StatType {
@@ -66,6 +81,11 @@ interface Attribute {
     value: number;
     min: number;
     max: number;
+    label: string;
+}
+
+interface AttributeWithSkills extends Attribute {
+    skills: IDicionary<Skill>;
 }
 
 enum AttributeType {
@@ -86,10 +106,11 @@ interface Skill {
     value: number;
     min: number;
     max: number;
-    category: SkillCategoryType,
-    attribute: AttributeType,
+    category: SkillCategoryType;
+    attribute: AttributeType;
+    label: string;
 }
 
 export type { CreatureSource, BaseCreatureSource, VeretenoCreatureSystemSource, VeretenoCreatureSystemData }
-export type { Stat, Attribute, Skill }
-export { CreatureActorType, StatType, AttributeType, SkillCategoryType, }
+export type { Stat, Attribute, Skill, StatsBlock, AttributesBlock, SkillsBlock, AttributeWithSkills }
+export { CreatureActorType, StatType, AttributeType, SkillCategoryType }

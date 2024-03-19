@@ -2,45 +2,45 @@
     <div class="stats-container">
         <div class="being-stats">
             <div class="vereteno character stat hit-points">
-                <label class="vereteno stat title">{{system.stats.hitPoints.label}}</label>
+                <label class="vereteno stat title">{{stats.hitPoints.label}}</label>
                 <div class="value-container">
                     <input class="stat-value" name="system.stats.hitPoints.value" type="number"
-                        value="{{system.stats.hitPoints.value}}" data-dtype="Number">
+                        value="{{stats.hitPoints.value}}" data-dtype="Number">
                     /
                     <label class="stat-max" for="system.stats.hitPoints.max" class="align-left label"
-                        data-label="{{system.stats.hitPoints.max}}">{{system.stats.hitPoints.max}}</label>
+                        data-label="{{stats.hitPoints.max}}">{{stats.hitPoints.max}}</label>
                 </div>
             </div>
             <div class="vereteno character stat will-points">
-                <label class="vereteno stat title">{{system.stats.willPoints.label}}</label>
+                <label class="vereteno stat title">{{stats.willPoints.label}}</label>
                 <div class="value-container">
                     <input class="stat-value" name="system.stats.willPoints.value" type="number"
-                        value="{{system.stats.willPoints.value}}" data-dtype="Number">
+                        value="{{stats.willPoints.value}}" data-dtype="Number">
                     /
                     <label class="stat-max" for="system.stats.willPoints.max" class="align-left label"
-                        data-label="{{system.stats.willPoints.max}}">{{system.stats.willPoints.max}}</label>
+                        data-label="{{stats.willPoints.max}}">{{stats.willPoints.max}}</label>
                 </div>
             </div>
         </div>
         <div class="wealth-stats">
             <div class="vereteno character stat reputation">
-                <label class="vereteno stat title">{{system.stats.reputation.label}}</label>
+                <label class="vereteno stat title">{{localize "vereteno.common.reputation"}}</label>
                 <div class="value-container">
-                    <input class="stat-value" name="system.stats.reputation.value" type="number"
-                        value="{{system.stats.reputation.value}}" data-dtype="Number">
+                    <input class="stat-value" name="system.reputation" type="number"
+                        value="{{reputation}}" data-dtype="Number">
                 </div>
             </div>
             <div class="vereteno character stat money">
                 <label class="vereteno stat title">{{localize "vereteno.common.money"}}</label>
                 <div class="value-container">
-                    <input class="stat-value double" name="system.stats.money" type="number"
-                        value="{{system.stats.money}}" data-dtype="Number">
+                    <input class="stat-value double" name="system.money" type="number"
+                        value="{{money}}" data-dtype="Number">
                 </div>
             </div>
             <div class="vereteno character stat exp">
                 <label class="vereteno stat title">{{localize "vereteno.common.experience"}}</label>
                 <div class="value-container">
-                    <input class="stat-value double" name="system.stats.exp" type="number" value="{{system.stats.exp}}"
+                    <input class="stat-value double" name="system.exp" type="number" value="{{exp}}"
                         data-dtype="Number">
                 </div>
             </div>
