@@ -1,3 +1,5 @@
+import { BaseVeretenoItemSource, ItemSystemSource, PhysicalItemType, VeretenoItemSystemData } from "../base/data";
+
 interface PhysicalVeretenoItemSystemData extends VeretenoItemSystemData {
     weight: number;
     price: number;
@@ -6,9 +8,11 @@ interface PhysicalVeretenoItemSystemData extends VeretenoItemSystemData {
 type BasePhysicalItemSource<
     TType extends PhysicalItemType,
     TSystemSource extends PhysicalSystemSource = PhysicalSystemSource,
-> = BaseItemSourcePF2e<TType, TSystemSource>;
+> = BaseVeretenoItemSource<TType, TSystemSource>;
 
 interface PhysicalSystemSource extends ItemSystemSource {
-    price: number;
-    weight: number;
+    Price: number;
+    Weight: number;
 }
+
+export type { BasePhysicalItemSource, PhysicalVeretenoItemSystemData, PhysicalSystemSource }

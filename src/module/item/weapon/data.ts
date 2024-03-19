@@ -1,3 +1,6 @@
+import { SkillType } from "$common";
+import { BasePhysicalItemSource, PhysicalSystemSource, PhysicalVeretenoItemSystemData } from "../physical-item/data";
+
 interface VeretenoWeaponSystemData extends PhysicalVeretenoItemSystemData {
     modifier: number;
     damage: number;
@@ -41,26 +44,5 @@ enum RangeType {
     Utmost = "utmost"
 }
 
-enum SkillType {
-    None = "none",
-    Melee = "melee",
-    Strength = "strength",
-    Agility = "agility",
-    Piloting = "piloting",
-    Stealth = "stealth",
-    Ranged = "ranged",
-    Cybershamanism = "cybershamanism",
-    Survival = "survival",
-    Medicine = "medicine",
-    Observation = "observation",
-    Science = "science",
-    Mechanics = "mechanics",
-    Manipulation = "manipulation",
-    Leadership = "leadership",
-    Witchcraft = "witchcraft",
-    Culture = "culture"
-};
-
-
-export { AttackType, RangeType, SkillType }
+export { AttackType, RangeType }
 export { VeretenoWeaponSystemData, WeaponSource }

@@ -1,4 +1,6 @@
+import { VeretenoActor } from "$module/actor";
 import { VeretenoItem } from "..";
+import { PhysicalVeretenoItemSystemData } from "./data";
 
 class PhysicalVeretenoItem<TParent extends VeretenoActor | null = VeretenoActor | null> extends VeretenoItem<TParent> {
     get weight() {

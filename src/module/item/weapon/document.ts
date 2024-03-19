@@ -1,5 +1,7 @@
+import { SkillType } from "$common";
+import { VeretenoActor } from "$module/actor";
 import { PhysicalVeretenoItem } from "../index";
-import { AttackType, RangeType, SkillType, VeretenoWeaponSystemData } from "./data";
+import { AttackType, RangeType, VeretenoWeaponSystemData } from "./data";
 
 class VeretenoWeapon<TParent extends VeretenoActor | null = VeretenoActor | null> extends PhysicalVeretenoItem<TParent> {
     get modifier(): number {

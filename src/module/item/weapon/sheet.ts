@@ -1,6 +1,7 @@
+import { SkillType } from "$common";
 import { IdLabelType } from "$module/data";
 import { PhysicalVeretnoItemSheet, PhysicalVeretnoItemSheetData } from "../physical-item/sheet";
-import { AttackType, RangeType, SkillType } from "./data";
+import { AttackType, RangeType } from "./data";
 import { VeretenoWeapon } from "./document";
 
 class VeretenoWeaponSheet extends PhysicalVeretnoItemSheet<VeretenoWeapon>{

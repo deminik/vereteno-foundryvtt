@@ -1,11 +1,12 @@
-import { VeretenoActorSource } from "./data";
+import { VeretenoActorSource, VeretenoActorSystemData } from "./data";
 
 class VeretenoActor<TParent extends TokenDocument | null = TokenDocument | null> extends Actor<TParent>{
 
 }
 
 interface VeretenoActor<TParent extends TokenDocument | null = TokenDocument | null> extends Actor<TParent> {
-
+    constructor: typeof VeretenoActor;
+    system: VeretenoActorSystemData;
 }
 
 const VeretenoActorProxy = new Proxy(VeretenoActor, {

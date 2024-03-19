@@ -6,7 +6,7 @@
             "monster"
         ],
         "templates": {
-            "common": {
+            "creature": {
                 "stats": {
                     "hitPoints": {
                         "value": 10,
@@ -166,17 +166,17 @@
         },
         "character": {
             "templates": [
-                "common"
+                "creature"
             ]
         },
         "npc": {
             "templates": [
-                "common"
+                "creature"
             ]
         },
         "monster": {
             "templates": [
-                "common"
+                "creature"
             ]
         }
     },

@@ -1,4 +1,6 @@
+import { VeretenoActor } from "$module/actor";
 import { PhysicalVeretenoItem } from "../index";
+import { VeretenoArmorSystemData } from "./data";
 
 class VeretenoArmor<TParent extends VeretenoActor | null = VeretenoActor | null> extends PhysicalVeretenoItem<TParent> {
     get armorClass(): number {

@@ -1,10 +1,18 @@
-import { BaseCreatureSource, CreatureSystemSource } from "../creature/data";
+import { BaseCreatureSource, Stat, VeretenoCreatureSystemData, VeretenoCreatureSystemSource } from "../creature/data";
 
-type CharacterSource = BaseCreatureSource<"character", CharacterSystemSource> & {
+type CharacterSource = BaseCreatureSource<"character", VeretenoCharacterSystemSource> & {
 };
 
-interface CharacterSystemSource extends CreatureSystemSource {
-
+interface VeretenoCharacterSystemSource extends VeretenoCreatureSystemSource {
+    reputation: Stat;
+    money: number;
+    exp: number;
 }
 
-export type { CharacterSource, CharacterSystemSource }
+interface VeretenoCharacterSystemData extends VeretenoCreatureSystemData {
+    Reputation: number;
+    Money: number;
+    Exp: number;
+}
+
+export type { CharacterSource, VeretenoCharacterSystemSource }

@@ -1,3 +1,5 @@
+import { BasePhysicalItemSource, PhysicalSystemSource, PhysicalVeretenoItemSystemData } from "../physical-item/data";
+
 interface VeretenoArmorSystemData extends PhysicalVeretenoItemSystemData {
     armorClass: number;
     quality: number;
@@ -11,3 +13,5 @@ interface ArmorSystemSource extends PhysicalSystemSource {
     quality: number;
     durability: number;
 }
+
+export { VeretenoArmorSystemData }

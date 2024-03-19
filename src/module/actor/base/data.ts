@@ -1,23 +1,23 @@
+import { VeretenoItemSource } from "$module/item/base/data";
 import { CreatureActorType, CreatureSource } from "../creature/data";
 
 /** Base interface for all actor data */
 type BaseVeretenoActorSource<
     TType extends ActorType,
-    TSystemSource extends ActorSystemSource = ActorSystemSource,
+    TSystemSource extends VeretenoActorSystemSource = VeretenoActorSystemSource,
 > = foundry.documents.ActorSource<TType, TSystemSource, VeretenoItemSource> & {
 };
 
-
-type ActorSystemSource = {
-    stats: any[];
-    attributes: any[];
-    skills: any[];
+type VeretenoActorSystemSource = {
     biography: string;
-    money: number;
 };
+
+interface VeretenoActorSystemData {
+    description: string;
+}
 
 type ActorType = CreatureActorType | MechanismActorType;
 
-type VeretenoActorSource = |CreatureSource;
+type VeretenoActorSource = | CreatureSource;
 
-export type { VeretenoActorSource, BaseVeretenoActorSource, ActorSystemSource }
+export type { VeretenoActorSource, VeretenoActorSystemSource, BaseVeretenoActorSource, VeretenoActorSystemData }

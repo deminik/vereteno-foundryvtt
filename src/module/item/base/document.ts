@@ -1,4 +1,5 @@
 import { VeretenoActor } from "$module/actor";
+import { VeretenoItemSource, VeretenoItemSystemData } from "./data";
 import { VeretenoItemSheet } from "./sheet";
 
 class VeretenoItem<TParent extends VeretenoActor | null = VeretenoActor | null> extends Item<TParent>{
