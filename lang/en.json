@@ -81,5 +81,17 @@
             "fight": "Fight",
             "bio": "Bio"
         }
+    },
+    "TYPES": {
+        "Actor": {
+            "character": "Character",
+            "npc": "NPC",
+            "monster": "Monster"
+        },
+        "Item": {
+            "armor": "Armor",
+            "weapon": "Weapon",
+            "equipment": "Equipment"
+        }
     }
 }

@@ -2,7 +2,8 @@
     "Actor": {
         "types": [
             "character",
-            "npc"
+            "npc",
+            "monster"
         ],
         "templates": {
             "common": {
@@ -169,6 +170,11 @@
             ]
         },
         "npc": {
+            "templates": [
+                "common"
+            ]
+        },
+        "monster": {
             "templates": [
                 "common"
             ]
