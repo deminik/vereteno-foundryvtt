@@ -1,4 +1,6 @@
+import { IdLabelType } from "$module/data";
 import { PhysicalVeretnoItemSheet, PhysicalVeretnoItemSheetData } from "../physical-item/sheet";
+import { AttackType, RangeType, SkillType } from "./data";
 import { VeretenoWeapon } from "./document";
 
 class VeretenoWeaponSheet extends PhysicalVeretnoItemSheet<VeretenoWeapon>{
@@ -6,6 +8,10 @@ class VeretenoWeaponSheet extends PhysicalVeretnoItemSheet<VeretenoWeapon>{
         const sheetData = await super.getData(options);
 
         const { item } = this;
+
+        var attackTypes = Object.values(AttackType).map((e, i) => { return { id: i, label: game.i18n.localize(`vereteno.attack.${e}`), type: e } })
+        var rangeTypes = Object.values(RangeType).map((e, i) => { return { id: i, label: game.i18n.localize(`vereteno.range.${e}`), type: e } })
+        var skillTypes = Object.values(SkillType).map((e, i) => { return { id: i, label: game.i18n.localize(`vereteno.skill.${e}`), type: e } })
 
         const result: VeretenoWeaponSheetData = {
             ...sheetData,
@@ -16,6 +22,9 @@ class VeretenoWeaponSheet extends PhysicalVeretnoItemSheet<VeretenoWeapon>{
             damage: item.damage,
             initiative: item.initiative,
             range: item.range,
+            attackTypes: attackTypes,
+            ranges: rangeTypes,
+            skills: skillTypes
         };
 
         return result;
@@ -32,8 +41,11 @@ interface VeretenoWeaponSheetData extends PhysicalVeretnoItemSheetData<VeretenoW
     initiative: number;
     crit: number;
     attackType: AttackType,
-    attackWith: UsedSkill,
+    attackTypes: IdLabelType<AttackType>[],
+    attackWith: SkillType,
+    skills: IdLabelType<SkillType>[];
     range: RangeType
+    ranges: IdLabelType<RangeType>[];
 }
 
 export { VeretenoWeaponSheet };

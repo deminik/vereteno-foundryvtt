@@ -22,7 +22,7 @@
         <div class="vereteno stat stat-durability">
             <div class="vereteno stat title">{{localize "vereteno.armor.durability"}}</div>
             <div class="vereteno stat value">
-                <input name="system.durability" type="number" value="{{durability}}" data-dtype="Number">
+                <input name="system.durability" type="number" value="{{durability}}" min="0" max="{{maxDurability}}" data-dtype="Number">
                 /
                 <input name="system.maxDurability" disabled="disabled" type="number" value="{{maxDurability}}"
                     data-dtype="Number">

@@ -33,9 +33,9 @@
             <div class="vereteno stat title">{{localize "vereteno.weapon.attackType"}}</div>
             <div class="vereteno stat value">
                 <select name="system.attackType">
-                    {{#select system.attackType}}
-                    {{#each config.attackTypes as |name type|}}
-                    <option value="{{type}}">{{localize name}}</option>
+                    {{#select attackType}}
+                    {{#each attackTypes as |value type|}}
+                    <option value="{{value.type}}">{{value.label}}</option>
                     {{/each}}
                     {{/select}}
                 </select>
@@ -44,10 +44,10 @@
         <div class="vereteno weapon stat stat-range">
             <div class="vereteno stat title">{{localize "vereteno.weapon.range"}}</div>
             <div class="vereteno stat value">
-                <select name="system.range.value">
-                    {{#select system.range.value}}
-                    {{#each config.rangeTypes as |name type|}}
-                    <option value="{{type}}">{{localize name}}</option>
+                <select name="system.range">
+                    {{#select range}}
+                    {{#each ranges as |value type|}}
+                    <option value="{{value.type}}">{{value.label}}</option>
                     {{/each}}
                     {{/select}}
                 </select>
@@ -56,10 +56,10 @@
         <div class="vereteno weapon stat stat-attack-with">
             <div class="vereteno stat title">{{localize "vereteno.weapon.attackWith"}}</div>
             <div class="vereteno stat value">
-                <select name="system.attackWith.value">
-                    {{#select system.attackWith.value}}
-                    {{#each config.skills as |name type|}}
-                    <option value="{{type}}">{{localize name}}</option>
+                <select name="system.attackWith">
+                    {{#select attackWith}}
+                    {{#each skills as |value type|}}
+                    <option value="{{value.type}}">{{value.label}}</option>
                     {{/each}}
                     {{/select}}
                 </select>

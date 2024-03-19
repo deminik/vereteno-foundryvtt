@@ -1,6 +1,7 @@
 {
     "vereteno": {
         "common": {
+            "none": "Отсутствует",
             "weapon": "Оружие",
             "armor": "Броня",
             "description": "Описание",
@@ -11,12 +12,13 @@
             "weight": "Вес"
         },
         "attack": {
-            "none": "",
+            "none": "Отсутствует",
             "brawling": "Рукопашное",
             "melee": "Ближнего боя",
             "ranged": "Дальнего боя"
         },
         "weapon": {
+            "none": "Отсутствует",
             "modifier": "Модификатор",
             "damage": "Урон",
             "initiative": "Инициатива",
@@ -26,12 +28,14 @@
             "attackType": "Тип атаки"
         },
         "armor": {
+            "none": "Отсутствует",
             "quality": "Качество",
             "armorClass": "Класс брони",
             "durability": "Прочность",
             "maxDurability": "Максимальная прочность"
         },
         "range": {
+            "none": "Отсутствует",
             "pointBlank": "В упор",
             "close": "Ближняя",
             "medium": "Средняя",
@@ -39,17 +43,20 @@
             "utmost": "Предельная"
         },
         "stat": {
+            "none": "Отсутствует",
             "hitPoint": "Здоровье",
             "willPoint": "Воля",
             "reputation": "Репутация"
         },
         "attribute": {
+            "none": "Отсутствует",
             "constitution": "Телосложение",
             "intelligence": "Интеллект",
             "dexterity": "Ловкость",
             "empathy": "Эмпатия"
         },
         "skill": {
+            "none": "Отсутствует",
             "melee": "Ближний бой",
             "strength": "Сила",
             "agility": "Проворство",
@@ -68,6 +75,7 @@
             "culture": "Культура"
         },
         "tab": {
+            "none": "Отсутствует",
             "stat": "Навыки",
             "equipment": "Снаряжение",
             "fight": "Бой",

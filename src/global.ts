@@ -1,4 +1,18 @@
+import { VeretenoItem } from "$module/item";
 import { VERETENOCONFIG } from "$veretenoConfig";
+
+interface VeretenoGame
+    extends Game<
+        VeretenoActor<null>,
+        Actors<VeretenoActor<null>>,
+        ChatMessage,
+        Combat,
+        VeretenoItem<null>,
+        Macro,
+        Scene,
+        User
+    > {
+}
 
 type ConfiguredConfig = Config<
     AmbientLightDocument<Scene | null>,
@@ -24,6 +38,8 @@ type ConfiguredConfig = Config<
 >;
 
 declare global {
+    var game: VeretenoGame;
+
     interface VeretenoConfig extends ConfiguredConfig {
         VERETENO: typeof VERETENOCONFIG
     }

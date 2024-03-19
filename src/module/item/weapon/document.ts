@@ -1,4 +1,5 @@
 import { PhysicalVeretenoItem } from "../index";
+import { AttackType, RangeType, SkillType, VeretenoWeaponSystemData } from "./data";
 
 class VeretenoWeapon<TParent extends VeretenoActor | null = VeretenoActor | null> extends PhysicalVeretenoItem<TParent> {
     get modifier(): number {
@@ -18,15 +19,15 @@ class VeretenoWeapon<TParent extends VeretenoActor | null = VeretenoActor | null
     }
 
     get attackType(): AttackType {
-        return this.system.attackType;
+        return this.system.attackType || AttackType.None;
     }
 
-    get attackWith(): UsedSkill {
-        return this.system.attackWith;
+    get attackWith(): SkillType {
+        return this.system.attackWith || SkillType.None;
     }
 
     get range(): RangeType {
-        return this.system.range;
+        return this.system.range || RangeType.None;
     }
 }
 

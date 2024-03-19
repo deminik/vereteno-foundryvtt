@@ -4,7 +4,7 @@ interface VeretenoWeaponSystemData extends PhysicalVeretenoItemSystemData {
     initiative: number;
     crit: number;
     attackType: AttackType,
-    attackWith: UsedSkill,
+    attackWith: SkillType,
     range: RangeType
 }
 
@@ -21,33 +21,46 @@ interface WeaponSystemSource extends PhysicalSystemSource {
     initiative: number;
     crit: number;
     attackType: AttackType,
-    attackWith: UsedSkill,
+    attackWith: SkillType,
     range: RangeType
 }
 
-type AttackType = "brawling" | "melee" | "ranged";
+enum AttackType {
+    None = "none",
+    Brawling = "brawling",
+    Melee = "melee",
+    Ranged = "ranged"
+}
 
-type UsedSkill =
-    "melee" |
-    "strength" |
-    "agility" |
-    "piloting" |
-    "stealth" |
-    "ranged" |
-    "cybershamanism" |
-    "survival" |
-    "medicine" |
-    "observation" |
-    "science" |
-    "mechanics" |
-    "manipulation" |
-    "leadership" |
-    "witchcraft" |
-    "culture";
+enum RangeType {
+    None = "none",
+    PointBlank = "pointBlank",
+    Close = "close",
+    Medium = "medium",
+    Long = "long",
+    Utmost = "utmost"
+}
 
-type RangeType =
-    "pointBlank" |
-    "close" |
-    "medium" |
-    "long" |
-    "utmost";
+enum SkillType {
+    None = "none",
+    Melee = "melee",
+    Strength = "strength",
+    Agility = "agility",
+    Piloting = "piloting",
+    Stealth = "stealth",
+    Ranged = "ranged",
+    Cybershamanism = "cybershamanism",
+    Survival = "survival",
+    Medicine = "medicine",
+    Observation = "observation",
+    Science = "science",
+    Mechanics = "mechanics",
+    Manipulation = "manipulation",
+    Leadership = "leadership",
+    Witchcraft = "witchcraft",
+    Culture = "culture"
+};
+
+
+export { AttackType, RangeType, SkillType }
+export { VeretenoWeaponSystemData, WeaponSource }
