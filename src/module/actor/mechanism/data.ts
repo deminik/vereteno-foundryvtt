@@ -1,0 +1,1 @@
+type MechanismActorType = | "ship" | "vehicle";

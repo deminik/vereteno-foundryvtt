@@ -1,3 +1,4 @@
+import { VeretenoCharacter, VeretenoMonster, VeretenoNpc } from "$module/actor";
 import { VeretenoArmor } from "$module/item";
 import { VeretenoWeapon } from "$module/item/weapon/document";
 
@@ -60,4 +61,12 @@ export const VERETENOCONFIG = {
             weapon: VeretenoWeapon
         },
     },
+
+    Actor: {
+        documentClasses: {
+            character: VeretenoCharacter,
+            npc: VeretenoNpc,
+            monster: VeretenoMonster
+        }
+    }
 }

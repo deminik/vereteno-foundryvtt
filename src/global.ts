@@ -1,3 +1,4 @@
+import { VeretenoActor } from "$module/actor";
 import { VeretenoItem } from "$module/item";
 import { VERETENOCONFIG } from "$veretenoConfig";
 
