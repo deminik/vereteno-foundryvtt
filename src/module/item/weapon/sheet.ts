@@ -9,13 +9,13 @@ class VeretenoWeaponSheet extends PhysicalVeretnoItemSheet<VeretenoWeapon>{
 
         const result: VeretenoWeaponSheetData = {
             ...sheetData,
-            modifier: item.system.modifier,
-            attackType: item.system.attackType,
-            attackWith: item.system.attackWith,
-            crit: item.system.crit,
-            damage: item.system.damage,
-            initiative: item.system.initiative,
-            range: item.system.range,
+            modifier: item.modifier,
+            attackType: item.attackType,
+            attackWith: item.attackWith,
+            crit: item.crit,
+            damage: item.damage,
+            initiative: item.initiative,
+            range: item.range,
         };
 
         return result;

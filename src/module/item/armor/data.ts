@@ -3,3 +3,11 @@ interface VeretenoArmorSystemData extends PhysicalVeretenoItemSystemData {
     quality: number;
     durability: number;
 }
+
+type ArmorSource = BasePhysicalItemSource<"armor", ArmorSystemSource>;
+
+interface ArmorSystemSource extends PhysicalSystemSource {
+    armorClass: number;
+    quality: number;
+    durability: number;
+}

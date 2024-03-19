@@ -1,3 +1,6 @@
+import { VeretenoArmor } from "$module/item";
+import { VeretenoWeapon } from "$module/item/weapon/document";
+
 export const VERETENOCONFIG = {
     common: {
         price: "vereteno.common.price",
@@ -49,5 +52,12 @@ export const VERETENOCONFIG = {
         leadership: "vereteno.skill.leadership",
         witchcraft: "vereteno.skill.witchcraft",
         culture: "vereteno.skill.culture"
-    }
+    },
+
+    Item: {
+        documentClasses: {
+            armor: VeretenoArmor,
+            weapon: VeretenoWeapon
+        },
+    },
 }

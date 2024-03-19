@@ -27,7 +27,9 @@
         },
         "armor": {
             "quality": "Quality",
-            "armorClass": "Armor class"
+            "armorClass": "Armor class",
+            "durability": "Durability",
+            "maxDurability": "Maximum durability"
         },
         "range": {
             "pointBlank": "Point blank",

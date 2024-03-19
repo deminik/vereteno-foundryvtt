@@ -9,9 +9,10 @@ class VeretenoArmorSheet extends PhysicalVeretnoItemSheet<VeretenoArmor> {
 
         const result: VeretenoArmorSheetData = {
             ...sheetData,
-            armorClass: item.system.armorClass || 0,
-            quality: item.system.quality || 0,
-            durability: item.system.durability || 0
+            armorClass: item.armorClass,
+            quality: item.quality,
+            durability: item.durability,
+            maxDurability: item.maxDuarability,
         };
 
         return result;
@@ -25,7 +26,8 @@ class VeretenoArmorSheet extends PhysicalVeretnoItemSheet<VeretenoArmor> {
 interface VeretenoArmorSheetData extends PhysicalVeretnoItemSheetData<VeretenoArmor> {
     armorClass: number;
     quality: number;
-    durability: number | null;
+    durability: number;
+    maxDurability: number;
 }
 
 export { VeretenoArmorSheet };

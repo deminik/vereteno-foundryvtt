@@ -8,6 +8,23 @@ interface VeretenoWeaponSystemData extends PhysicalVeretenoItemSystemData {
     range: RangeType
 }
 
+type WeaponSource = BasePhysicalItemSource<"weapon", WeaponSystemSource>;
+
+// type WeaponItemSource<
+//     TType extends PhysicalItemType,
+//     TSystemSource extends WeaponSystemSource = WeaponSystemSource,
+// > = BaseItemSourcePF2e<TType, TSystemSource>;
+
+interface WeaponSystemSource extends PhysicalSystemSource {
+    modifier: number;
+    damage: number;
+    initiative: number;
+    crit: number;
+    attackType: AttackType,
+    attackWith: UsedSkill,
+    range: RangeType
+}
+
 type AttackType = "brawling" | "melee" | "ranged";
 
 type UsedSkill =

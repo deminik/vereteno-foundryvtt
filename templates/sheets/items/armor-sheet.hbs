@@ -9,15 +9,24 @@
         </div>
     </div>
     <div class="vereteno armor sheet-content">
-        <div class="vereteno weapon stat stat-modifier">
+        <div class="vereteno stat stat-armor-class">
             <div class="vereteno stat title">{{localize "vereteno.armor.armorClass"}}</div>
             <div class="vereteno stat value"><input name="system.armorClass" type="number" value="{{armorClass}}"
                     data-dtype="Number"></div>
         </div>
-        <div class="vereteno weapon stat stat-modifier">
+        <div class="vereteno stat stat-quality">
             <div class="vereteno stat title">{{localize "vereteno.armor.quality"}}</div>
             <div class="vereteno stat value"><input name="system.quality" type="number" value="{{quality}}"
                     data-dtype="Number"></div>
+        </div>
+        <div class="vereteno stat stat-durability">
+            <div class="vereteno stat title">{{localize "vereteno.armor.durability"}}</div>
+            <div class="vereteno stat value">
+                <input name="system.durability" type="number" value="{{durability}}" data-dtype="Number">
+                /
+                <input name="system.maxDurability" disabled="disabled" type="number" value="{{maxDurability}}"
+                    data-dtype="Number">
+            </div>
         </div>
         {{> "systems/vereteno/templates/sheets/partials/item/physical-item-block.hbs"}}
     </div>
