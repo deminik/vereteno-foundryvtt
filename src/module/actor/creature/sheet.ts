@@ -22,8 +22,6 @@ abstract class VeretenoCreatureSheet<TActor extends VeretenoCreature> extends Ve
             }
         }
 
-
-
         return {
             ...sheetData,
             stats: actor.Stats,
