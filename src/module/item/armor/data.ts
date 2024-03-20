@@ -14,4 +14,4 @@ interface ArmorSystemSource extends PhysicalSystemSource {
     durability: number;
 }
 
-export { VeretenoArmorSystemData }
+export { VeretenoArmorSystemData, ArmorSource }
