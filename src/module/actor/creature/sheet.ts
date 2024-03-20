@@ -1,6 +1,6 @@
-import { VeretenoCreature } from "..";
+import { VeretenoCreature } from "../index";
 import { VeretenoActorSheet, VeretenoActorSheetData } from "../base/sheet";
-import { Attribute, AttributeWithSkills, AttributesBlock, Skill, SkillsBlock, Stat, StatsBlock } from "./data";
+import { AttributeWithSkills, AttributesBlock, Skill, SkillsBlock, Stat, StatsBlock } from "./data";
 
 abstract class VeretenoCreatureSheet<TActor extends VeretenoCreature> extends VeretenoActorSheet<TActor>{
     override async getData(options: Partial<DocumentSheetOptions> = {}): Promise<VeretenoCreatureSheetData<TActor>> {
@@ -26,7 +26,9 @@ abstract class VeretenoCreatureSheet<TActor extends VeretenoCreature> extends Ve
             ...sheetData,
             stats: actor.Stats,
             attributes: actor.Attributes,
-            skills: actor.Skills
+            skills: actor.Skills,
+            maxHp: actor.MaxHp,
+            maxWp: actor.MaxWp,
         }
     }
 }
@@ -35,6 +37,8 @@ interface VeretenoCreatureSheetData<TActor extends VeretenoCreature> extends Ver
     stats: StatsBlock;
     attributes: AttributesBlock;
     skills: SkillsBlock;
+    maxHp: number;
+    maxWp: number;
 }
 
 export { VeretenoCreatureSheet }

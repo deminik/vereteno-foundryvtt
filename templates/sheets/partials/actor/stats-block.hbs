@@ -5,20 +5,20 @@
                 <label class="vereteno stat title">{{stats.hitPoints.label}}</label>
                 <div class="value-container">
                     <input class="stat-value" name="system.stats.hitPoints.value" type="number"
-                        value="{{stats.hitPoints.value}}" data-dtype="Number">
+                        max="{{maxHp}}" value="{{stats.hitPoints.value}}" data-dtype="Number">
                     /
                     <label class="stat-max" for="system.stats.hitPoints.max" class="align-left label"
-                        data-label="{{stats.hitPoints.max}}">{{stats.hitPoints.max}}</label>
+                        data-label="{{maxHp}}">{{maxHp}}</label>
                 </div>
             </div>
             <div class="vereteno character stat will-points">
                 <label class="vereteno stat title">{{stats.willPoints.label}}</label>
                 <div class="value-container">
                     <input class="stat-value" name="system.stats.willPoints.value" type="number"
-                        value="{{stats.willPoints.value}}" data-dtype="Number">
+                        max="{{maxWp}}" value="{{stats.willPoints.value}}" data-dtype="Number">
                     /
                     <label class="stat-max" for="system.stats.willPoints.max" class="align-left label"
-                        data-label="{{stats.willPoints.max}}">{{stats.willPoints.max}}</label>
+                        data-label="{{maxWp}}">{{maxWp}}</label>
                 </div>
             </div>
         </div>

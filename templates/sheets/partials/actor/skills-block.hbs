@@ -8,15 +8,17 @@
                         data-roll-type="attribute" data-roll-key="{{key}}"
                         data-label="{{attribute.label}}">{{attribute.label}}</a>
                 </h2>
-                <input type="text" name="system.attributes.{{key}}.value" value="{{attribute.value}}"
-                    data-dtype="Number" class="attribute-value align-right value" />
+                <input name="system.attributes.{{key}}.value" min="{{attribute.min}}"
+                    max="{{attribute.max}}" value="{{attribute.value}}" type="number" data-dtype="Number"
+                    class="attribute-value align-right value" />
             </div>
             <div class="skills">
                 {{#each attribute.skills as |skill skey|}}
                 <div class="skill skill-{{skey}}">
                     <a for="system.skills.{{skey}}.value" class="skill-check skill-label align-left label"
                         data-roll-type="skill" data-roll-key="{{skey}}" data-label="{{skill.label}}">{{skill.label}}</a>
-                    <input type="text" name="system.skills.{{skey}}.value" value="{{skill.value}}" data-dtype="Number"
+                    <input name="system.skills.{{skey}}.value" min="{{skill.min}}" max="{{skill.max}}"
+                        value="{{skill.value}}" type="number" data-dtype="Number"
                         class="skill-value align-right value" />
                 </div>
                 {{/each}}
