@@ -32,6 +32,33 @@ abstract class VeretenoActorSheet<TActor extends VeretenoActor> extends ActorShe
             description: actor.Description
         }
     }
+
+    override activateListeners($html: JQuery): void {
+        super.activateListeners($html);
+        const html = $html[0];
+
+        html.on('click', '.skill-check', this.#onSkillCkeckRoll.bind(this));
+
+        html.on('click', '.item-action', this.#onItemAction.bind(this));
+        html.on('click', '.weapon-action', this.#onWeaponAction.bind(this));
+        html.on('click', '.armor-action', this.#onArmorAction.bind(this));
+    }
+
+    async #onSkillCkeckRoll(event: MouseEvent) {
+
+    }
+
+    async #onWeaponAction(event: MouseEvent) {
+
+    }
+
+    async #onItemAction(event: MouseEvent) {
+
+    }
+
+    async #onArmorAction(event: MouseEvent) {
+
+    }
 }
 
 interface VeretenoActorSheetData<TActor extends VeretenoActor> extends ActorSheetData<TActor> {

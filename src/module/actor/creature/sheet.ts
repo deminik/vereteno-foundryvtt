@@ -31,6 +31,10 @@ abstract class VeretenoCreatureSheet<TActor extends VeretenoCreature> extends Ve
             maxWp: actor.MaxWp,
         }
     }
+
+    override activateListeners($html: JQuery): void {
+        super.activateListeners($html);
+    }
 }
 
 interface VeretenoCreatureSheetData<TActor extends VeretenoCreature> extends VeretenoActorSheetData<TActor> {
