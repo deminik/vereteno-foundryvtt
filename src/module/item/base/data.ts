@@ -25,4 +25,13 @@ type PhysicalItemSource = | ArmorSource | WeaponSource;
 
 type VeretenoItemSource = | PhysicalItemSource;
 
+enum VeretenoItemType {
+    None = "none",
+    Armor = "armor",
+    Weapon = "weapon",
+    Equipment = "equipment",
+    Feature = "feature"
+}
+
 export type { VeretenoItemSource, VeretenoItemSystemData, ItemSystemSource, BaseVeretenoItemSource, PhysicalItemType }
+export { VeretenoItemType }

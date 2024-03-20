@@ -1,6 +1,9 @@
+import { VeretenoArmor, VeretenoItem } from "$module/item";
+import { VeretenoItemType } from "$module/item/base/data";
+import { VeretenoWeapon } from "$module/item/weapon/document";
 import { VeretenoRollData } from "../base/data";
 import { VeretenoActor } from "../index";
-import { AttributeType, AttributesBlock, Skill, SkillsBlock, StatsBlock, VeretenoCreatureSystemData } from "./data";
+import { AttributesBlock, SkillsBlock, StatsBlock, VeretenoCreatureSystemData } from "./data";
 
 class VeretenoCreature<TParent extends TokenDocument | null = TokenDocument | null> extends VeretenoActor<TParent>{
     get Stats(): StatsBlock {
@@ -39,6 +42,14 @@ class VeretenoCreature<TParent extends TokenDocument | null = TokenDocument | nu
         const bonuses = 0;
 
         return intelligenceValue + empathyValue + bonuses;
+    }
+
+    get Weapons(): VeretenoWeapon[] {
+        return this.items.map(x => x as unknown as VeretenoItem).filter(x => x.type == VeretenoItemType.Weapon).map(x => x as VeretenoWeapon);
+    }
+
+    get Armors(): VeretenoArmor[] {
+        return this.items.map(x => x as unknown as VeretenoItem).filter(x => x.type == VeretenoItemType.Armor).map(x => x as VeretenoArmor);
     }
 
     async getAttributeRollData(key: string): Promise<VeretenoRollData> {
@@ -83,6 +94,8 @@ interface VeretenoCreature<TParent extends TokenDocument | null = TokenDocument 
     Skills: SkillsBlock;
     MaxHp: number;
     MaxWp: number;
+    Weapons: VeretenoWeapon[];
+    Armors: VeretenoArmor[];
 }
 
 export { VeretenoCreature }

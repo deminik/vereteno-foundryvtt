@@ -1,5 +1,5 @@
 import { IDictionary } from "$common";
-import { BaseVeretenoActorSource, VeretenoActorSource, VeretenoActorSystemData, VeretenoActorSystemSource } from "../base/data";
+import { BaseVeretenoActorSource, VeretenoActorSystemData, VeretenoActorSystemSource } from "../base/data";
 import { CharacterSource } from "../character/data";
 import { MonsterSource } from "../monster/data";
 import { NpcSource } from "../npc/data";

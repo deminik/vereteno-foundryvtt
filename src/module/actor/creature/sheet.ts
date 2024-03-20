@@ -1,10 +1,11 @@
 import { VeretenoCreature } from "../index";
 import { VeretenoActorSheet, VeretenoActorSheetData } from "../base/sheet";
 import { AttributeWithSkills, AttributesBlock, Skill, SkillsBlock, Stat, StatsBlock } from "./data";
-import { VeretenoRoll, VeretenoSkillRoll } from "$module/system/roll";
 import { VeretenoRollData } from "../base/data";
 import { VeretenoRollOptions, VeretenoRollType } from "$module/data";
 import { VeretenoRoller } from "$module/utils/vereteno-roller";
+import { VeretenoWeapon } from "$module/item/weapon/document";
+import { VeretenoArmor } from "$module/item";
 
 abstract class VeretenoCreatureSheet<TActor extends VeretenoCreature> extends VeretenoActorSheet<TActor>{
     override async getData(options: Partial<DocumentSheetOptions> = {}): Promise<VeretenoCreatureSheetData<TActor>> {
@@ -33,6 +34,8 @@ abstract class VeretenoCreatureSheet<TActor extends VeretenoCreature> extends Ve
             skills: actor.Skills,
             maxHp: actor.MaxHp,
             maxWp: actor.MaxWp,
+            weapons: actor.Weapons,
+            armors: actor.Armors,
         }
     }
 
@@ -104,6 +107,8 @@ interface VeretenoCreatureSheetData<TActor extends VeretenoCreature> extends Ver
     skills: SkillsBlock;
     maxHp: number;
     maxWp: number;
+    weapons: VeretenoWeapon[];
+    armors: VeretenoArmor[];
 }
 
 export { VeretenoCreatureSheet }
