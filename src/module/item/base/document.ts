@@ -7,7 +7,7 @@ class VeretenoItem<TParent extends VeretenoActor | null = VeretenoActor | null> 
         return this.prepareData();
     }
 
-    get description() {
+    get Description() {
         return (this.system.description || '').trim();
     }
 
@@ -34,6 +34,8 @@ class VeretenoItem<TParent extends VeretenoActor | null = VeretenoActor | null> 
 interface VeretenoItem<TParent extends VeretenoActor | null = VeretenoActor | null> extends Item<TParent> {
     constructor: typeof VeretenoItem;
     system: VeretenoItemSystemData;
+
+    Description: string;
 
     _sheet: VeretenoItemSheet<this> | null;
 

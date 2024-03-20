@@ -35,7 +35,7 @@ class VeretenoItemSheet<TItem extends VeretenoItem> extends ItemSheet<TItem> {
             item: item,
             data: item.system,
             isPhysical: false,
-            description: item.description,
+            description: item.Description,
             cssClass: this.isEditable ? "editable" : "locked",
             editable: this.isEditable,
             document: item,
