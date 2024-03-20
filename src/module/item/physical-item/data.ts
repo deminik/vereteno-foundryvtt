@@ -3,6 +3,7 @@ import { BaseVeretenoItemSource, ItemSystemSource, PhysicalItemType, VeretenoIte
 interface PhysicalVeretenoItemSystemData extends VeretenoItemSystemData {
     weight: number;
     price: number;
+    isEquipped: boolean;
 }
 
 type BasePhysicalItemSource<

@@ -1,4 +1,5 @@
 import { IDictionary } from "$common";
+import { VeretenoItemType } from "$module/item/base/data";
 import { BaseVeretenoActorSource, VeretenoActorSystemData, VeretenoActorSystemSource } from "../base/data";
 import { CharacterSource } from "../character/data";
 import { MonsterSource } from "../monster/data";
@@ -111,6 +112,12 @@ interface Skill {
     label: string;
 }
 
+interface ItemActionInfo {
+    id: string,
+    type: VeretenoItemType
+}
+
 export type { CreatureSource, BaseCreatureSource, VeretenoCreatureSystemSource, VeretenoCreatureSystemData }
 export type { Stat, Attribute, Skill, StatsBlock, AttributesBlock, SkillsBlock, AttributeWithSkills }
+export type { ItemActionInfo }
 export { CreatureActorType, StatType, AttributeType, SkillCategoryType }

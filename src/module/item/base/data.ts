@@ -2,6 +2,7 @@ import { ArmorSource } from "../armor/data";
 import { WeaponSource } from "../weapon/data";
 
 interface VeretenoItemSystemData {
+    [index: string]: any;
     description: string;
 }
 

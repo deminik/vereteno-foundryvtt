@@ -1,11 +1,13 @@
 import { VeretenoCreature } from "../index";
 import { VeretenoActorSheet, VeretenoActorSheetData } from "../base/sheet";
-import { AttributeWithSkills, AttributesBlock, Skill, SkillsBlock, Stat, StatsBlock } from "./data";
+import { AttributeWithSkills, AttributesBlock, ItemActionInfo, Skill, SkillsBlock, Stat, StatsBlock } from "./data";
 import { VeretenoRollData } from "../base/data";
 import { VeretenoRollOptions, VeretenoRollType } from "$module/data";
 import { VeretenoRoller } from "$module/utils/vereteno-roller";
 import { VeretenoWeapon } from "$module/item/weapon/document";
-import { VeretenoArmor } from "$module/item";
+import { PhysicalVeretenoItem, VeretenoArmor, VeretenoItem } from "$module/item";
+import { VeretenoItemType } from "$module/item/base/data";
+import { AttackType } from "$module/item/weapon/data";
 
 abstract class VeretenoCreatureSheet<TActor extends VeretenoCreature> extends VeretenoActorSheet<TActor>{
     override async getData(options: Partial<DocumentSheetOptions> = {}): Promise<VeretenoCreatureSheetData<TActor>> {
@@ -27,6 +29,26 @@ abstract class VeretenoCreatureSheet<TActor extends VeretenoCreature> extends Ve
             }
         }
 
+        const equippedWeapons = actor.EquippedWeapons.map(x => {
+            switch (x.attackType) {
+                case AttackType.Brawling:
+                    x.system["isBrawling"] = true;
+                    break;
+
+                case AttackType.Melee:
+                    x.system["isMelee"] = true;
+                    break;
+
+                case AttackType.Ranged:
+                    x.system["isRanged"] = true;
+                    break;
+
+                default: break;
+            }
+
+            return x;
+        })
+
         return {
             ...sheetData,
             stats: actor.Stats,
@@ -35,7 +57,9 @@ abstract class VeretenoCreatureSheet<TActor extends VeretenoCreature> extends Ve
             maxHp: actor.MaxHp,
             maxWp: actor.MaxWp,
             weapons: actor.Weapons,
+            equippedWeapons: equippedWeapons,
             armors: actor.Armors,
+            equippedArmor: actor.EquippedArmor,
         }
     }
 
@@ -44,10 +68,12 @@ abstract class VeretenoCreatureSheet<TActor extends VeretenoCreature> extends Ve
         const html = $html[0];
 
         $html.on('click', '.skill-check', this.#onSkillCheckRoll.bind(this));
+        $html.on('click', '.item-action', this.#onItemAction.bind(this));
+
+        $html.on('click', '.armor-action', this.#onArmorAction.bind(this));
 
         // html.addEventListener('click', '.item-action', this.#onItemAction.bind(this));
         // html.on('click', '.weapon-action', this.#onWeaponAction.bind(this));
-        // html.on('click', '.armor-action', this.#onArmorAction.bind(this));
     }
 
     async #onSkillCheckRoll(event: MouseEvent) {
@@ -93,10 +119,108 @@ abstract class VeretenoCreatureSheet<TActor extends VeretenoCreature> extends Ve
     }
 
     async #onItemAction(event: MouseEvent) {
+        event.preventDefault();
+        const element = event.currentTarget;
+        const dataset = (element as HTMLAnchorElement)?.dataset;
 
+        const { itemType, actionType, itemId } = dataset;
+        const itemInfo: ItemActionInfo = { type: (itemType! as VeretenoItemType), id: itemId! };
+
+        switch (actionType) {
+            case 'remove':
+                return await this.removeItem(itemInfo);
+                break;
+
+            case 'equip':
+                return await this.equipItem(itemInfo);
+                break;
+
+            case 'unequip':
+                return await this.unequipItem(itemInfo);
+                break;
+
+            default:
+                return;
+        }
+    }
+
+    async removeItem(itemInfo: ItemActionInfo): Promise<void> {
+        const item = this.actor.items.get(itemInfo.id);
+        if (!item) {
+            return;
+        }
+
+        this.actor.deleteEmbeddedDocuments("Item", [item._id!]);
+    }
+
+    async equipItem(itemInfo: ItemActionInfo): Promise<void> {
+        switch (itemInfo.type) {
+            case 'weapon':
+                return await this.equipWeapon(itemInfo.id);
+                break;
+
+            case 'armor':
+                return await this.equipArmor(itemInfo.id);
+                break;
+
+            default:
+                return;
+        }
+    }
+
+    async equipWeapon(itemId: string): Promise<void> {
+        const item = this.actor.items.find(x => x._id === itemId);
+        if (!item) {
+            return;
+        }
+
+        // предупреждение, если экипировано больше 2 элементов оружия.
+
+        await this.actor.updateEmbeddedDocuments("Item", [
+            { _id: item._id!, "system.isEquipped": true },
+        ]);
+    }
+
+    async equipArmor(itemId: string): Promise<void> {
+        const equippedArmor = this.actor.items.find(x => (x as unknown as VeretenoArmor).system.isEquipped && x.type === VeretenoItemType.Armor);
+        if (equippedArmor) {
+            // предупреждение, если броня уже экипирована.
+
+            return;
+        }
+
+        const item = this.actor.items.find(x => x._id === itemId);
+        if (!item) {
+            return;
+        }
+
+        await this.actor.updateEmbeddedDocuments("Item", [
+            { _id: item._id!, "system.isEquipped": true },
+        ]);
+    }
+
+    async unequipItem(itemInfo: ItemActionInfo): Promise<void> {
+        const item = this.actor.items.find(x => x._id === itemInfo.id
+            && (x as unknown as PhysicalVeretenoItem).system
+            && (x as unknown as PhysicalVeretenoItem).system.isEquipped
+        );
+
+        if (!item) {
+            return;
+        }
+
+        await this.actor.updateEmbeddedDocuments("Item", [
+            { _id: item._id!, "system.isEquipped": false },
+        ]);
     }
 
     async #onArmorAction(event: MouseEvent) {
+        event.preventDefault();
+        const element = event.currentTarget;
+        const dataset = (element as HTMLAnchorElement)?.dataset;
+
+        const { itemType, actionType, itemId } = dataset;
+
 
     }
 }
@@ -108,7 +232,9 @@ interface VeretenoCreatureSheetData<TActor extends VeretenoCreature> extends Ver
     maxHp: number;
     maxWp: number;
     weapons: VeretenoWeapon[];
+    equippedWeapons: VeretenoWeapon[];
     armors: VeretenoArmor[];
+    equippedArmor: VeretenoArmor;
 }
 
 export { VeretenoCreatureSheet }

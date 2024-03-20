@@ -44,12 +44,32 @@ class VeretenoCreature<TParent extends TokenDocument | null = TokenDocument | nu
         return intelligenceValue + empathyValue + bonuses;
     }
 
+    /**
+     * Имеющееся оружие.
+     */
     get Weapons(): VeretenoWeapon[] {
         return this.items.map(x => x as unknown as VeretenoItem).filter(x => x.type == VeretenoItemType.Weapon).map(x => x as VeretenoWeapon);
     }
 
+    /**
+     * Экипированное оружие.
+     */
+    get EquippedWeapons(): VeretenoWeapon[] {
+        return this.Weapons.filter(x => x.system.isEquipped);
+    }
+
+    /**
+     * Имеющаяся броня.
+     */
     get Armors(): VeretenoArmor[] {
         return this.items.map(x => x as unknown as VeretenoItem).filter(x => x.type == VeretenoItemType.Armor).map(x => x as VeretenoArmor);
+    }
+
+    /**
+     * Экипированная броня.
+     */
+    get EquippedArmor(): VeretenoArmor {
+        return this.Armors.filter(x => x.system.isEquipped)[0] || null;
     }
 
     async getAttributeRollData(key: string): Promise<VeretenoRollData> {
@@ -85,6 +105,12 @@ class VeretenoCreature<TParent extends TokenDocument | null = TokenDocument | nu
     async getArmorRollData() { }
 
     async getInitiativeRollData() { }
+
+    async equipWeapon() { }
+
+    async equipArmor() { }
+
+    async unequipItem() { }
 }
 
 interface VeretenoCreature<TParent extends TokenDocument | null = TokenDocument | null> extends VeretenoActor<TParent> {
