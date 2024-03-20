@@ -1,4 +1,4 @@
-import { IDicionary } from "$common";
+import { IDictionary } from "$common";
 import { BaseVeretenoActorSource, VeretenoActorSource, VeretenoActorSystemData, VeretenoActorSystemSource } from "../base/data";
 import { CharacterSource } from "../character/data";
 import { MonsterSource } from "../monster/data";
@@ -26,7 +26,7 @@ interface StatsBlock {
     willPoints: Stat;
 }
 
-interface AttributesBlock {
+interface AttributesBlock extends IDictionary<Attribute> {
     constitution: Attribute;
     intelligence: Attribute;
     dexterity: Attribute;
@@ -40,7 +40,7 @@ interface AttributesWithSkillsBlock {
     empathy: AttributeWithSkills;
 }
 
-interface SkillsBlock {
+interface SkillsBlock extends IDictionary<Skill> {
     melee: Skill;
     strength: Skill;
     agility: Skill;
@@ -85,7 +85,7 @@ interface Attribute {
 }
 
 interface AttributeWithSkills extends Attribute {
-    skills: IDicionary<Skill>;
+    skills: IDictionary<Skill>;
 }
 
 enum AttributeType {

@@ -1,3 +1,4 @@
+import { VeretenoRollData } from "../base/data";
 import { VeretenoActor } from "../index";
 import { AttributeType, AttributesBlock, Skill, SkillsBlock, StatsBlock, VeretenoCreatureSystemData } from "./data";
 
@@ -39,6 +40,40 @@ class VeretenoCreature<TParent extends TokenDocument | null = TokenDocument | nu
 
         return intelligenceValue + empathyValue + bonuses;
     }
+
+    async getAttributeRollData(key: string): Promise<VeretenoRollData> {
+        const attribute = this.Attributes[key];
+        if (attribute == null) {
+            return { dice: 'd20', pool: 0 };
+        }
+
+        const value = attribute.value;
+        const bonuses = 0;
+        const pool = value + bonuses;
+
+        return { dice: 'd20', pool: pool };
+    }
+
+    async getSkillRollData(key: string): Promise<VeretenoRollData> {
+        const skill = this.Skills[key];
+        if (skill == null) {
+            return { dice: 'd20', pool: 0 };
+        }
+
+        const attributeRollData = await this.getAttributeRollData(skill.attribute);
+
+        const value = skill.value;
+        const bonuses = 0;
+        const pool = attributeRollData.pool + value + bonuses;
+
+        return { dice: 'd20', pool: pool };
+    }
+
+    async getWeaponRollData() { }
+
+    async getArmorRollData() { }
+
+    async getInitiativeRollData() { }
 }
 
 interface VeretenoCreature<TParent extends TokenDocument | null = TokenDocument | null> extends VeretenoActor<TParent> {

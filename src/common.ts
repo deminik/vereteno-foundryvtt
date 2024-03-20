@@ -18,9 +18,9 @@ enum SkillType {
     Culture = "culture",
 };
 
-interface IDicionary<T> {
+interface IDictionary<T> {
     [index: string]: T
 }
 
 export { SkillType }
-export type { IDicionary }
+export type { IDictionary }
