@@ -1,0 +1,26 @@
+name: Publish
+
+on:
+  release:
+    types:
+      - published
+
+jobs:
+  release:
+    name: Create & Publish Release
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Package
+        run: |
+          zip -r vereteno.zip fonts lang templates dist/vereteno.js dist/vereteno.css system.json template.json README.md
+      - name: Update Release with Artifacts
+        uses: ncipollo/release-action@v1.13.0
+        with:
+          allowUpdates: true
+          name: ${{ github.event.release.name }}
+          tag: ${{ github.event.release.tag_name }}
+          body: ${{ github.event.release.body }}
+          artifacts: './forbidden-lands.zip'
+          token: ${{ secrets.GITHUB_TOKEN }}
