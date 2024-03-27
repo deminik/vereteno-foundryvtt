@@ -1,33 +1,42 @@
 {
     "vereteno": {
         "common": {
+            "none": "None",
             "weapon": "Weapon",
             "armor": "Armor",
             "description": "Description",
             "biography": "Biography",
             "money": "Money",
-            "experience": "Experience"
+            "experience": "Experience",
+            "price": "Price",
+            "weight": "Weight",
+            "reputation": ""
         },
-        "attack": {
-            "none": "",
+        "weaponType": {
+            "none": "None",
             "brawling": "Brawling",
             "melee": "Meelee",
             "ranged": "Ranged"
         },
         "weapon": {
+            "none": "None",
             "modifier": "Modifier",
             "damage": "Damage",
             "initiative": "Initiative",
             "crit": "Critical",
             "attackWith": "Attack using",
             "range": "Range",
-            "attackType": "Attack type"
+            "weaponType": "Weapon type"
         },
         "armor": {
+            "none": "None",
             "quality": "Quality",
-            "armorClass": "Armor class"
+            "armorClass": "Armor class",
+            "durability": "Durability",
+            "maxDurability": "Maximum durability"
         },
         "range": {
+            "none": "None",
             "pointBlank": "Point blank",
             "close": "Close distance",
             "medium": "Medium distance",
@@ -35,17 +44,19 @@
             "utmost": "Utmost distance"
         },
         "stat": {
-            "hitPoint": "",
-            "willPoint": "",
-            "reputation": ""
+            "none": "None",
+            "hitPoints": "",
+            "willPoints": ""
         },
         "attribute": {
+            "none": "None",
             "constitution": "",
             "intelligence": "",
             "dexterity": "",
             "empathy": ""
         },
         "skill": {
+            "none": "None",
             "melee": "",
             "strength": "",
             "agility": "",
@@ -64,10 +75,29 @@
             "culture": ""
         },
         "tab": {
+            "none": "None",
             "stat": "Stats",
             "equipment": "Equipment",
             "fight": "Fight",
             "bio": "Bio"
+        },
+        "settings": {
+            "showTaskCheckOptions": {
+                "name": "Show roll dialogs",
+                "hint": "Shows roll dialogs by default, hold CTRL to roll without."
+            }
+        }
+    },
+    "TYPES": {
+        "Actor": {
+            "character": "Character",
+            "npc": "NPC",
+            "monster": "Monster"
+        },
+        "Item": {
+            "armor": "Armor",
+            "weapon": "Weapon",
+            "equipment": "Equipment"
         }
     }
 }

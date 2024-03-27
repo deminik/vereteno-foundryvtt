@@ -1,0 +1,14 @@
+<section class="physical-item-block">
+    <div class="vereteno item stat stat-modifier">
+        <div class="vereteno stat title">{{localize "vereteno.common.weight"}}</div>
+        <div class="vereteno stat value"><input name="system.weight" type="number" value="{{item.system.weight}}"
+                data-dtype="Number">
+        </div>
+    </div>
+    <div class="vereteno item stat stat-modifier">
+        <div class="vereteno stat title">{{localize "vereteno.common.price"}}</div>
+        <div class="vereteno stat value"><input name="system.price" type="number" value="{{item.system.price}}" data-dtype="Number">
+        </div>
+    </div>
+    {{> "systems/vereteno/templates/sheets/partials/item/base-item-block.hbs"}}
+</section>

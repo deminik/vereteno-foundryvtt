@@ -1,0 +1,1 @@
+export { VeretenoActors } from "./actors";

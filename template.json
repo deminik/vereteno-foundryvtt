@@ -2,10 +2,11 @@
     "Actor": {
         "types": [
             "character",
-            "npc"
+            "npc",
+            "monster"
         ],
         "templates": {
-            "common": {
+            "creature": {
                 "stats": {
                     "hitPoints": {
                         "value": 10,
@@ -159,18 +160,30 @@
                         "max": 5
                     }
                 },
-                "biography": "",
+                "description": "",
+                "money": 0
+            },
+            "person": {
+                "reputation": 0,
                 "money": 0
             }
         },
         "character": {
             "templates": [
-                "common"
-            ]
+                "creature",
+                "person"
+            ],
+            "exp": 0
         },
         "npc": {
             "templates": [
-                "common"
+                "creature",
+                "person"
+            ]
+        },
+        "monster": {
+            "templates": [
+                "creature"
             ]
         }
     },
@@ -183,31 +196,37 @@
         ],
         "templates": {
             "base": {
-                "description": "",
+                "description": ""
+            },
+            "physical": {
                 "weight": 1,
                 "price": 0
             }
         },
         "weapon": {
             "templates": [
-                "base"
+                "physical"
             ],
             "modifier": 0,
             "damage": 1,
             "initiative": 0,
             "crit": 3,
-            "attackType": "",
+            "weaponType": "",
             "attackWith": "",
             "range": ""
         },
         "armor": {
             "templates": [
-                "base"
+                "physical"
             ],
             "armorClass": 1,
             "quality": 0,
             "durability": null
         },
-        "feature": {}
+        "feature": {
+            "templates": [
+                "base"
+            ]
+        }
     }
 }
