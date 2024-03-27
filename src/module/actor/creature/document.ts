@@ -117,7 +117,21 @@ class VeretenoCreature<TParent extends TokenDocument | null = TokenDocument | nu
         return rollData;
     }
 
-    async getInitiativeRollData() { }
+    async getInitiativeRollData(itemId: string): Promise<VeretenoRollData> { 
+        let item = (this.items.get(itemId) as unknown as VeretenoWeapon);
+
+        let skill = this.Skills.agility;
+
+        let bonuses = 0;
+
+        let rollData: VeretenoRollData = {
+            dice: "d20",
+            pool: 1,
+            bonus: skill.value + item.system.modifier + bonuses
+        };
+
+        return rollData;
+    }
 
     async equipWeapon() { }
 

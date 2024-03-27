@@ -31,6 +31,7 @@ class VeretenoMessageData implements RollOptions {
 class VeretenoRollData {
     dice: string = 'd20';
     pool: number = 1;
+    bonus: number | null = 0;
 }
 
 export type { IdLabelType }

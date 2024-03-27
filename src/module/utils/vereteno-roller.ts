@@ -26,6 +26,31 @@ class VeretenoRoller {
         this.toMessage();
     }
 
+    async rollInitiative(rollOptions: VeretenoRollOptions): Promise<void> {
+        this.options = rollOptions;
+
+        let rollFormula = `${rollOptions.rollData.pool}${rollOptions.rollData.dice}`;
+
+        const bonus = rollOptions.rollData.bonus;
+        if (bonus !== null && bonus !== 0) {
+            if (bonus > 0) {
+                rollFormula = rollFormula + `+${bonus}`
+            } else {
+                rollFormula = rollFormula + `${bonus}`
+            }
+        }
+
+        let roll = new VeretenoRoll(rollFormula);
+        this.rollObject = roll;
+
+        if (!this.rollObject._evaluated) {
+            await this.rollObject.evaluate({});
+        }
+
+        await this.reevaluateTotal();
+        this.toMessage();
+    }
+
     async reevaluateTotal(): Promise<void> {
         if (!this.rollObject || !this.options) {
             return;

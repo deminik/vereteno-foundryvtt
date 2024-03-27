@@ -69,8 +69,8 @@ abstract class VeretenoCreatureSheet<TActor extends VeretenoCreature> extends Ve
 
         $html.on('click', '.skill-check', this.#onSkillCheckRoll.bind(this));
         $html.on('click', '.item-action', this.#onItemAction.bind(this));
-
         $html.on('click', '.armor-action', this.#onArmorAction.bind(this));
+        $html.on('click', '.weapon-action', this.#onWeaponAction.bind(this));
 
         // html.addEventListener('click', '.item-action', this.#onItemAction.bind(this));
         // html.on('click', '.weapon-action', this.#onWeaponAction.bind(this));
@@ -115,7 +115,64 @@ abstract class VeretenoCreatureSheet<TActor extends VeretenoCreature> extends Ve
     }
 
     async #onWeaponAction(event: MouseEvent) {
+        event.preventDefault();
+        const element = event.currentTarget;
+        const dataset = (element as HTMLAnchorElement)?.dataset;
 
+        const { itemType, actionType, itemId, weaponType, attackType } = dataset;
+
+        if (itemId == null || itemId == undefined) {
+            return;
+        }
+
+        const rollData = {
+            isBlind: false || event.ctrlKey,
+            showDialog: false
+        }
+
+        if (actionType === 'initiative') {
+            let weaponData = {
+                itemId
+            };
+
+            return await this.rollWeaponInitiative(itemId);
+        }
+        else if (actionType === 'attack') {
+            let weaponData = {
+                itemId,
+                weaponType,
+                attackType
+            };
+
+            // return await this.rollWeaponAttack(weaponData, rollData);
+        }
+    }
+
+    async rollWeaponInitiative(weaponId: string) {
+        const { actor } = this;
+
+        const messageData: VeretenoMessageData = {
+            userId: game.user._id || undefined,
+            speaker: ChatMessage.getSpeaker(),
+            flavor: 'Инициатива',
+            sound: CONFIG.sounds.dice,
+            blind: false
+        };
+
+        // if (rollData.showDialog) {
+
+        // }
+
+        let initiativeRollData = await actor.getInitiativeRollData(weaponId);
+
+        const rollOptions: VeretenoRollOptions = {
+            type: VeretenoRollType.initiative,
+            messageData,
+            rollData: initiativeRollData
+        }
+
+        const veretenoRollHandler = new VeretenoRoller();
+        await veretenoRollHandler.rollInitiative(rollOptions);
     }
 
     async #onItemAction(event: MouseEvent) {
@@ -221,7 +278,7 @@ abstract class VeretenoCreatureSheet<TActor extends VeretenoCreature> extends Ve
 
         const { itemType, actionType, itemId } = dataset;
 
-        if(itemId == null || itemId == undefined){
+        if (itemId == null || itemId == undefined) {
             return;
         }
 
@@ -267,7 +324,7 @@ abstract class VeretenoCreatureSheet<TActor extends VeretenoCreature> extends Ve
             rollData: armorRollData
         }
 
-        if(rollOptions.rollData.pool == 0){
+        if (rollOptions.rollData.pool == 0) {
             // сообщение о разбитой броне.
             return;
         }
@@ -279,7 +336,7 @@ abstract class VeretenoCreatureSheet<TActor extends VeretenoCreature> extends Ve
     async ablateArmor(armorId: string, value: number = 1) {
         const { actor } = this;
 
-        if(value < 1){
+        if (value < 1) {
             return;
         }
 
