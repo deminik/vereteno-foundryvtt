@@ -1,5 +1,6 @@
 import { VeretenoActor } from "$module/actor";
 import { VeretenoItem } from "$module/item";
+import { VeretenoClientSettings } from "$module/system/settings/client-settings";
 import { VERETENOCONFIG } from "$veretenoConfig";
 
 interface VeretenoGame
@@ -11,7 +12,7 @@ interface VeretenoGame
         VeretenoItem<null>,
         Macro,
         Scene,
-        User
+        User<VeretenoActor<null>>
     > {
 }
 
@@ -42,7 +43,8 @@ declare global {
     var game: VeretenoGame;
 
     interface VeretenoConfig extends ConfiguredConfig {
-        VERETENO: typeof VERETENOCONFIG
+        VERETENO: typeof VERETENOCONFIG,
+        SETTINGS: VeretenoClientSettings
     }
 
     const CONFIG: VeretenoConfig;

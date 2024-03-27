@@ -3,10 +3,11 @@ import { VeretenoItemSheet } from '$module/item/base/sheet';
 import { VERETENOCONFIG } from '../../veretenoConfig';
 import { VERETENO_PARTIALS } from '../../partials';
 import { VeretenoWeaponSheet } from '$module/item/weapon/sheet';
-import { VeretenoCharacter } from '$module/actor';
 import { VeretenoCharacterSheet } from '$module/actor/character/sheet';
 import { VeretenoMonsterSheet } from '$module/actor/monster/sheet';
 import { VeretenoNpcSheet } from '$module/actor/npc/sheet';
+import { registerSettings } from '$module/system/settings';
+import { VeretenoClientSettings } from '$module/system/settings/client-settings';
 
 function preloadHandlebarsTemplates() {
     return loadTemplates(VERETENO_PARTIALS);
@@ -18,9 +19,9 @@ export const Init = {
             console.log("Vereteno | System init begin.");
 
             CONFIG.VERETENO = VERETENOCONFIG;
+            CONFIG.SETTINGS = new VeretenoClientSettings();
 
             Actors.unregisterSheet('core', ActorSheet);
-            // Actors.registerSheet('vereteno', VeretenoCharacterSheet, { makeDefault: true });
             Actors.registerSheet('vereteno', VeretenoCharacterSheet, {
                 types: ['character'],
                 makeDefault: true
@@ -35,7 +36,9 @@ export const Init = {
             });
 
             Items.unregisterSheet('core', ItemSheet);
-            Items.registerSheet('vereteno', VeretenoItemSheet, { makeDefault: true });
+            Items.registerSheet('vereteno', VeretenoItemSheet, {
+                makeDefault: true
+            });
             Items.registerSheet('vereteno', VeretenoArmorSheet, {
                 types: ['armor'],
                 makeDefault: true
@@ -47,7 +50,7 @@ export const Init = {
 
             preloadHandlebarsTemplates();
 
-            // registerSystemSettings();
+            registerSettings();
 
             console.log("Vereteno | System init done.");
         });

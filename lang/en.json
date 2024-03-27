@@ -80,6 +80,12 @@
             "equipment": "Equipment",
             "fight": "Fight",
             "bio": "Bio"
+        },
+        "settings": {
+            "showTaskCheckOptions": {
+                "name": "Show roll dialogs",
+                "hint": "Shows roll dialogs by default, hold CTRL to roll without."
+            }
         }
     },
     "TYPES": {

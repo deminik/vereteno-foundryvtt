@@ -83,6 +83,8 @@ abstract class VeretenoCreatureSheet<TActor extends VeretenoCreature> extends Ve
 
         const { actor } = this;
 
+        const show = CONFIG.SETTINGS.ShowTaskCheckOptions;
+
         let { label, rollKey, rollType } = dataset;
 
         if (rollKey == null || rollType == null) {
