@@ -1,4 +1,5 @@
 import { VeretenoActor } from "$module/actor";
+import { VeretenoActors } from "$module/collection";
 import { VeretenoItem } from "$module/item";
 import { VeretenoClientSettings } from "$module/system/settings/client-settings";
 import { VERETENOCONFIG } from "$veretenoConfig";
@@ -6,7 +7,7 @@ import { VERETENOCONFIG } from "$veretenoConfig";
 interface VeretenoGame
     extends Game<
         VeretenoActor<null>,
-        Actors<VeretenoActor<null>>,
+        VeretenoActors<VeretenoActor<null>>,
         ChatMessage,
         Combat,
         VeretenoItem<null>,
@@ -18,8 +19,8 @@ interface VeretenoGame
 
 type ConfiguredConfig = Config<
     AmbientLightDocument<Scene | null>,
-    ActiveEffect<Actor | Item | null>,
-    Actor,
+    ActiveEffect<VeretenoActor | VeretenoItem | null>,
+    VeretenoActor,
     ActorDelta<TokenDocument>,
     ChatLog,
     ChatMessage,
@@ -28,7 +29,7 @@ type ConfiguredConfig = Config<
     CombatTracker<Combat | null>,
     CompendiumDirectory,
     Hotbar,
-    Item,
+    VeretenoItem,
     Macro,
     MeasuredTemplateDocument<Scene>,
     TileDocument<Scene>,
