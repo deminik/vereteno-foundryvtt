@@ -31,10 +31,27 @@ class VeretenoMessageData implements RollOptions {
 class VeretenoRollData {
     dice: string = 'd20';
     pool: number = 1;
-    bonus: number | null = 0;
+    bonus: number = 0;
     isSerial: boolean = false;
 }
 
+interface VeretenoRollData {
+    dice: string;
+    pool: number;
+    bonus: number;
+    isSerial: boolean;
+}
+
+class VeretenoChatOptions {
+    isBlind: boolean = false;
+    showDialog: boolean = false;
+}
+
+interface VeretenoChatOptions {
+    isBlind: boolean;
+    showDialog: boolean;
+}
+
 export type { IdLabelType }
-export type { VeretenoRollOptions, VeretenoMessageData, VeretenoRollData }
-export { VeretenoRollType }
+export type { VeretenoRollOptions, VeretenoMessageData }
+export { VeretenoRollType, VeretenoRollData, VeretenoChatOptions }

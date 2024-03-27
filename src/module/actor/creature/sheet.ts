@@ -1,13 +1,13 @@
 import { VeretenoCreature } from "../index";
 import { VeretenoActorSheet, VeretenoActorSheetData } from "../base/sheet";
 import { AttributeWithSkills, AttributesBlock, ItemActionInfo, Skill, SkillsBlock, Stat, StatsBlock, WeaponAttackInfo } from "./data";
-import { VeretenoRollData } from "../base/data";
-import { VeretenoMessageData, VeretenoRollOptions, VeretenoRollType } from "$module/data";
+import { VeretenoChatOptions, VeretenoMessageData, VeretenoRollData, VeretenoRollOptions, VeretenoRollType } from "$module/data";
 import { VeretenoRoller } from "$module/utils/vereteno-roller";
 import { VeretenoWeapon } from "$module/item/weapon/document";
 import { PhysicalVeretenoItem, VeretenoArmor, VeretenoItem } from "$module/item";
 import { VeretenoItemType } from "$module/item/base/data";
 import { AttackType, WeaponType } from "$module/item/weapon/data";
+import { VeretenoRollDialog, VeretenoRollDialogArgument } from "$module/dialog";
 
 abstract class VeretenoCreatureSheet<TActor extends VeretenoCreature> extends VeretenoActorSheet<TActor>{
     override async getData(options: Partial<DocumentSheetOptions> = {}): Promise<VeretenoCreatureSheetData<TActor>> {
@@ -83,7 +83,15 @@ abstract class VeretenoCreatureSheet<TActor extends VeretenoCreature> extends Ve
 
         const { actor } = this;
 
-        const show = CONFIG.SETTINGS.ShowTaskCheckOptions;
+        const showDialog = (CONFIG.SETTINGS.ShowTaskCheckOptions !== event.ctrlKey);
+        let dialogResult = new VeretenoRollDialogArgument();
+        if (showDialog) {
+            dialogResult = await (new VeretenoRollDialog()).getTaskCheckOptions();
+
+            if (dialogResult.cancelled) {
+                return;
+            }
+        }
 
         let { label, rollKey, rollType } = dataset;
 
@@ -91,19 +99,22 @@ abstract class VeretenoCreatureSheet<TActor extends VeretenoCreature> extends Ve
             return;
         }
 
-        let rollData: VeretenoRollData;
+        let rollData = new VeretenoRollData();
         if (rollType == "attribute") {
             rollData = await actor.getAttributeRollData(rollKey);
         } else {
             rollData = await actor.getSkillRollData(rollKey);
         }
 
+        rollData.pool += dialogResult.modifier;
+
+
         let messageData = {
             userId: game.user._id || undefined,
             speaker: ChatMessage.getSpeaker(),
             flavor: label || '',
             sound: CONFIG.sounds.dice,
-            blind: false
+            blind: false || dialogResult.blindRoll || event.shiftKey
         };
 
         const rollOptions: VeretenoRollOptions = {
@@ -127,13 +138,13 @@ abstract class VeretenoCreatureSheet<TActor extends VeretenoCreature> extends Ve
             return;
         }
 
-        const rollData: VeretenoRollData = {
-            isBlind: false || event.ctrlKey,
-            showDialog: false
+        const chatOptions: VeretenoChatOptions = {
+            isBlind: false || event.shiftKey,
+            showDialog: (CONFIG.SETTINGS.ShowTaskCheckOptions !== event.ctrlKey)
         }
 
         if (actionType === 'initiative') {
-            return await this.rollWeaponInitiative(itemId);
+            return await this.rollWeaponInitiative(itemId, chatOptions);
         }
         else if (actionType === 'attack') {
             let weaponData: WeaponAttackInfo = {
@@ -142,26 +153,36 @@ abstract class VeretenoCreatureSheet<TActor extends VeretenoCreature> extends Ve
                 attackType: attackType as AttackType
             };
 
-            return await this.rollWeaponAttack(weaponData, rollData);
+            return await this.rollWeaponAttack(weaponData, chatOptions);
         }
     }
 
-    async rollWeaponInitiative(weaponId: string) {
+    async rollWeaponInitiative(weaponId: string, chatOptions: VeretenoChatOptions) {
         const { actor } = this;
+
+        let dialogResult = new VeretenoRollDialogArgument();
+        if (chatOptions.showDialog) {
+            dialogResult = await (new VeretenoRollDialog()).getTaskCheckOptions();
+
+            if (dialogResult.cancelled) {
+                return;
+            }
+        }
 
         const messageData: VeretenoMessageData = {
             userId: game.user._id || undefined,
             speaker: ChatMessage.getSpeaker(),
             flavor: 'Инициатива',
             sound: CONFIG.sounds.dice,
-            blind: false
+            blind: chatOptions.isBlind || dialogResult.blindRoll
         };
 
-        // if (rollData.showDialog) {
-
-        // }
-
         let initiativeRollData = await actor.getInitiativeRollData(weaponId);
+        if (initiativeRollData == null) {
+            return;
+        }
+
+        initiativeRollData.bonus += dialogResult.modifier;
 
         const rollOptions: VeretenoRollOptions = {
             type: VeretenoRollType.Initiative,
@@ -173,22 +194,28 @@ abstract class VeretenoCreatureSheet<TActor extends VeretenoCreature> extends Ve
         await veretenoRollHandler.rollInitiative(rollOptions);
     }
 
-    async rollWeaponAttack(weaponData: WeaponAttackInfo, rollData: VeretenoRollData) {
+    async rollWeaponAttack(weaponData: WeaponAttackInfo, chatOptions: VeretenoChatOptions) {
         const { actor } = this;
+
+        let dialogResult = new VeretenoRollDialogArgument();
+        if (chatOptions.showDialog) {
+            dialogResult = await (new VeretenoRollDialog()).getTaskCheckOptions();
+
+            if (dialogResult.cancelled) {
+                return;
+            }
+        }
 
         const messageData: VeretenoMessageData = {
             userId: game.user._id || undefined,
             speaker: ChatMessage.getSpeaker(),
             flavor: weaponData.weaponType,
             sound: CONFIG.sounds.dice,
-            blind: rollData.isBlind
+            blind: chatOptions.isBlind || dialogResult.blindRoll
         };
 
-        if (rollData.showDialog) {
-
-        }
-
         let weaponRollData = await actor.getWeaponRollData(weaponData);
+        weaponRollData.pool += dialogResult.modifier;
 
         const rollOptions: VeretenoRollOptions = {
             type: VeretenoRollType.Attack,
@@ -303,6 +330,11 @@ abstract class VeretenoCreatureSheet<TActor extends VeretenoCreature> extends Ve
 
         const { itemType, actionType, itemId } = dataset;
 
+        const chatOptions: VeretenoChatOptions = {
+            isBlind: false || event.shiftKey,
+            showDialog: (CONFIG.SETTINGS.ShowTaskCheckOptions !== event.ctrlKey)
+        }
+
         if (itemId == null || itemId == undefined) {
             return;
         }
@@ -317,7 +349,7 @@ abstract class VeretenoCreatureSheet<TActor extends VeretenoCreature> extends Ve
 
         switch (actionType) {
             case 'block':
-                return await this.rollArmorBlock(itemId);
+                return await this.rollArmorBlock(itemId, chatOptions);
                 break;
             case 'ablate':
                 return await this.ablateArmor(itemId);
@@ -330,18 +362,32 @@ abstract class VeretenoCreatureSheet<TActor extends VeretenoCreature> extends Ve
         }
     }
 
-    async rollArmorBlock(armorId: string) {
+    async rollArmorBlock(armorId: string, chatOptions: VeretenoChatOptions) {
         const { actor } = this;
+
+        let dialogResult = new VeretenoRollDialogArgument();
+        if (chatOptions.showDialog) {
+            dialogResult = await (new VeretenoRollDialog()).getTaskCheckOptions();
+
+            if (dialogResult.cancelled) {
+                return;
+            }
+        }
 
         const messageData: VeretenoMessageData = {
             userId: game.user._id || undefined,
             speaker: ChatMessage.getSpeaker(),
             flavor: 'Защита',
             sound: CONFIG.sounds.dice,
-            blind: false
+            blind: chatOptions.isBlind || dialogResult.blindRoll
         };
 
         let armorRollData = await actor.getArmorRollData(armorId);
+        if (armorRollData == null) {
+            return;
+        }
+
+        armorRollData.pool += dialogResult.modifier;
 
         const rollOptions: VeretenoRollOptions = {
             type: VeretenoRollType.ArmorBlock,

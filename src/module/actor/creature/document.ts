@@ -1,8 +1,8 @@
+import { VeretenoRollData } from "$module/data";
 import { VeretenoArmor, VeretenoItem } from "$module/item";
 import { VeretenoItemType } from "$module/item/base/data";
 import { AttackType, WeaponType } from "$module/item/weapon/data";
 import { VeretenoWeapon } from "$module/item/weapon/document";
-import { VeretenoRollData } from "../base/data";
 import { VeretenoActor } from "../index";
 import { AttributesBlock, SkillsBlock, StatsBlock, VeretenoCreatureSystemData, WeaponAttackInfo } from "./data";
 
@@ -75,30 +75,33 @@ class VeretenoCreature<TParent extends TokenDocument | null = TokenDocument | nu
 
     async getAttributeRollData(key: string): Promise<VeretenoRollData> {
         const attribute = this.Attributes[key];
+        const result = new VeretenoRollData();
         if (attribute == null) {
-            return { dice: 'd20', pool: 0 };
+            return result;
         }
 
         const value = attribute.value;
         const bonuses = 0;
-        const pool = value + bonuses;
+        result.pool = value + bonuses;
 
-        return { dice: 'd20', pool: pool };
+        return result;
     }
 
     async getSkillRollData(key: string): Promise<VeretenoRollData> {
+        const result = new VeretenoRollData();
+
         const skill = this.Skills[key];
         if (skill == null) {
-            return { dice: 'd20', pool: 0 };
+            return result;
         }
 
         const attributeRollData = await this.getAttributeRollData(skill.attribute);
 
         const value = skill.value;
         const bonuses = 0;
-        const pool = attributeRollData.pool + value + bonuses;
+        result.pool = attributeRollData.pool + value + bonuses;
 
-        return { dice: 'd20', pool: pool };
+        return result;
     }
 
     async getWeaponRollData(weaponData: WeaponAttackInfo): Promise<VeretenoRollData> {
@@ -159,19 +162,17 @@ class VeretenoCreature<TParent extends TokenDocument | null = TokenDocument | nu
         return 0;
     }
 
-    async getArmorRollData(itemId: string): Promise<VeretenoRollData> {
+    async getArmorRollData(itemId: string): Promise<VeretenoRollData | null> {
+        const result = new VeretenoRollData();
         let item = (this.items.get(itemId) as unknown as VeretenoArmor);
 
         if (!item) {
-            return;
+            return null;
         }
 
-        let rollData: VeretenoRollData = {
-            dice: "d20",
-            pool: item.system.durability
-        };
+        result.pool = item.system.durability
 
-        return rollData;
+        return result;
     }
 
     async getInitiativeRollData(itemId: string): Promise<VeretenoRollData> {
@@ -181,13 +182,11 @@ class VeretenoCreature<TParent extends TokenDocument | null = TokenDocument | nu
 
         let bonuses = 0;
 
-        let rollData: VeretenoRollData = {
-            dice: "d20",
-            pool: 1,
-            bonus: skill.value + item.system.modifier + bonuses
-        };
+        const result = new VeretenoRollData();
+        result.pool = 1;
+        result.bonus = skill.value + item.system.modifier + bonuses;
 
-        return rollData;
+        return result;
     }
 
     async equipWeapon() { }

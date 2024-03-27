@@ -20,4 +20,4 @@ type ActorType = CreatureActorType | MechanismActorType;
 
 type VeretenoActorSource = | CreatureSource;
 
-export type { VeretenoActorSource, VeretenoActorSystemSource, BaseVeretenoActorSource, VeretenoActorSystemData, VeretenoRollData }
+export type { VeretenoActorSource, VeretenoActorSystemSource, BaseVeretenoActorSource, VeretenoActorSystemData }
