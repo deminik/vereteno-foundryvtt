@@ -2,7 +2,7 @@ import { VeretenoCreature } from "../index";
 import { VeretenoActorSheet, VeretenoActorSheetData } from "../base/sheet";
 import { AttributeWithSkills, AttributesBlock, ItemActionInfo, Skill, SkillsBlock, Stat, StatsBlock } from "./data";
 import { VeretenoRollData } from "../base/data";
-import { VeretenoRollOptions, VeretenoRollType } from "$module/data";
+import { VeretenoMessageData, VeretenoRollOptions, VeretenoRollType } from "$module/data";
 import { VeretenoRoller } from "$module/utils/vereteno-roller";
 import { VeretenoWeapon } from "$module/item/weapon/document";
 import { PhysicalVeretenoItem, VeretenoArmor, VeretenoItem } from "$module/item";
@@ -221,7 +221,108 @@ abstract class VeretenoCreatureSheet<TActor extends VeretenoCreature> extends Ve
 
         const { itemType, actionType, itemId } = dataset;
 
+        if(itemId == null || itemId == undefined){
+            return;
+        }
 
+        const messageData = {
+            userId: game.user._id || undefined,
+            speaker: ChatMessage.getSpeaker(),
+            flavor: '',
+            sound: CONFIG.sounds.dice,
+            blind: false
+        };
+
+        switch (actionType) {
+            case 'block':
+                return await this.rollArmorBlock(itemId);
+                break;
+            case 'ablate':
+                return await this.ablateArmor(itemId);
+                break;
+            case 'repair':
+                return await this.repairArmor(itemId);
+                break;
+            default:
+                return;
+        }
+    }
+
+    async rollArmorBlock(armorId: string) {
+        const { actor } = this;
+
+        const messageData: VeretenoMessageData = {
+            userId: game.user._id || undefined,
+            speaker: ChatMessage.getSpeaker(),
+            flavor: 'Защита',
+            sound: CONFIG.sounds.dice,
+            blind: false
+        };
+
+        let armorRollData = await actor.getArmorRollData(armorId);
+
+        const rollOptions: VeretenoRollOptions = {
+            type: VeretenoRollType.ArmorBlock,
+            messageData,
+            rollData: armorRollData
+        }
+
+        if(rollOptions.rollData.pool == 0){
+            // сообщение о разбитой броне.
+            return;
+        }
+
+        const veretenoRollHandler = new VeretenoRoller();
+        await veretenoRollHandler.roll(rollOptions);
+    }
+
+    async ablateArmor(armorId: string, value: number = 1) {
+        const { actor } = this;
+
+        if(value < 1){
+            return;
+        }
+
+        const armor = (this.actor.items.find(x => x._id === armorId) as unknown as VeretenoArmor);
+        if (!armor) {
+            // сообщение об остутствующем предмете.
+            return;
+        }
+
+        if (armor.system.durability === 0) {
+            // предупреждение о разбитой броне.
+            return;
+        }
+
+        armor.system.durability -= value;
+
+        if (armor.system.durability < 0) {
+            armor.system.durability = 0;
+        }
+
+        if (armor.system.durability === 0) {
+            // предупреждение о разбитой броне.
+        }
+
+        await this.actor.updateEmbeddedDocuments("Item", [
+            { _id: armor._id!, "system.durability": armor.system.durability },
+        ]);
+    }
+
+    async repairArmor(armorId: string) {
+        const armor = (this.actor.items.find(x => x._id === armorId) as unknown as VeretenoArmor);
+        if (!armor) {
+            // сообщение об остутствующем предмете
+        }
+
+        const maxDurability = armor.system.armorClass + armor.system.quality
+        if (armor.system.durability === maxDurability) {
+            // предупреждение о целой броне.
+        }
+
+        await this.actor.updateEmbeddedDocuments("Item", [
+            { _id: armor._id!, "system.durability": maxDurability },
+        ]);
     }
 }
 
