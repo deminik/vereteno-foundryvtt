@@ -1,9 +1,10 @@
 import { VeretenoArmor, VeretenoItem } from "$module/item";
 import { VeretenoItemType } from "$module/item/base/data";
+import { AttackType, WeaponType } from "$module/item/weapon/data";
 import { VeretenoWeapon } from "$module/item/weapon/document";
 import { VeretenoRollData } from "../base/data";
 import { VeretenoActor } from "../index";
-import { AttributesBlock, SkillsBlock, StatsBlock, VeretenoCreatureSystemData } from "./data";
+import { AttributesBlock, SkillsBlock, StatsBlock, VeretenoCreatureSystemData, WeaponAttackInfo } from "./data";
 
 class VeretenoCreature<TParent extends TokenDocument | null = TokenDocument | null> extends VeretenoActor<TParent>{
     get Stats(): StatsBlock {
@@ -100,7 +101,63 @@ class VeretenoCreature<TParent extends TokenDocument | null = TokenDocument | nu
         return { dice: 'd20', pool: pool };
     }
 
-    async getWeaponRollData() { }
+    async getWeaponRollData(weaponData: WeaponAttackInfo): Promise<VeretenoRollData> {
+        let item = this.items.get(weaponData.id) as unknown as VeretenoWeapon;
+
+        let itemSkill = item.system.attackWith;
+        let skillRollData = await this.getSkillRollData(itemSkill);
+
+        let weaponAttackTypeModifier = this.getWeaponAttackTypeModifier(weaponData);
+
+        let weaponAttackModifier = item.system.modifier;
+
+        let weaponDamage = item.system.damage;
+
+        const rollData: VeretenoRollData = mergeObject(skillRollData,
+            {
+                pool: skillRollData.pool + weaponAttackTypeModifier + weaponAttackModifier,
+                weaponDamage,
+                weaponAttackModifier
+            });
+
+        if (weaponData.attackType == AttackType.Burst) {
+            rollData.isSerial = true;
+        }
+
+        return rollData;
+    }
+
+    getWeaponAttackTypeModifier(weaponData: WeaponAttackInfo): number {
+        if (weaponData.weaponType == WeaponType.Melee || weaponData.weaponType == WeaponType.Brawling) {
+            if (weaponData.attackType == AttackType.Power) {
+                return 2;
+            }
+
+            if (weaponData.attackType == AttackType.Light) {
+                return -2;
+            }
+
+            return 0;
+        }
+
+        if (weaponData.weaponType == WeaponType.Ranged) {
+            if (weaponData.attackType == AttackType.Aimed) {
+                return 2;
+            }
+
+            if (weaponData.attackType == AttackType.Hip) {
+                return -2;
+            }
+
+            if (weaponData.attackType == AttackType.Burst) {
+                return -2;
+            }
+
+            return 0;
+        }
+
+        return 0;
+    }
 
     async getArmorRollData(itemId: string): Promise<VeretenoRollData> {
         let item = (this.items.get(itemId) as unknown as VeretenoArmor);
@@ -117,7 +174,7 @@ class VeretenoCreature<TParent extends TokenDocument | null = TokenDocument | nu
         return rollData;
     }
 
-    async getInitiativeRollData(itemId: string): Promise<VeretenoRollData> { 
+    async getInitiativeRollData(itemId: string): Promise<VeretenoRollData> {
         let item = (this.items.get(itemId) as unknown as VeretenoWeapon);
 
         let skill = this.Skills.agility;

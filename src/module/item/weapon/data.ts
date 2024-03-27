@@ -44,5 +44,15 @@ enum RangeType {
     Utmost = "utmost"
 }
 
-export { WeaponType, RangeType }
+enum AttackType {
+    None = "none",
+    Regular = "regular",
+    Power = "power",
+    Light = "light",
+    Aimed = "aimed",
+    Hip = "hip",
+    Burst = "burst"
+}
+
+export { WeaponType, RangeType, AttackType }
 export { VeretenoWeaponSystemData, WeaponSource }

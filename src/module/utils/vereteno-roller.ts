@@ -60,7 +60,7 @@ class VeretenoRoller {
             await this.rollObject!.evaluate({});
         }
 
-        if (this.options.type === 'serial') {
+        if (this.options.rollData.isSerial) {
             this.rollObject._formula += '+'
             let isInterrupted = false;
             while (!isInterrupted) {
@@ -138,7 +138,7 @@ class VeretenoRoller {
                 return "systems/vereteno/templates/chat/rolls/vereteno-roll-chat-message.hbs";
             case VeretenoRollType.ArmorBlock:
                 return "systems/vereteno/templates/chat/rolls/vereteno-armor-roll-chat-message.hbs";
-            case VeretenoRollType.initiative:
+            case VeretenoRollType.Initiative:
                 return "systems/vereteno/templates/chat/rolls/vereteno-initiative-roll-chat-message.hbs";
             default:
                 return "systems/vereteno/templates/chat/rolls/vereteno-roll-chat-message.hbs";

@@ -15,8 +15,8 @@ enum VeretenoRollType {
     None = 'none',
     Regular = 'regular',
     ArmorBlock = 'armor-block',
-    Serial = 'serial',
-    initiative = 'initiative',
+    Attack = 'attack',
+    Initiative = 'initiative',
 }
 
 class VeretenoMessageData implements RollOptions {
@@ -32,6 +32,7 @@ class VeretenoRollData {
     dice: string = 'd20';
     pool: number = 1;
     bonus: number | null = 0;
+    isSerial: boolean = false;
 }
 
 export type { IdLabelType }

@@ -1,13 +1,13 @@
 import { VeretenoCreature } from "../index";
 import { VeretenoActorSheet, VeretenoActorSheetData } from "../base/sheet";
-import { AttributeWithSkills, AttributesBlock, ItemActionInfo, Skill, SkillsBlock, Stat, StatsBlock } from "./data";
+import { AttributeWithSkills, AttributesBlock, ItemActionInfo, Skill, SkillsBlock, Stat, StatsBlock, WeaponAttackInfo } from "./data";
 import { VeretenoRollData } from "../base/data";
 import { VeretenoMessageData, VeretenoRollOptions, VeretenoRollType } from "$module/data";
 import { VeretenoRoller } from "$module/utils/vereteno-roller";
 import { VeretenoWeapon } from "$module/item/weapon/document";
 import { PhysicalVeretenoItem, VeretenoArmor, VeretenoItem } from "$module/item";
 import { VeretenoItemType } from "$module/item/base/data";
-import { WeaponType } from "$module/item/weapon/data";
+import { AttackType, WeaponType } from "$module/item/weapon/data";
 
 abstract class VeretenoCreatureSheet<TActor extends VeretenoCreature> extends VeretenoActorSheet<TActor>{
     override async getData(options: Partial<DocumentSheetOptions> = {}): Promise<VeretenoCreatureSheetData<TActor>> {
@@ -125,26 +125,22 @@ abstract class VeretenoCreatureSheet<TActor extends VeretenoCreature> extends Ve
             return;
         }
 
-        const rollData = {
+        const rollData: VeretenoRollData = {
             isBlind: false || event.ctrlKey,
             showDialog: false
         }
 
         if (actionType === 'initiative') {
-            let weaponData = {
-                itemId
-            };
-
             return await this.rollWeaponInitiative(itemId);
         }
         else if (actionType === 'attack') {
-            let weaponData = {
-                itemId,
-                weaponType,
-                attackType
+            let weaponData: WeaponAttackInfo = {
+                id: itemId,
+                weaponType: weaponType as WeaponType,
+                attackType: attackType as AttackType
             };
 
-            // return await this.rollWeaponAttack(weaponData, rollData);
+            return await this.rollWeaponAttack(weaponData, rollData);
         }
     }
 
@@ -166,13 +162,40 @@ abstract class VeretenoCreatureSheet<TActor extends VeretenoCreature> extends Ve
         let initiativeRollData = await actor.getInitiativeRollData(weaponId);
 
         const rollOptions: VeretenoRollOptions = {
-            type: VeretenoRollType.initiative,
+            type: VeretenoRollType.Initiative,
             messageData,
             rollData: initiativeRollData
         }
 
         const veretenoRollHandler = new VeretenoRoller();
         await veretenoRollHandler.rollInitiative(rollOptions);
+    }
+
+    async rollWeaponAttack(weaponData: WeaponAttackInfo, rollData: VeretenoRollData) {
+        const { actor } = this;
+
+        const messageData: VeretenoMessageData = {
+            userId: game.user._id || undefined,
+            speaker: ChatMessage.getSpeaker(),
+            flavor: weaponData.weaponType,
+            sound: CONFIG.sounds.dice,
+            blind: rollData.isBlind
+        };
+
+        if (rollData.showDialog) {
+
+        }
+
+        let weaponRollData = await actor.getWeaponRollData(weaponData);
+
+        const rollOptions: VeretenoRollOptions = {
+            type: VeretenoRollType.Attack,
+            messageData,
+            rollData: weaponRollData
+        }
+
+        const veretenoRollHandler = new VeretenoRoller();
+        await veretenoRollHandler.roll(rollOptions);
     }
 
     async #onItemAction(event: MouseEvent) {
