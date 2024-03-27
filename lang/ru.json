@@ -12,7 +12,7 @@
             "weight": "Вес",
             "reputation": "Репутация"
         },
-        "attack": {
+        "weaponType": {
             "none": "Отсутствует",
             "brawling": "Рукопашное",
             "melee": "Ближнего боя",
@@ -26,7 +26,7 @@
             "crit": "Критический урон",
             "attackWith": "Атака",
             "range": "Дистанция",
-            "attackType": "Тип атаки"
+            "weaponType": "Тип оружия"
         },
         "armor": {
             "none": "Отсутствует",

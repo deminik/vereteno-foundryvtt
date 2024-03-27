@@ -12,7 +12,7 @@
             "weight": "Weight",
             "reputation": ""
         },
-        "attack": {
+        "weaponType": {
             "none": "None",
             "brawling": "Brawling",
             "melee": "Meelee",
@@ -26,7 +26,7 @@
             "crit": "Critical",
             "attackWith": "Attack using",
             "range": "Range",
-            "attackType": "Attack type"
+            "weaponType": "Weapon type"
         },
         "armor": {
             "none": "None",

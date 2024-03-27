@@ -12,11 +12,11 @@ export const VERETENOCONFIG = {
         fight: "vereteno.tab.fight",
         bio: "vereteno.tab.bio"
     },
-    attackTypes: {
-        none: "vereteno.attack.none",
-        brawling: "vereteno.attack.brawling",
-        melee: "vereteno.attack.melee",
-        ranged: "vereteno.attack.ranged",
+    weaponTypes: {
+        none: "vereteno.weaponType.none",
+        brawling: "vereteno.weaponType.brawling",
+        melee: "vereteno.weaponType.melee",
+        ranged: "vereteno.weaponType.ranged",
     },
     rangeTypes: {
         pointBlank: "vereteno.range.pointBlank",

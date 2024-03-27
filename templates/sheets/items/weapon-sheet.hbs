@@ -30,11 +30,11 @@
                     data-dtype="Number"></div>
         </div>
         <div class="vereteno weapon stat stat-attack-type">
-            <div class="vereteno stat title">{{localize "vereteno.weapon.attackType"}}</div>
+            <div class="vereteno stat title">{{localize "vereteno.weapon.weaponType"}}</div>
             <div class="vereteno stat value">
-                <select name="system.attackType">
-                    {{#select attackType}}
-                    {{#each attackTypes as |value type|}}
+                <select name="system.weaponType">
+                    {{#select weaponType}}
+                    {{#each weaponTypes as |value type|}}
                     <option value="{{value.type}}">{{value.label}}</option>
                     {{/each}}
                     {{/select}}

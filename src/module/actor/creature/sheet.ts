@@ -7,7 +7,7 @@ import { VeretenoRoller } from "$module/utils/vereteno-roller";
 import { VeretenoWeapon } from "$module/item/weapon/document";
 import { PhysicalVeretenoItem, VeretenoArmor, VeretenoItem } from "$module/item";
 import { VeretenoItemType } from "$module/item/base/data";
-import { AttackType } from "$module/item/weapon/data";
+import { WeaponType } from "$module/item/weapon/data";
 
 abstract class VeretenoCreatureSheet<TActor extends VeretenoCreature> extends VeretenoActorSheet<TActor>{
     override async getData(options: Partial<DocumentSheetOptions> = {}): Promise<VeretenoCreatureSheetData<TActor>> {
@@ -30,16 +30,16 @@ abstract class VeretenoCreatureSheet<TActor extends VeretenoCreature> extends Ve
         }
 
         const equippedWeapons = actor.EquippedWeapons.map(x => {
-            switch (x.attackType) {
-                case AttackType.Brawling:
+            switch (x.weaponType) {
+                case WeaponType.Brawling:
                     x.system["isBrawling"] = true;
                     break;
 
-                case AttackType.Melee:
+                case WeaponType.Melee:
                     x.system["isMelee"] = true;
                     break;
 
-                case AttackType.Ranged:
+                case WeaponType.Ranged:
                     x.system["isRanged"] = true;
                     break;
 

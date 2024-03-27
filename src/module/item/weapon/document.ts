@@ -1,7 +1,7 @@
 import { SkillType } from "$common";
 import { VeretenoActor } from "$module/actor";
 import { PhysicalVeretenoItem } from "../index";
-import { AttackType, RangeType, VeretenoWeaponSystemData } from "./data";
+import { WeaponType, RangeType, VeretenoWeaponSystemData } from "./data";
 
 class VeretenoWeapon<TParent extends VeretenoActor | null = VeretenoActor | null> extends PhysicalVeretenoItem<TParent> {
     get modifier(): number {
@@ -20,8 +20,8 @@ class VeretenoWeapon<TParent extends VeretenoActor | null = VeretenoActor | null
         return this.system.crit;
     }
 
-    get attackType(): AttackType {
-        return this.system.attackType || AttackType.None;
+    get weaponType(): WeaponType {
+        return this.system.weaponType || WeaponType.None;
     }
 
     get attackWith(): SkillType {

@@ -6,7 +6,7 @@ interface VeretenoWeaponSystemData extends PhysicalVeretenoItemSystemData {
     damage: number;
     initiative: number;
     crit: number;
-    attackType: AttackType,
+    weaponType: WeaponType,
     attackWith: SkillType,
     range: RangeType
 }
@@ -23,12 +23,12 @@ interface WeaponSystemSource extends PhysicalSystemSource {
     damage: number;
     initiative: number;
     crit: number;
-    attackType: AttackType,
+    weaponType: WeaponType,
     attackWith: SkillType,
     range: RangeType
 }
 
-enum AttackType {
+enum WeaponType {
     None = "none",
     Brawling = "brawling",
     Melee = "melee",
@@ -44,5 +44,5 @@ enum RangeType {
     Utmost = "utmost"
 }
 
-export { AttackType, RangeType }
+export { WeaponType, RangeType }
 export { VeretenoWeaponSystemData, WeaponSource }

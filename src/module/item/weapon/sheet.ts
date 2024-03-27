@@ -1,7 +1,7 @@
 import { SkillType } from "$common";
 import { IdLabelType } from "$module/data";
 import { PhysicalVeretnoItemSheet, PhysicalVeretnoItemSheetData } from "../physical-item/sheet";
-import { AttackType, RangeType } from "./data";
+import { WeaponType, RangeType } from "./data";
 import { VeretenoWeapon } from "./document";
 
 class VeretenoWeaponSheet extends PhysicalVeretnoItemSheet<VeretenoWeapon>{
@@ -10,20 +10,20 @@ class VeretenoWeaponSheet extends PhysicalVeretnoItemSheet<VeretenoWeapon>{
 
         const { item } = this;
 
-        var attackTypes = Object.values(AttackType).map((e, i) => { return { id: i, label: game.i18n.localize(`vereteno.attack.${e}`), type: e } })
+        var weaponTypes = Object.values(WeaponType).map((e, i) => { return { id: i, label: game.i18n.localize(`vereteno.weaponType.${e}`), type: e } })
         var rangeTypes = Object.values(RangeType).map((e, i) => { return { id: i, label: game.i18n.localize(`vereteno.range.${e}`), type: e } })
         var skillTypes = Object.values(SkillType).map((e, i) => { return { id: i, label: game.i18n.localize(`vereteno.skill.${e}`), type: e } })
 
         const result: VeretenoWeaponSheetData = {
             ...sheetData,
             modifier: item.modifier,
-            attackType: item.attackType,
+            weaponType: item.weaponType,
             attackWith: item.attackWith,
             crit: item.crit,
             damage: item.damage,
             initiative: item.initiative,
             range: item.range,
-            attackTypes: attackTypes,
+            weaponTypes: weaponTypes,
             ranges: rangeTypes,
             skills: skillTypes
         };
@@ -41,8 +41,8 @@ interface VeretenoWeaponSheetData extends PhysicalVeretnoItemSheetData<VeretenoW
     damage: number;
     initiative: number;
     crit: number;
-    attackType: AttackType,
-    attackTypes: IdLabelType<AttackType>[],
+    weaponType: WeaponType,
+    weaponTypes: IdLabelType<WeaponType>[],
     attackWith: SkillType,
     skills: IdLabelType<SkillType>[];
     range: RangeType

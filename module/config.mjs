@@ -7,11 +7,11 @@ vereteno.tab = {
     fight: "vereteno.tab.bio"
 }
 
-vereteno.attackTypes = {
-    none: "vereteno.attack.none",
-    brawling: "vereteno.attack.brawling",
-    melee: "vereteno.attack.melee",
-    ranged: "vereteno.attack.ranged",
+vereteno.weaponTypes = {
+    none: "vereteno.weaponType.none",
+    brawling: "vereteno.weaponType.brawling",
+    melee: "vereteno.weaponType.melee",
+    ranged: "vereteno.weaponType.ranged",
 }
 
 vereteno.rangeTypes = {

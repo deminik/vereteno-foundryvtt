@@ -211,7 +211,7 @@
             "damage": 1,
             "initiative": 0,
             "crit": 3,
-            "attackType": "",
+            "weaponType": "",
             "attackWith": "",
             "range": ""
         },
