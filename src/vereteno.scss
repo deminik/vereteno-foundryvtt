@@ -4,15 +4,14 @@
 @import 'styles/utils/typography';
 @import "~rpg-awesome/scss/rpg-awesome.scss";
 
-.window-content {
-}
-
 .vereteno {
     @import "styles/item-sheet.scss";
     @import "styles/character-sheet.scss";
 
-    .window-content {
-        font-family: 'Vezitsa';
+    &.lang-ru {
+        .window-content {
+            font-family: 'Vezitsa', sans-serif;
+        }
     }
 }
 

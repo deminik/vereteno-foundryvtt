@@ -10,7 +10,7 @@
             "experience": "Experience",
             "price": "Price",
             "weight": "Weight",
-            "reputation": ""
+            "reputation": "Reputation"
         },
         "weaponType": {
             "none": "None",
@@ -45,34 +45,34 @@
         },
         "stat": {
             "none": "None",
-            "hitPoints": "",
-            "willPoints": ""
+            "hitPoints": "Hit points",
+            "willPoints": "Will points"
         },
         "attribute": {
             "none": "None",
-            "constitution": "",
-            "intelligence": "",
-            "dexterity": "",
-            "empathy": ""
+            "constitution": "Constitution",
+            "intelligence": "Intelligence",
+            "dexterity": "Dexterity",
+            "empathy": "Empathy"
         },
         "skill": {
             "none": "None",
-            "melee": "",
-            "strength": "",
-            "agility": "",
-            "piloting": "",
-            "stealth": "",
-            "ranged": "",
-            "cybershamanism": "",
-            "survival": "",
-            "medicine": "",
-            "observation": "",
-            "science": "",
-            "mechanics": "",
-            "manipulation": "",
-            "leadership": "",
-            "witchcraft": "",
-            "culture": ""
+            "melee": "Melee",
+            "strength": "Strength",
+            "agility": "Agility",
+            "piloting": "Piloting",
+            "stealth": "Stealth",
+            "ranged": "Ranged",
+            "cybershamanism": "Cybershamanism",
+            "survival": "Survival",
+            "medicine": "Medicine",
+            "observation": "Observation",
+            "science": "Science",
+            "mechanics": "Mechanics",
+            "manipulation": "Manipulation",
+            "leadership": "Leadership",
+            "witchcraft": "Witchcraft",
+            "culture": "Culture"
         },
         "tab": {
             "none": "None",
