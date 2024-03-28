@@ -44,5 +44,5 @@ jobs:
           name: ${{ github.event.release.name }}
           tag: ${{ github.event.release.tag_name }}
           body: ${{ github.event.release.body }}
-          artifacts: './module.json, ./vereteno.zip'
+          artifacts: './system.json, ./vereteno.zip'
           token: ${{ secrets.GITHUB_TOKEN }}
