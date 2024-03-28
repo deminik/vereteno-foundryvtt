@@ -1,5 +1,3 @@
-import { VeretenoRollData } from "./actor/base/data";
-
 interface IdLabelType<T> {
     id: number;
     label: string;
@@ -17,6 +15,7 @@ enum VeretenoRollType {
     ArmorBlock = 'armor-block',
     Attack = 'attack',
     Initiative = 'initiative',
+    Desperation = 'desperation'
 }
 
 class VeretenoMessageData implements RollOptions {

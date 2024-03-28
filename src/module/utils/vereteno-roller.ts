@@ -10,7 +10,7 @@ class VeretenoRoller {
     async roll(rollOptions: VeretenoRollOptions): Promise<void> {
         this.options = rollOptions;
         if (rollOptions.rollData.pool <= 0 && rollOptions.type != VeretenoRollType.ArmorBlock) {
-            //return await this.rollDesperation(rollOptions);
+            return await this.rollDesperation(rollOptions);
         }
 
         let rollFormula = `${rollOptions.rollData.pool}${rollOptions.rollData.dice}`;
@@ -23,6 +23,22 @@ class VeretenoRoller {
         }
 
         await this.reevaluateTotal();
+        this.toMessage();
+    }
+
+    async rollDesperation(rollOptions: VeretenoRollOptions): Promise<void> {
+        let rollFormula = '0d20';
+        if (rollOptions.rollData.pool == 0) {
+            rollFormula = '1d20';
+        } else {
+            rollFormula = '2d20'
+        }
+
+        let roll = new VeretenoRoll(rollFormula);
+        this.rollObject = roll;
+        this.options!.type = VeretenoRollType.Desperation;
+
+        await this.reevaluateDesperationTotal();
         this.toMessage();
     }
 
@@ -80,6 +96,21 @@ class VeretenoRoller {
         this.veretenoResult = rollResult;
     }
 
+    async reevaluateDesperationTotal() {
+        if (!this.rollObject) {
+            return;
+        }
+
+        if (!this.rollObject._evaluated) {
+            await this.rollObject.evaluate({});
+        }
+
+        let rollDicesResults = (this.rollObject.terms[0] as any).results;
+        let rollResult = this.calculateDesperationDicesTotal(rollDicesResults);
+
+        this.veretenoResult = rollResult;
+    }
+
     calculateDicesTotal(dices: DieResult[]): VeretenoResult {
         const result: VeretenoResult = {
             total: 0,
@@ -113,6 +144,46 @@ class VeretenoRoller {
 
             this.veretenoRolls.push(rollResult);
         });
+
+        return result;
+    }
+
+    calculateDesperationDicesTotal(dices: DieResult[]): VeretenoResult {
+        const result: VeretenoResult = {
+            total: 0,
+            successes: 0,
+            critFails: 0
+        }
+
+        dices.forEach(r => {
+            let rollResult = {
+                result: r.result,
+                classes: 'd20'
+            };
+
+            if (r.result === 20) {
+                result.total++;
+                rollResult.classes += ' max';
+            }
+
+            if (r.result === 1) {
+                result.total--;
+                rollResult.classes += ' min';
+                result.critFails++;
+            }
+
+            this.veretenoRolls.push(rollResult);
+        });
+
+        const dicesCount = dices.length;
+        if (result.total == dicesCount) {
+            result.total = 1;
+            result.successes = 1;
+        } else {
+            if (result.total > 0) {
+                result.total = 0;
+            }
+        }
 
         return result;
     }
