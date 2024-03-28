@@ -3,10 +3,17 @@ import { VeretenoActor } from "..";
 
 abstract class VeretenoActorSheet<TActor extends VeretenoActor> extends ActorSheet<TActor, VeretenoItem> {
     static override get defaultOptions(): ActorSheetOptions {
-        return mergeObject(super.defaultOptions, {
+        const isRussianLanguage = game.settings.get("core", "language") == 'ru';
+
+        const options = mergeObject(super.defaultOptions, {
             width: 560,
             classes: ['vereteno', 'actor', 'sheet']
-        })
+        });
+        if(isRussianLanguage){
+            options.classes.push("lang-ru")
+        }
+
+        return options;
     }
 
     override async getData(options: Partial<DocumentSheetOptions> = {}): Promise<VeretenoActorSheetData<TActor>> {

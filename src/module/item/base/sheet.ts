@@ -10,10 +10,17 @@ class VeretenoItemSheet<TItem extends VeretenoItem> extends ItemSheet<TItem> {
     }
 
     static get defaultOptions() {
-        return mergeObject(super.defaultOptions, {
+        const isRussianLanguage = game.settings.get("core", "language") == 'ru';
+
+        const options = mergeObject(super.defaultOptions, {
             width: 560,
             classes: ['vereteno', 'item', 'sheet']
-        })
+        });
+        if(isRussianLanguage){
+            options.classes.push("lang-ru")
+        }
+
+        return options;
     }
 
     get template() {
