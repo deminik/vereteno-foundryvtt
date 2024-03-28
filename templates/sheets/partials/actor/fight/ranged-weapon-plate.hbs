@@ -37,11 +37,13 @@
                 data-item-id="{{_id}}" data-weapon-type="ranged" data-attack-type="hip"><i title="Выстрел от бедра"
                     class="ra ra-targeted gray"></i></a>
         </div>
+        {{#if system.hasBurst}}
         <div class="action">
             <a class="equip-action action weapon-action" data-item-type="weapon" data-action-type="attack"
                 data-item-id="{{_id}}" data-weapon-type="ranged" data-attack-type="burst"><i title="Стрельба очередью"
                     class="ra ra-bullets"></i></a>
         </div>
+        {{/if}}
         <div class="action">
             <a class="equip-action action weapon-action" data-item-type="weapon" data-action-type="initiative"
                 data-item-id="{{_id}}"><i title="Определить инициативу" class="ra ra-hourglass"></i></a>

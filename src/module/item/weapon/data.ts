@@ -8,15 +8,11 @@ interface VeretenoWeaponSystemData extends PhysicalVeretenoItemSystemData {
     crit: number;
     weaponType: WeaponType,
     attackWith: SkillType,
-    range: RangeType
+    range: RangeType,
+    hasBurst: boolean
 }
 
 type WeaponSource = BasePhysicalItemSource<"weapon", WeaponSystemSource>;
-
-// type WeaponItemSource<
-//     TType extends PhysicalItemType,
-//     TSystemSource extends WeaponSystemSource = WeaponSystemSource,
-// > = BaseItemSourcePF2e<TType, TSystemSource>;
 
 interface WeaponSystemSource extends PhysicalSystemSource {
     modifier: number;
@@ -25,7 +21,8 @@ interface WeaponSystemSource extends PhysicalSystemSource {
     crit: number;
     weaponType: WeaponType,
     attackWith: SkillType,
-    range: RangeType
+    range: RangeType,
+    hasBurst: boolean
 }
 
 enum WeaponType {

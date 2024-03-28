@@ -4,32 +4,36 @@ import { PhysicalVeretenoItem } from "../index";
 import { WeaponType, RangeType, VeretenoWeaponSystemData } from "./data";
 
 class VeretenoWeapon<TParent extends VeretenoActor | null = VeretenoActor | null> extends PhysicalVeretenoItem<TParent> {
-    get modifier(): number {
+    get Modifier(): number {
         return this.system.modifier;
     }
 
-    get damage(): number {
+    get Damage(): number {
         return this.system.damage;
     }
 
-    get initiative(): number {
+    get Initiative(): number {
         return this.system.initiative;
     }
 
-    get crit(): number {
+    get Crit(): number {
         return this.system.crit;
     }
 
-    get weaponType(): WeaponType {
+    get WeaponType(): WeaponType {
         return this.system.weaponType || WeaponType.None;
     }
 
-    get attackWith(): SkillType {
+    get AttackWith(): SkillType {
         return this.system.attackWith || SkillType.None;
     }
 
-    get range(): RangeType {
+    get Range(): RangeType {
         return this.system.range || RangeType.None;
+    }
+
+    get HasBurst(): boolean {
+        return this.system.hasBurst || false;
     }
 }
 

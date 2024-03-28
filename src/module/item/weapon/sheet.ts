@@ -16,16 +16,18 @@ class VeretenoWeaponSheet extends PhysicalVeretnoItemSheet<VeretenoWeapon>{
 
         const result: VeretenoWeaponSheetData = {
             ...sheetData,
-            modifier: item.modifier,
-            weaponType: item.weaponType,
-            attackWith: item.attackWith,
-            crit: item.crit,
-            damage: item.damage,
-            initiative: item.initiative,
-            range: item.range,
+            modifier: item.Modifier,
+            weaponType: item.WeaponType,
+            attackWith: item.AttackWith,
+            crit: item.Crit,
+            damage: item.Damage,
+            initiative: item.Initiative,
+            range: item.Range,
             weaponTypes: weaponTypes,
             ranges: rangeTypes,
-            skills: skillTypes
+            skills: skillTypes,
+            isRanged: item.Range > RangeType.Medium,
+            hasBurst: item.HasBurst
         };
 
         return result;
@@ -47,6 +49,8 @@ interface VeretenoWeaponSheetData extends PhysicalVeretnoItemSheetData<VeretenoW
     skills: IdLabelType<SkillType>[];
     range: RangeType
     ranges: IdLabelType<RangeType>[];
+    isRanged: boolean;
+    hasBurst: boolean
 }
 
 export { VeretenoWeaponSheet };

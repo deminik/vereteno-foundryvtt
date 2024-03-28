@@ -30,7 +30,7 @@ abstract class VeretenoCreatureSheet<TActor extends VeretenoCreature> extends Ve
         }
 
         const equippedWeapons = actor.EquippedWeapons.map(x => {
-            switch (x.weaponType) {
+            switch (x.WeaponType) {
                 case WeaponType.Brawling:
                     x.system["isBrawling"] = true;
                     break;

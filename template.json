@@ -213,7 +213,8 @@
             "crit": 3,
             "weaponType": "",
             "attackWith": "",
-            "range": ""
+            "range": "",
+            "hasBurst": false
         },
         "armor": {
             "templates": [
