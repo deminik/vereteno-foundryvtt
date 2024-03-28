@@ -34,5 +34,10 @@
     ],
     "socket": false,
     "gridDistance": 2,
-    "gridUnits": "m"
+    "gridUnits": "m",
+    "url":"https://github.com/deminik/vereteno-foundryvtt",
+    "manifest":"https://github.com/deminik/vereteno-foundryvtt/releases/latest/download/system.json",
+    "download": "This is auto replaced",
+    "license": "LICENSE",
+    "readme": "README.md"
 }
