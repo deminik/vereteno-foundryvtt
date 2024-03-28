@@ -26,7 +26,8 @@
             "crit": "Critical",
             "attackWith": "Attack using",
             "range": "Range",
-            "weaponType": "Weapon type"
+            "weaponType": "Weapon type",
+            "burst": "Burst"
         },
         "armor": {
             "none": "None",

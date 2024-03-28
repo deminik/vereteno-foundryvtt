@@ -65,6 +65,10 @@
                 </select>
             </div>
         </div>
+        <div class="vereteno weapon stat stat-has-burst">
+            <div class="vereteno stat title">{{localize "vereteno.weapon.burst"}}</div>
+            <div class="vereteno stat value"><input name="system.hasBurst" type="checkbox" {{checked hasBurst}}></div>
+        </div>
         {{> "systems/vereteno/templates/sheets/partials/item/physical-item-block.hbs"}}
     </div>
 </form>
