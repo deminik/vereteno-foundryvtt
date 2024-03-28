@@ -32,7 +32,7 @@
             "path": "lang/en.json"
         }
     ],
-    "socket": false,
+    "socket": true,
     "gridDistance": 2,
     "gridUnits": "m",
     "url":"https://github.com/deminik/vereteno-foundryvtt",
