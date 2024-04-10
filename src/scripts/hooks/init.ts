@@ -8,6 +8,7 @@ import { VeretenoMonsterSheet } from '$module/actor/monster/sheet';
 import { VeretenoNpcSheet } from '$module/actor/npc/sheet';
 import { registerSettings } from '$module/system/settings';
 import { VeretenoClientSettings } from '$module/system/settings/client-settings';
+import { VeretenoEquipmentSheet } from '$module/item/equipment/sheet';
 
 function preloadHandlebarsTemplates() {
     return loadTemplates(VERETENO_PARTIALS);
@@ -45,6 +46,10 @@ export const Init = {
             });
             Items.registerSheet('vereteno', VeretenoWeaponSheet, {
                 types: ['weapon'],
+                makeDefault: true
+            });
+            Items.registerSheet('vereteno', VeretenoEquipmentSheet, {
+                types: ['equipment'],
                 makeDefault: true
             });
 

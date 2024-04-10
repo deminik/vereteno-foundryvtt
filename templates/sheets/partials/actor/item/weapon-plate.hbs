@@ -1,9 +1,10 @@
 <section class="vereteno item-plate">
     <div class="vereteno item-image"><img src="{{img}}"></div>
     <div class="weapon-stats">
-        <div class="name">
+        <a class="name action item-action open-sheet-action" data-item-type="weapon" data-action-type="sheet"
+            data-item-id="{{_id}}">
             {{name}}
-        </div>
+        </a>
         {{#with system}}
         <div class="stats">
             <div class="stat">
@@ -29,13 +30,13 @@
         {{/with}}
     </div>
     <div class="weapon-actions">
-            <a class="equip-action action item-action" data-item-type="weapon" data-action-type="equip"
-                data-item-id="{{_id}}">
-                <i class="fa-solid fa-hand"></i>
-            </a>
-            <a class="delete-action action item-action" data-item-type="weapon" data-action-type="remove"
-                data-item-id="{{_id}}">
-                <i class="fa-solid fa-trash" aria-hidden="true"></i>
-            </a>
+        <a class="equip-action action item-action" data-item-type="weapon" data-action-type="equip"
+            data-item-id="{{_id}}">
+            <i class="fa-solid fa-hand"></i>
+        </a>
+        <a class="delete-action action item-action" data-item-type="weapon" data-action-type="remove"
+            data-item-id="{{_id}}">
+            <i class="fa-solid fa-trash" aria-hidden="true"></i>
+        </a>
     </div>
 </section>

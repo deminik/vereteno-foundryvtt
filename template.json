@@ -224,6 +224,11 @@
             "quality": 0,
             "durability": null
         },
+        "equipment": {
+            "templates": [
+                "physical"
+            ]
+        },
         "feature": {
             "templates": [
                 "base"

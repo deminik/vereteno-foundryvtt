@@ -8,6 +8,7 @@ import { PhysicalVeretenoItem, VeretenoArmor, VeretenoItem } from "$module/item"
 import { VeretenoItemType } from "$module/item/base/data";
 import { AttackType, WeaponType } from "$module/item/weapon/data";
 import { VeretenoRollDialog, VeretenoRollDialogArgument } from "$module/dialog";
+import { VeretenoEquipment } from "$module/item/equipment/document";
 
 abstract class VeretenoCreatureSheet<TActor extends VeretenoCreature> extends VeretenoActorSheet<TActor>{
     override async getData(options: Partial<DocumentSheetOptions> = {}): Promise<VeretenoCreatureSheetData<TActor>> {
@@ -47,7 +48,7 @@ abstract class VeretenoCreatureSheet<TActor extends VeretenoCreature> extends Ve
             }
 
             return x;
-        })
+        });
 
         return {
             ...sheetData,
@@ -60,6 +61,8 @@ abstract class VeretenoCreatureSheet<TActor extends VeretenoCreature> extends Ve
             equippedWeapons: equippedWeapons,
             armors: actor.Armors,
             equippedArmor: actor.EquippedArmor,
+            equipment: actor.Items,
+            equippedEquipment: actor.EquippedItems
         }
     }
 
@@ -248,6 +251,10 @@ abstract class VeretenoCreatureSheet<TActor extends VeretenoCreature> extends Ve
                 return await this.unequipItem(itemInfo);
                 break;
 
+            case 'sheet':
+                return this.displaySheet(itemInfo);
+                break;
+
             default:
                 return;
         }
@@ -321,6 +328,15 @@ abstract class VeretenoCreatureSheet<TActor extends VeretenoCreature> extends Ve
         await this.actor.updateEmbeddedDocuments("Item", [
             { _id: item._id!, "system.isEquipped": false },
         ]);
+    }
+
+    displaySheet(itemInfo: ItemActionInfo): void {
+        const item = this.actor.items.get(itemInfo.id);
+        if (!item) {
+            return;
+        }
+
+        item.sheet.render(true, { editable: true });
     }
 
     async #onArmorAction(event: MouseEvent) {
@@ -464,6 +480,8 @@ interface VeretenoCreatureSheetData<TActor extends VeretenoCreature> extends Ver
     equippedWeapons: VeretenoWeapon[];
     armors: VeretenoArmor[];
     equippedArmor: VeretenoArmor;
+    equipment: VeretenoEquipment[];
+    equippedEquipment: VeretenoEquipment[];
 }
 
 export { VeretenoCreatureSheet }
