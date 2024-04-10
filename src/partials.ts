@@ -6,6 +6,7 @@ export const VERETENO_PARTIALS = [
     "systems/vereteno/templates/sheets/partials/actor/equipment-tab.hbs",
     "systems/vereteno/templates/sheets/partials/actor/item/weapon-plate.hbs",
     "systems/vereteno/templates/sheets/partials/actor/item/armor-plate.hbs",
+    "systems/vereteno/templates/sheets/partials/actor/item/equipment-plate.hbs",
 
     "systems/vereteno/templates/sheets/partials/actor/fight-tab.hbs",
     "systems/vereteno/templates/sheets/partials/actor/fight/brawling-weapon-plate.hbs",

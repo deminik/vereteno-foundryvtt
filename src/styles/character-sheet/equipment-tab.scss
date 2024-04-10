@@ -30,7 +30,8 @@
                 }
 
                 .weapon-stats,
-                .armor-stats {
+                .armor-stats,
+                .equipment-stats {
                     flex-grow: 1;
 
                     display: flex;
@@ -53,7 +54,8 @@
                 }
 
                 .weapon-actions,
-                .armor-actions {
+                .armor-actions,
+                .equipment-actions {
                     height: 100%;
                     align-self: end;
                     display: flex;

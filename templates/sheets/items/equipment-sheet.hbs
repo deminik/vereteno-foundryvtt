@@ -1,0 +1,14 @@
+<form class="{{cssClass}} equipment-sheet" autocomplete="off">
+    <div class="vereteno equipment sheet-header">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+        <img class="vereteno item-image" src="{{item.img}}" data-edit="img" title="{{item.name}}" />
+        <div class="vereteno item-info">
+            <h3 class="vereteno type-header">{{localize "vereteno.common.equipment"}}</h1>
+                <h1><input name="name" type="text" value="{{item.name}}" placeholder="{{ localize 'Name' }}" /></h1>
+        </div>
+    </div>
+    <div class="vereteno equipment sheet-content">
+        {{> "systems/vereteno/templates/sheets/partials/item/physical-item-block.hbs"}}
+    </div>
+</form>

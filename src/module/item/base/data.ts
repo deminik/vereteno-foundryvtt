@@ -18,7 +18,7 @@ type BaseVeretenoItemSource<
 
 type NonPhysicalItemType = | "feature";
 
-type PhysicalItemType = | "armor" | "weapon";
+type PhysicalItemType = | "armor" | "weapon" | "equipment";
 
 type ItemType = NonPhysicalItemType | PhysicalItemType;
 

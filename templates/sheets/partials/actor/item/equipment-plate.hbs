@@ -1,0 +1,19 @@
+<section class="vereteno item-plate">
+    <div class="vereteno item-image"><img src="{{img}}"></div>
+    <div class="equipment-stats">
+        <a class="nameaction item-action open-sheet-action" data-item-type="equipment" data-action-type="sheet"
+            data-item-id="{{_id}}">
+            {{name}}
+        </a>
+        {{#with system}}
+        <div class="stats">
+        </div>
+        {{/with}}
+    </div>
+    <div class="equipment-actions">
+        <a class="delete-action action item-action" data-item-type="equipment" data-action-type="remove"
+            data-item-id="{{_id}}">
+            <i class="fa fa-trash" aria-hidden="true"></i>
+        </a>
+    </div>
+</section>
