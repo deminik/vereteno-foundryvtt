@@ -28,22 +28,22 @@
                     "constitution": {
                         "value": 1,
                         "min": 0,
-                        "max": 5
+                        "max": 10
                     },
                     "intelligence": {
                         "value": 1,
                         "min": 0,
-                        "max": 5
+                        "max": 10
                     },
                     "dexterity": {
                         "value": 1,
                         "min": 0,
-                        "max": 5
+                        "max": 10
                     },
                     "empathy": {
                         "value": 1,
                         "min": 0,
-                        "max": 5
+                        "max": 10
                     }
                 },
                 "skills": {
@@ -52,112 +52,112 @@
                         "attribute": "constitution",
                         "value": 0,
                         "min": 0,
-                        "max": 5
+                        "max": 10
                     },
                     "strength": {
                         "category": "general",
                         "attribute": "constitution",
                         "value": 0,
                         "min": 0,
-                        "max": 5
+                        "max": 10
                     },
                     "agility": {
                         "category": "general",
                         "attribute": "dexterity",
                         "value": 0,
                         "min": 0,
-                        "max": 5
+                        "max": 10
                     },
                     "piloting": {
                         "category": "professional",
                         "attribute": "dexterity",
                         "value": 0,
                         "min": 0,
-                        "max": 5
+                        "max": 10
                     },
                     "stealth": {
                         "category": "general",
                         "attribute": "dexterity",
                         "value": 0,
                         "min": 0,
-                        "max": 5
+                        "max": 10
                     },
                     "ranged": {
                         "category": "general",
                         "attribute": "dexterity",
                         "value": 0,
                         "min": 0,
-                        "max": 5
+                        "max": 10
                     },
                     "cybershamanism": {
                         "category": "professional",
                         "attribute": "intelligence",
                         "value": 0,
                         "min": 0,
-                        "max": 5
+                        "max": 10
                     },
                     "survival": {
                         "category": "general",
                         "attribute": "intelligence",
                         "value": 0,
                         "min": 0,
-                        "max": 5
+                        "max": 10
                     },
                     "medicine": {
                         "category": "professional",
                         "attribute": "intelligence",
                         "value": 0,
                         "min": 0,
-                        "max": 5
+                        "max": 10
                     },
                     "observation": {
                         "category": "general",
                         "attribute": "intelligence",
                         "value": 0,
                         "min": 0,
-                        "max": 5
+                        "max": 10
                     },
                     "science": {
                         "category": "professional",
                         "attribute": "intelligence",
                         "value": 0,
                         "min": 0,
-                        "max": 5
+                        "max": 10
                     },
                     "mechanics": {
                         "category": "professional",
                         "attribute": "intelligence",
                         "value": 0,
                         "min": 0,
-                        "max": 5
+                        "max": 10
                     },
                     "manipulation": {
                         "category": "general",
                         "attribute": "empathy",
                         "value": 0,
                         "min": 0,
-                        "max": 5
+                        "max": 10
                     },
                     "leadership": {
                         "category": "professional",
                         "attribute": "empathy",
                         "value": 0,
                         "min": 0,
-                        "max": 5
+                        "max": 10
                     },
                     "witchcraft": {
                         "category": "professional",
                         "attribute": "empathy",
                         "value": 0,
                         "min": 0,
-                        "max": 5
+                        "max": 10
                     },
                     "culture": {
                         "category": "professional",
                         "attribute": "empathy",
                         "value": 0,
                         "min": 0,
-                        "max": 5
+                        "max": 10
                     }
                 },
                 "description": "",
