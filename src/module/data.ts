@@ -24,7 +24,6 @@ class VeretenoMessageData implements RollOptions {
     speaker: any = {};
     flavor: string = '';
     sound: any | null = null;
-    blind: boolean = false
 }
 
 class VeretenoRollData {
