@@ -200,7 +200,24 @@ class VeretenoRoller {
         chatData.content = await renderTemplate(template, veretenoRollData);
         chatData.roll = this.rollObject;
 
-        return ChatMessage.create(chatData);
+        let rollMode = game.settings.get("core", "rollMode");
+        if (rollMode == 'blindroll' || chatData.blind) {
+            var gmRecipient = ChatMessage.getWhisperRecipients("GM");
+            chatData.whisper = gmRecipient;
+            rollMode = 'blindroll'
+            chatData.type = CONST.CHAT_MESSAGE_TYPES.WHISPER;
+        }
+
+        if (rollMode == 'gmroll') {
+            var gmRecipient = ChatMessage.getWhisperRecipients("GM");
+            chatData.whisper = gmRecipient;
+            chatData.type = CONST.CHAT_MESSAGE_TYPES.WHISPER;
+        }
+
+        chatData.rollMode = rollMode;
+
+        return this.rollObject?.toMessage(chatData, { create: false, rollMode: rollMode })
+        .then(e => ChatMessage.create(e));
     }
 
     getTemplate(type: VeretenoRollType): string {
